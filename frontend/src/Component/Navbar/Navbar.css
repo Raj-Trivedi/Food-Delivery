@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+body{
+    padding: 5px 80px;
+    margin: 0px;
+    font-family: outfit;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo img{
+    width: 88px;
+}
+
+.nav-option ul{
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    padding: 30px;
+    justify-content: space-between;
+}
+
+.nav-option ul li{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav-right{
+    display: flex;
+    gap: 40px;
+    padding: 30px;
+    align-items: center;
+}
+
+.nav-search{
+    display: flex;
+    padding: 10px;
+    border: 1px solid orangered;
+    border-radius: 40px;
+    width: 350px;
+}
+
+.nav-search input{
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 0px 10px;
+}
+
+.nav-right img{
+    width: 20px;
+}
+
+
+.nav-cart{
+    position: relative;
+}
+
+.cart-quantity{
+    font-size: 12px;
+    padding: 0px 6px;
+    background-color: orangered;
+    color: white;
+    border-radius: 50%;
+    top: -10px;
+    right: -13px;
+    position: absolute;
+}
+
+.nav-btn button{
+    background-color: white;
+    border: 1px solid orangered;
+    padding: 10px 20px;
+    border-radius: 40px;
+}
+
+.active{
+    border-bottom: 2px solid orangered;
+}

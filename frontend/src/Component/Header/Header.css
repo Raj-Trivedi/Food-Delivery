@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Satisfy&display=swap');
+
+.header-container{
+    font-family: satisfy;
+    height: 35vw;
+    background-image: url(../../../public/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 10px auto;
+    color: white;
+    position: relative;
+    border-radius: 2vw;
+}
+
+.header{
+    padding: 30px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 46%;
+    bottom: 10%;
+    left: 3vw;
+}
+
+.header h1{
+    font-weight: 500;
+    font-size: max(4.5vw,22px);
+}
+
+.header p{
+    font-size: 1.3vw;
+}
+
+.button {
+  width: 180px;
+  height: 40px;
+  background-image: linear-gradient(rgb(160, 32, 32),rgb(131, 29, 29));
+  border: none;
+  border-radius: 50px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  box-shadow: 1px 3px 0px rgb(196, 78, 78);
+  transition-duration: .3s;
+}
+
+.cartIcon {
+  width: 14px;
+  height: fit-content;
+}
+
+.cartIcon path {
+  fill: white;
+}
+
+.button:active {
+  transform: translate(2px ,0px);
+  box-shadow: 0px 1px 0px rgb(139, 113, 255);
+  padding-bottom: 1px;
+}
