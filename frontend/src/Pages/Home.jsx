@@ -8,7 +8,7 @@ export const Home = () => {
     <div>
       <Header />
       <Explore />
-      <FoodDisplay />
+      {/* <FoodDisplay /> */}
     </div>
   )
 }
