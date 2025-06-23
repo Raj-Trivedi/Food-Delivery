@@ -1,0 +1,89 @@
+.signup-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.signup-left,
+.signup-right {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-left {
+   border-top-right-radius: 22vw;
+   border-bottom-left-radius: 15vw;
+  background: linear-gradient(135deg, #006d5b, #0fa77a);
+  color: white;
+}
+
+/* .signup-cont{
+    background-color: #006d5b;
+} */
+
+.signup-right {
+    border-top-right-radius: 22vw;
+  background: white;
+  color: #0f574d;
+  align-items: center;
+  text-align: center;
+}
+
+.signup-right input {
+  margin: 10px 0;
+  padding: 12px 16px;
+  width: 80%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.signup-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  background: #0fa77a;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signup-btn.outlined {
+  background: transparent;
+  border: 2px solid white;
+}
+
+.signup-switch {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.signup-switch span {
+  color: #0fa77a;
+  cursor: pointer;
+}
+
+.signup-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.signup-logo {
+  font-size: 30px;
+}
+
+@media (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+  }
+  .signup-left,
+  .signup-right {
+    width: 100%;
+    padding: 20px;
+  }
+}

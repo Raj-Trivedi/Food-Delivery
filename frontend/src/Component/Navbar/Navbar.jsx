@@ -4,9 +4,15 @@ import logo from "../../../../assets/frontend_assets/logo.jpg"
 import Search_icon from "../../../../assets/frontend_assets/search_icon.png"
 import Cart_icon from "../../../../assets/frontend_assets/basket_icon.png"
 import { useState } from 'react'
+import { StoreContext } from '../../Context/StoreContext'
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const Navbar = () => {
     const [menu, setMenu] = React.useState("home");
+    const navigate = useNavigate();
+
+    const {cartItems} = useContext(StoreContext);
   return (
     <div className="nav-container">
         <div className="nav-logo">
@@ -25,12 +31,12 @@ export const Navbar = () => {
                 <img src={Search_icon} alt='Search Icon'/>
             </div>
             <div className="nav-cart">
-                <div className="cart-quantity">4</div>
-                <img src={Cart_icon} alt='Cart Icon'/>
+                <div className="cart-quantity">{Object.keys(cartItems).length}</div>
+                <img src={Cart_icon} alt='Cart Icon' onClick={() => navigate("/cart")} />
             </div>
 
             <div className="nav-btn">
-                <button>Sign In</button>
+                <button onClick={() => navigate("/signUp")}>Sign In</button>
             </div>
         </div>
     </div>

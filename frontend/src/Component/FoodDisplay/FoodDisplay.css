@@ -1,17 +1,60 @@
 .food-display{
+    padding: 2vw 4vw;
     margin-top: 30px;
-    max-width: 100%;
 }
 
 .food-display h2{
-    font-size: max(2vw,24px);
-    font-weight: 600;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem); /* Responsive heading */
+    font-weight: 700;
+    margin-bottom: 30px;
 } 
 
 .food-display-list{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
-    margin-top: 30px;
-    gap: 30px;
-    row-gap: 50px; 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Default grid */
+  gap: 30px;
+  row-gap: 50px;
+}
+
+
+@media (max-width: 1024px) {
+  .food-items {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .food-display h1 {
+    text-align: center;
+  }
+  .food-items {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-items {
+    grid-template-columns: 1fr; /* 1 column for mobile */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .food-items {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 8px;
+    scrollbar-width: none; /* Firefox */
+  }
+  .food-items::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  .food-item {
+    min-width: 220px;
+    flex: 0 0 auto;
+  }
 }

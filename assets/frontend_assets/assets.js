@@ -1,5 +1,5 @@
 import basket_icon from './basket_icon.png'
-import logo from './logo.png'
+// import logo from './logo.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
 import menu_1 from './menu_1.png'
@@ -9,47 +9,165 @@ import menu_4 from './menu_4.png'
 import menu_5 from './menu_5.png'
 import menu_6 from './menu_6.png'
 import menu_7 from './menu_7.png'
-import menu_8 from './menu_8.jpeg'
-import menu_9 from './menu_9.jpg'
-import menu_10 from './menu_10.jpg'
-import menu_11 from './menu_11.jpeg'
-import menu_12 from './menu_12.jpg'
+import menu_8 from './menu_8.png'
+import menu_9 from './menu_9.png'
+import menu_10 from './menu_10.png'
+import menu_11 from './menu_11.png'
+import menu_12 from './menu_12.png'
 import menu_13 from './menu_13.png'
-import menu_14 from './menu_14.jpg'
-import menu_15 from './menu_15.jpg'
+import menu_14 from './menu_14.png'
+import menu_15 from './menu_15.png'
 
-import food_1 from './food_1.png'
-import food_2 from './food_2.png'
-import food_3 from './food_3.png'
-import food_4 from './food_4.png'
-import food_5 from './food_5.png'
-import food_6 from './food_6.png'
-import food_7 from './food_7.png'
-import food_8 from './food_8.png'
-import food_9 from './food_9.png'
-import food_10 from './food_10.png'
-import food_11 from './food_11.png'
-import food_12 from './food_12.png'
-import food_13 from './food_13.png'
-import food_14 from './food_14.png'
-import food_15 from './food_15.png'
-import food_16 from './food_16.png'
-import food_17 from './food_17.png'
-import food_18 from './food_18.png'
-import food_19 from './food_19.png'
-import food_20 from './food_20.png'
-import food_21 from './food_21.png'
-import food_22 from './food_22.png'
-import food_23 from './food_23.png'
-import food_24 from './food_24.png'
-import food_25 from './food_25.png'
-import food_26 from './food_26.png'
-import food_27 from './food_27.png'
-import food_28 from './food_28.png'
-import food_29 from './food_29.png'
-import food_30 from './food_30.png'
-import food_31 from './food_31.png'
-import food_32 from './food_32.png'
+// Salad
+import food_1 from '../frontend_assets/Project_imgs/salad_1.jpg'
+import food_2 from '../frontend_assets/Project_imgs/salad_2.jpg'
+import food_3 from '../frontend_assets/Project_imgs/salad_3.jpg'
+import food_4 from '../frontend_assets/Project_imgs/salad_4.png'
+import food_5 from '../frontend_assets/Project_imgs/salad_5.jpg'
+import food_6 from '../frontend_assets/Project_imgs/salad_6.png'
+import food_7 from '../frontend_assets/Project_imgs/salad_7.png'
+import food_8 from '../frontend_assets/Project_imgs/salad_8.jpg'
+
+// Rolls
+import food_9 from '../frontend_assets/Project_imgs/rolls_1.jpg'
+import food_10 from '../frontend_assets/Project_imgs/rolls_2.jpg'
+import food_11 from '../frontend_assets/Project_imgs/rolls_3.jpg'
+import food_12 from '../frontend_assets/Project_imgs/rolls_4.jpg'
+import food_13 from '../frontend_assets/Project_imgs/rolls_5.jpg'
+import food_14 from '../frontend_assets/Project_imgs/rolls_6.png'
+import food_15 from '../frontend_assets/Project_imgs/rolls_7.png'
+import food_16 from '../frontend_assets/Project_imgs/rolls_8.png'
+
+// Sandwich
+import food_17 from '../frontend_assets/Project_imgs/sandwich_1.png'
+import food_18 from '../frontend_assets/Project_imgs/sandwich_2.png'
+import food_19 from '../frontend_assets/Project_imgs/sandwich_3.png'
+import food_20 from '../frontend_assets/Project_imgs/sandwich_4.png'
+import food_21 from '../frontend_assets/Project_imgs/sandwich_5.jpg'
+import food_22 from '../frontend_assets/Project_imgs/sandwich_6.jpg'
+import food_23 from '../frontend_assets/Project_imgs/sandwich_7.jpg'
+import food_24 from '../frontend_assets/Project_imgs/sandwich_8.jpg'
+
+// Punjabi
+import food_25 from '../frontend_assets/Project_imgs/punjabi_1.jpeg'
+import food_26 from '../frontend_assets/Project_imgs/punjabi_2.jpeg'
+import food_27 from '../frontend_assets/Project_imgs/punjabi_3.jpeg'
+import food_28 from '../frontend_assets/Project_imgs/punjabi_4.jpeg'
+import food_29 from '../frontend_assets/Project_imgs/punjabi_5.jpeg'
+import food_30 from '../frontend_assets/Project_imgs/punjabi_6.jpeg'
+import food_31 from '../frontend_assets/Project_imgs/punjabi_7.jpeg'
+import food_32 from '../frontend_assets/Project_imgs/punjabi_8.jpeg'
+
+// Gujrati
+import food_33 from '../frontend_assets/Project_imgs/gujarati_1.jpg'
+import food_34 from '../frontend_assets/Project_imgs/gujarati_2.jpg'
+import food_35 from '../frontend_assets/Project_imgs/gujarati_3.jpeg'
+import food_36 from '../frontend_assets/Project_imgs/gujarati_4.jpeg'
+import food_37 from '../frontend_assets/Project_imgs/gujarati_5.jpg'
+import food_38 from '../frontend_assets/Project_imgs/gujarati_6.jpg'
+import food_39 from '../frontend_assets/Project_imgs/gujarati_7.jpeg'
+import food_40 from '../frontend_assets/Project_imgs/gujarati_8.jpeg'
+
+// Pasta
+import food_41 from '../frontend_assets/Project_imgs/pasta_1.png'
+import food_42 from '../frontend_assets/Project_imgs/pasta_2.png'
+import food_43 from '../frontend_assets/Project_imgs/pasta_3.jpeg'
+import food_44 from '../frontend_assets/Project_imgs/pasta_4.jpg'
+import food_45 from '../frontend_assets/Project_imgs/pasta_5.jpg'
+import food_46 from '../frontend_assets/Project_imgs/pasta_6.avif'
+import food_47 from '../frontend_assets/Project_imgs/pasta_7.jpg'
+import food_48 from '../frontend_assets/Project_imgs/pasta_8.jpg'
+
+// Noodles
+import food_49 from '../frontend_assets/Project_imgs/noodles_1.png'
+import food_50 from '../frontend_assets/Project_imgs/noodles_2.png'
+import food_51 from '../frontend_assets/Project_imgs/noodles_3.png'
+import food_52 from '../frontend_assets/Project_imgs/noodles_4.png'
+import food_53 from '../frontend_assets/Project_imgs/noodles_5.jpeg'
+import food_54 from '../frontend_assets/Project_imgs/noodles_6.jpg'
+import food_55 from '../frontend_assets/Project_imgs/noodles_7.avif'
+import food_56 from '../frontend_assets/Project_imgs/noodles_8.jpg'
+
+// Pizza
+import food_57 from '../frontend_assets/Project_imgs/pizza_1.avif'
+import food_58 from '../frontend_assets/Project_imgs/pizza_2.webp'
+import food_59 from '../frontend_assets/Project_imgs/pizza_3.jpg'
+import food_60 from '../frontend_assets/Project_imgs/pizza_4.webp'
+import food_61 from '../frontend_assets/Project_imgs/pizza_5.webp'
+import food_62 from '../frontend_assets/Project_imgs/pizza_6.jpg'
+import food_63 from '../frontend_assets/Project_imgs/pizza_7.jpg'
+import food_64 from '../frontend_assets/Project_imgs/pizza_8.jpg'
+
+// Burger
+import food_65 from '../frontend_assets/Project_imgs/burger_1.png'
+import food_66 from '../frontend_assets/Project_imgs/burger_2.webp'
+import food_67 from '../frontend_assets/Project_imgs/burger_3.avif'
+import food_68 from '../frontend_assets/Project_imgs/burger_4.jpeg'
+import food_69 from '../frontend_assets/Project_imgs/burger_5.jpg'
+import food_70 from '../frontend_assets/Project_imgs/burger_6.jpg'
+import food_71 from '../frontend_assets/Project_imgs/burger_7.jpg'
+import food_72 from '../frontend_assets/Project_imgs/burger_8.jpg'
+
+// Drinks
+import food_73 from '../frontend_assets/Project_imgs/drinks_1.jpg'
+import food_74 from '../frontend_assets/Project_imgs/drinks_2.jpg'
+import food_75 from '../frontend_assets/Project_imgs/drinks_3.webp'
+import food_76 from '../frontend_assets/Project_imgs/drinks_4.jpg'
+import food_77 from '../frontend_assets/Project_imgs/drinks_5.jpg'
+import food_78 from '../frontend_assets/Project_imgs/drinks_6.webp'
+import food_79 from '../frontend_assets/Project_imgs/drinks_7.webp'
+import food_80 from '../frontend_assets/Project_imgs/drinks_8.jpg'
+
+// South Indian
+import food_81 from '../frontend_assets/Project_imgs/south_indian_1.jpg'
+import food_82 from '../frontend_assets/Project_imgs/south_indian_2.jpg'
+import food_83 from '../frontend_assets/Project_imgs/south_indian_3.jpg'
+import food_84 from '../frontend_assets/Project_imgs/south_indian_4.jpg'
+import food_85 from '../frontend_assets/Project_imgs/south_indian_5.jpg'
+import food_86 from '../frontend_assets/Project_imgs/south_indian_6.jpg'
+import food_87 from '../frontend_assets/Project_imgs/south_indian_7.jpg'
+import food_88 from '../frontend_assets/Project_imgs/south_indian_8.jpg'
+
+// Korean
+import food_90 from '../frontend_assets/Project_imgs/korean_2.jpg'
+import food_89 from '../frontend_assets/Project_imgs/korean_1.jpg'
+import food_91 from '../frontend_assets/Project_imgs/korean_3.jpg'
+import food_92 from '../frontend_assets/Project_imgs/korean_4.jpg'
+import food_93 from '../frontend_assets/Project_imgs/korean_5.jpg'
+import food_94 from '../frontend_assets/Project_imgs/korean_6.jpg'
+import food_95 from '../frontend_assets/Project_imgs/korean_7.jpg'
+import food_96 from '../frontend_assets/Project_imgs/korean_8.jpg'
+
+// Deserts
+import food_97 from '../frontend_assets/Project_imgs/dessert_1.jpg'
+import food_98 from '../frontend_assets/Project_imgs/dessert_2.jpg'
+import food_99 from '../frontend_assets/Project_imgs/dessert_3.jpg'
+import food_100 from '../frontend_assets/Project_imgs/dessert_4.jpg'
+import food_101 from '../frontend_assets/Project_imgs/dessert_5.jpg'
+import food_102 from '../frontend_assets/Project_imgs/dessert_6.jpg'
+import food_103 from '../frontend_assets/Project_imgs/dessert_7.png'
+import food_104 from '../frontend_assets/Project_imgs/dessert_8.png'
+
+// Japanese
+import food_105 from '../frontend_assets/Project_imgs/japanese_1.jpg'
+import food_106 from '../frontend_assets/Project_imgs/japanese_2.jpg'
+import food_107 from '../frontend_assets/Project_imgs/japanese_3.webp'
+import food_108 from '../frontend_assets/Project_imgs/japanese_4.jpg'
+import food_109 from '../frontend_assets/Project_imgs/japanese_5.jpg'
+import food_110 from '../frontend_assets/Project_imgs/japanese_6.jpeg'
+import food_111 from '../frontend_assets/Project_imgs/japanese_7.jpeg'
+import food_112 from '../frontend_assets/Project_imgs/japanese_8.avif'
+
+// Mexican
+import food_113 from '../frontend_assets/Project_imgs/maxican_1.jpg'
+import food_114 from '../frontend_assets/Project_imgs/maxican_2.jpg'
+import food_115 from '../frontend_assets/Project_imgs/maxican_3.jpg'
+import food_116 from '../frontend_assets/Project_imgs/maxican_4.jpg'
+import food_117 from '../frontend_assets/Project_imgs/maxican_5.jpg'
+import food_118 from '../frontend_assets/Project_imgs/maxican_6.jpg'
+import food_119 from '../frontend_assets/Project_imgs/maxican_7.jpg'
+import food_120 from '../frontend_assets/Project_imgs/maxican_8.jpg'
+
 
 import add_icon_white from './add_icon_white.png'
 import add_icon_green from './add_icon_green.png'
@@ -68,7 +186,7 @@ import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 
 export const assets = {
-    logo,
+    // logo,
     basket_icon,
     header_img,
     search_icon,
@@ -153,8 +271,8 @@ export const menu_list = [
 ]
 
 export const food_list = [
-	{
-  id: "1",
+  {
+  _id: "1",
   name: "Greek Garden Salad",
   image: food_1,
   price: 12,
@@ -162,7 +280,7 @@ export const food_list = [
   category: "Salad"
   },
   {
-  id: "2",
+  _id: "2",
   name: "Rainbow Veggie Salad",
   image: food_2,
   price: 18,
@@ -170,7 +288,7 @@ export const food_list = [
   category: "Salad"
   },
   {
-  id: "3",
+  _id: "3",
   name: "Clover Leaf Crunch",
   image: food_3,
   price: 16,
@@ -178,7 +296,7 @@ export const food_list = [
   category: "Salad"
   },
   {
-  id: "4",
+  _id: "4",
   name: "Grilled Chicken Caesar",
   image: food_4,
   price: 24,
@@ -186,23 +304,23 @@ export const food_list = [
   category: "Salad"
   },
   {
-  id: "5",
+  _id: "5",
   name: "Mango Quinoa Delight",
-  image: food_33,
+  image: food_5,
   price: 15,
   description: "Chilled quinoa, ripe mangoes, black beans, and cilantro-lime dressing for a tropical twist.",
   category: "Salad"
   },
   {
-  id: "6",
+  _id: "6",
   name: "Zesty Chickpea Salad",
-  image: food_34,
+  image: food_6,
   price: 13,
   description: "Protein-packed chickpeas, red onions, cucumbers, and herbs tossed in lemon vinaigrette.",
   category: "Salad"
   },
   {
-  id: "7",
+  _id: "7",
   name: "Apple Walnut Crunch",
   image: food_35,
   price: 17,
@@ -210,7 +328,7 @@ export const food_list = [
   category: "Salad"
   },
   {
-  id: "8",
+  _id: "8",
   name: "Avocado Corn Salsa Bowl",
   image: food_36,
   price: 19,
@@ -218,7 +336,7 @@ export const food_list = [
   category: "Salad"
   },
   {
-  id: "9",
+  _id: "9",
   name: "Spicy Chicken Roll",
   image: food_5,
   price: 14,
@@ -226,7 +344,7 @@ export const food_list = [
   category: "Rolls"
   },
   {
-  id: "10",
+  _id: "10",
   name: "Peri Peri Paneer Wrap",
   image: food_6,
   price: 12,
@@ -234,7 +352,7 @@ export const food_list = [
   category: "Rolls"
   },
   {
-  id: "11",
+  _id: "11",
   name: "Kathi Egg Roll",
   image: food_7,
   price: 20,
@@ -242,7 +360,7 @@ export const food_list = [
   category: "Rolls"
   },
   {
-  id: "12",
+  _id: "12",
   name: "Spiced Veggie Wrap",
   image: food_8,
   price: 15,
@@ -250,7 +368,7 @@ export const food_list = [
   category: "Rolls"
   },
   {
-  id: "13",
+  _id: "13",
   name: "Tangy Schezwan Roll",
   image: food_37,
   price: 17,
@@ -258,7 +376,7 @@ export const food_list = [
   category: "Rolls"
   },
   {
-  id: "14",
+  _id: "14",
   name: "BBQ Chicken Roll",
   image: food_38,
   price: 21,
@@ -266,7 +384,7 @@ export const food_list = [
   category: "Rolls"
   },
   {
-  id: "15",
+  _id: "15",
   name: "Mushroom & Cheese Roll",
   image: food_39,
   price: 18,
@@ -274,7 +392,7 @@ export const food_list = [
   category: "Rolls"
   },
   {
-  id: "16",
+  _id: "16",
   name: "Falafel Hummus Wrap",
   image: food_40,
   price: 16,
@@ -282,7 +400,7 @@ export const food_list = [
   category: "Rolls"
   },
   {
-  id: "17",
+  _id: "17",
   name: "Classic Club Sandwich",
   image: food_57,
   price: 20,
@@ -290,7 +408,7 @@ export const food_list = [
   category: "Sandwich"
   },
   {
-  id: "18",
+  _id: "18",
   name: "Paneer Tikka Sandwich",
   image: food_58,
   price: 18,
@@ -298,7 +416,7 @@ export const food_list = [
   category: "Sandwich"
   },
   {
-  id: "19",
+  _id: "19",
   name: "Cheese Burst Sandwich",
   image: food_59,
   price: 16,
@@ -306,7 +424,7 @@ export const food_list = [
   category: "Sandwich"
   },
   {
-  id: "20",
+  _id: "20",
   name: "BBQ Chicken Sandwich",
   image: food_60,
   price: 24,
@@ -314,7 +432,7 @@ export const food_list = [
   category: "Sandwich"
   },
   {
-  id: "21",
+  _id: "21",
   name: "Veggie Mayo Sandwich",
   image: food_61,
   price: 14,
@@ -322,7 +440,7 @@ export const food_list = [
   category: "Sandwich"
   },
   {
-  id: "22",
+  _id: "22",
   name: "Spicy Corn Sandwich",
   image: food_62,
   price: 15,
@@ -330,15 +448,15 @@ export const food_list = [
   category: "Sandwich"
   },
   {
-  id: "23",
-  name: "Egg Salad Sandwich",
+  _id: "23",
+  name: "Salad Sandwich",
   image: food_63,
   price: 18,
-  description: "Creamy boiled egg filling with mustard and fresh lettuce.",
+  description: "Creamy boiled filling with mustard and fresh lettuce.",
   category: "Sandwich"
   },
   {
-  id: "24",
+  _id: "24",
   name: "Mushroom Melt Sandwich",
   image: food_64,
   price: 19,
@@ -346,15 +464,15 @@ export const food_list = [
   category: "Sandwich"
   },
   {
-  id: "25",
-  name: "Butter Chicken Masala",
+  _id: "25",
+  name: "Punjabi Thali",
   image: food_17,
   price: 35,
-  description: "Tender chicken cooked in a creamy tomato-based gravy with butter and spices.",
+  description: "Cooked in a creamy tomato-based gravy with butter and spices.",
   category: "Punjabi"
   },
   {
-  id: "26",
+  _id: "26",
   name: "Sarson Da Saag",
   image: food_18,
   price: 28,
@@ -362,7 +480,7 @@ export const food_list = [
   category: "Punjabi"
   },
   {
-  id: "27",
+  _id: "27",
   name: "Amritsari Chole Kulche",
   image: food_19,
   price: 26,
@@ -370,7 +488,7 @@ export const food_list = [
   category: "Punjabi"
   },
   {
-  id: "28",
+  _id: "28",
   name: "Paneer Lababdar",
   image: food_20,
   price: 30,
@@ -378,15 +496,15 @@ export const food_list = [
   category: "Punjabi"
   },
   {
-  id: "29",
-  name: "Tandoori Chicken Leg",
+  _id: "29",
+  name: "Panner Butter Masala Sabji",
   image: food_21,
   price: 32,
-  description: "Chicken leg marinated in yogurt and spices, grilled in a tandoor oven.",
+  description: "Panner marinated in yogurt and spices, grilled in a Butter",
   category: "Punjabi"
   },
   {
-  id: "30",
+  _id: "30",
   name: "Rajma Chawal Bowl",
   image: food_22,
   price: 22,
@@ -394,7 +512,7 @@ export const food_list = [
   category: "Punjabi"
   },
   {
-  id: "31",
+  _id: "31",
   name: "Aloo Paratha Platter",
   image: food_23,
   price: 20,
@@ -402,7 +520,7 @@ export const food_list = [
   category: "Punjabi"
   },
   {
-  id: "32",
+  _id: "32",
   name: "Punjabi Lassi",
   image: food_24,
   price: 15,
@@ -410,7 +528,7 @@ export const food_list = [
   category: "Punjabi"
   },
   {
-  id: "33",
+  __id: "33",
   name: "Dhokla Delight",
   image: food_41,
   price: 18,
@@ -418,7 +536,7 @@ export const food_list = [
   category: "Gujrati"
   },
   {
-  id: "34",
+  _id: "34",
   name: "Undhiyu Mix",
   image: food_42,
   price: 30,
@@ -426,7 +544,7 @@ export const food_list = [
   category: "Gujrati"
   },
   {
-  id: "35",
+  _id: "35",
   name: "Handvo Bites",
   image: food_43,
   price: 24,
@@ -434,7 +552,7 @@ export const food_list = [
   category: "Gujrati"
   },
   {
-  id: "36",
+  _id: "36",
   name: "Thepla Pack",
   image: food_44,
   price: 20,
@@ -442,7 +560,7 @@ export const food_list = [
   category: "Gujrati"
   },
   {
-  id: "37",
+  _id: "37",
   name: "Kadhi Khichdi Combo",
   image: food_45,
   price: 28,
@@ -450,7 +568,7 @@ export const food_list = [
   category: "Gujrati"
   },
   {
-  id: "38",
+  _id: "38",
   name: "Fafda Jalebi",
   image: food_46,
   price: 25,
@@ -458,7 +576,7 @@ export const food_list = [
   category: "Gujrati"
   },
   {
-  id: "39",
+  _id: "39",
   name: "Bhakri Shaak Plate",
   image: food_47,
   price: 22,
@@ -466,7 +584,7 @@ export const food_list = [
   category: "Gujrati"
   },
   {
-  id: "40",
+  _id: "40",
   name: "Surti Locho",
   image: food_48,
   price: 19,
@@ -474,7 +592,7 @@ export const food_list = [
   category: "Gujrati"
   },
   {
-  id: "41",
+  _id: "41",
   name: "Classic Alfredo Pasta",
   image: food_25,
   price: 28,
@@ -482,7 +600,7 @@ export const food_list = [
   category: "Pasta"
   },
   {
-  id: "42",
+  _id: "42",
   name: "Spaghetti Arrabbiata",
   image: food_26,
   price: 24,
@@ -490,7 +608,7 @@ export const food_list = [
   category: "Pasta"
   },
   {
-  id: "43",
+  _id: "43",
   name: "Penne Pesto Pasta",
   image: food_27,
   price: 26,
@@ -498,7 +616,7 @@ export const food_list = [
   category: "Pasta"
   },
   {
-  id: "44",
+  _id: "44",
   name: "Lasagna al Forno",
   image: food_28,
   price: 32,
@@ -506,7 +624,7 @@ export const food_list = [
   category: "Pasta"
   },
   {
-  id: "45",
+  _id: "45",
   name: "Cheesy Macaroni Bake",
   image: food_29,
   price: 22,
@@ -514,7 +632,7 @@ export const food_list = [
   category: "Pasta"
   },
   {
-  id: "46",
+  _id: "46",
   name: "Mushroom Truffle Fettuccine",
   image: food_30,
   price: 34,
@@ -522,7 +640,7 @@ export const food_list = [
   category: "Pasta"
   },
   {
-  id: "47",
+  _id: "47",
   name: "Tomato Basil Penne",
   image: food_31,
   price: 23,
@@ -530,7 +648,7 @@ export const food_list = [
   category: "Pasta"
   },
   {
-  id: "48",
+  _id: "48",
   name: "Bolognese Spaghetti",
   image: food_32,
   price: 30,
@@ -538,7 +656,7 @@ export const food_list = [
   category: "Pasta"
   },
   {
-  id: "49",
+  _id: "49",
   name: "Schezwan Hakka Noodles",
   image: food_49,
   price: 22,
@@ -546,7 +664,7 @@ export const food_list = [
   category: "Noodles"
   },
   {
-  id: "50",
+  _id: "50",
   name: "Chili Garlic Noodles",
   image: food_50,
   price: 20,
@@ -554,7 +672,7 @@ export const food_list = [
   category: "Noodles"
   },
   {
-  id: "51",
+  _id: "51",
   name: "Pan-Fried Noodles",
   image: food_51,
   price: 24,
@@ -562,7 +680,7 @@ export const food_list = [
   category: "Noodles"
   },
   {
-  id: "52",
+  _id: "52",
   name: "Chicken Lo Mein",
   image: food_52,
   price: 28,
@@ -570,7 +688,7 @@ export const food_list = [
   category: "Noodles"
   },
   {
-  id: "53",
+  _id: "53",
   name: "Shanghai Noodle Bowl",
   image: food_53,
   price: 26,
@@ -578,7 +696,7 @@ export const food_list = [
   category: "Noodles"
   },
   {
-  id: "54",
+  _id: "54",
   name: "Vegetable Chow Mein",
   image: food_54,
   price: 21,
@@ -586,7 +704,7 @@ export const food_list = [
   category: "Noodles"
   },
   {
-  id: "55",
+  _id: "55",
   name: "Thai Basil Noodles",
   image: food_55,
   price: 27,
@@ -594,7 +712,7 @@ export const food_list = [
   category: "Noodles"
   },
   {
-  id: "56",
+  _id: "56",
   name: "Dan Dan Noodles",
   image: food_56,
   price: 29,
@@ -602,7 +720,7 @@ export const food_list = [
   category: "Noodles"
   },
   {
-  id: "57",
+  _id: "57",
   name: "Margherita Pizza",
   image: food_33,
   price: 16,
@@ -610,7 +728,7 @@ export const food_list = [
   category: "Pizza"
   },
   {
-  id: "58",
+  _id: "58",
   name: "BBQ Chicken Pizza",
   image: food_34,
   price: 22,
@@ -618,7 +736,7 @@ export const food_list = [
   category: "Pizza"
   },
   {
-  id: "59",
+  _id: "59",
   name: "Veggie Delight Pizza",
   image: food_35,
   price: 18,
@@ -626,7 +744,7 @@ export const food_list = [
   category: "Pizza"
   },
   {
-  id: "60",
+  _id: "60",
   name: "Pepperoni Pizza",
   image: food_36,
   price: 24,
@@ -634,7 +752,7 @@ export const food_list = [
   category: "Pizza"
   },
   {
-  id: "61",
+  _id: "61",
   name: "Paneer Tikka Pizza",
   image: food_37,
   price: 20,
@@ -642,7 +760,7 @@ export const food_list = [
   category: "Pizza"
   },
   {
-  id: "62",
+  _id: "62",
   name: "Hawaiian Pizza",
   image: food_38,
   price: 21,
@@ -650,7 +768,7 @@ export const food_list = [
   category: "Pizza"
   },
   {
-  id: "63",
+  _id: "63",
   name: "Four Cheese Pizza",
   image: food_39,
   price: 26,
@@ -658,7 +776,7 @@ export const food_list = [
   category: "Pizza"
   },
   {
-  id: "64",
+  _id: "64",
   name: "Spicy Jalapeno Pizza",
   image: food_40,
   price: 19,
@@ -666,7 +784,7 @@ export const food_list = [
   category: "Pizza"
   },
   {
-  id: "65",
+  _id: "65",
   name: "Classic Veg Burger",
   image: food_41,
   price: 12,
@@ -674,7 +792,7 @@ export const food_list = [
   category: "Burger"
   },
   {
-  id: "66",
+  _id: "66",
   name: "Cheese Burst Burger",
   image: food_42,
   price: 15,
@@ -682,15 +800,15 @@ export const food_list = [
   category: "Burger"
   },
   {
-  id: "67",
-  name: "Grilled Chicken Burger",
+  _id: "67",
+  name: "Grilled Burger",
   image: food_43,
   price: 18,
-  description: "Grilled chicken fillet, cheddar, and chipotle mayo in a toasted bun.",
+  description: "Grilled fillet, cheddar, and chipotle mayo in a toasted bun.",
   category: "Burger"
   },
   {
-  id: "68",
+  _id: "68",
   name: "Spicy Bean Burger",
   image: food_44,
   price: 14,
@@ -698,7 +816,7 @@ export const food_list = [
   category: "Burger"
   },
   {
-  id: "69",
+  _id: "69",
   name: "Mushroom Melt Burger",
   image: food_45,
   price: 17,
@@ -706,7 +824,7 @@ export const food_list = [
   category: "Burger"
   },
   {
-  id: "70",
+  _id: "70",
   name: "Tandoori Burger",
   image: food_46,
   price: 19,
@@ -714,7 +832,7 @@ export const food_list = [
   category: "Burger"
   },
   {
-  id: "71",
+  _id: "71",
   name: "Fish Fillet Burger",
   image: food_47,
   price: 22,
@@ -722,7 +840,7 @@ export const food_list = [
   category: "Burger"
   },
   {
-  id: "72",
+  _id: "72",
   name: "Paneer Supreme Burger",
   image: food_48,
   price: 20,
@@ -730,7 +848,7 @@ export const food_list = [
   category: "Burger"
   },
   {
-  id: "73",
+  _id: "73",
   name: "Mango Lassi",
   image: food_49,
   price: 10,
@@ -738,7 +856,7 @@ export const food_list = [
   category: "Drinks"
   },
   {
-  id: "74",
+  _id: "74",
   name: "Iced Coffee",
   image: food_50,
   price: 12,
@@ -746,7 +864,7 @@ export const food_list = [
   category: "Drinks"
   },
   {
-  id: "75",
+  _id: "75",
   name: "Mint Lemonade",
   image: food_51,
   price: 8,
@@ -754,7 +872,7 @@ export const food_list = [
   category: "Drinks"
   },
   {
-  id: "76",
+  _id: "76",
   name: "Watermelon Cooler",
   image: food_52,
   price: 9,
@@ -762,7 +880,7 @@ export const food_list = [
   category: "Drinks"
   },
   {
-  id: "77",
+  _id: "77",
   name: "Masala Soda",
   image: food_53,
   price: 7,
@@ -770,7 +888,7 @@ export const food_list = [
   category: "Drinks"
   },
   {
-  id: "78",
+  _id: "78",
   name: "Cold Brew Tonic",
   image: food_54,
   price: 14,
@@ -778,7 +896,7 @@ export const food_list = [
   category: "Drinks"
   },
   {
-  id: "79",
+  _id: "79",
   name: "Coconut Water",
   image: food_55,
   price: 11,
@@ -786,7 +904,7 @@ export const food_list = [
   category: "Drinks"
   },
   {
-  id: "80",
+  _id: "80",
   name: "Berry Smoothie",
   image: food_56,
   price: 13,
@@ -851,10 +969,10 @@ export const food_list = [
   },
   {
   _id: "88",
-  name: "Filter Coffee",
+  name: "Mysore Masala Dosa",
   image: food_64,
   price: 10,
-  description: "Strong South Indian coffee made with a metal filter and served hot.",
+  description: "Strong South Indian Dosa made with a metal filter and served hot.",
   category: "South Indian"
   },
   {

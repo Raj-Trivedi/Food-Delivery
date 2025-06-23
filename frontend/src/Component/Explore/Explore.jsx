@@ -2,14 +2,12 @@ import React, { useEffect, useRef, useContext } from 'react';
 import { menu_list } from "../../../../assets/frontend_assets/assets.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
 import "./Explore.css";
 import FoodDisplay from '../FoodDisplay/FoodDisplay';
-import { StoreContext } from '../../Context/StoreContext'
 
-const Explore = () => {
+
+const Explore = ({category, setCategory}) => {
     const scrollRef = useRef(null);
-    const { food_list } = useContext(StoreContext)
 
     const scroll = (direction) => {
         const { current } = scrollRef;
@@ -22,15 +20,6 @@ const Explore = () => {
         }
     };
 
-    const [category, setCategory] = useState("All");
-
-
-    useEffect(() => {
-        console.log(category, "category")
-        // console.log(food_list, "food_list")
-        const catgeoryItems = food_list.filter((item) => item.category === category)
-        console.log(catgeoryItems,"check")
-    }, [category])
     return (
         <div className="explore-container">
             <h1>Elevate Your Everyday Meal</h1>
@@ -59,7 +48,7 @@ const Explore = () => {
                     <FontAwesomeIcon icon={faChevronRight} />
                 </button>
             </div><hr></hr>
-            <FoodDisplay category={category} />
+            {/* <FoodDisplay category={category} /> */}
         </div>
     );
 };

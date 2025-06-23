@@ -1,72 +1,140 @@
+/* FoodItem.css */
+
 .food-item {
-    width: 100%;
-    margin: auto;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px #00000015;
-    transition: 0.3s;
-    animation: fadeIn 1s;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  width: 80%; /* Take full width of grid cell */
 }
 
-.food-item-image{
-    height: 14vw;
-    width: 100%;
-    border-radius: 15px 15px 0px 0px;
+.food-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
-.food-item-info{
-    padding: 10px;
+.Food-img {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1.3/1;
 }
 
-.food-item-name-rating{
+.Food-img .img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0; /* Only top corners rounded */
+}
+
+.CountDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.CountDiv img.btnCount {
+  width: 32px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.btncart{
+  background: #fffefe;
+  padding:10px;
+  border-radius: 50%;
+}
+
+.btnCountContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 4px 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btnCountContainer p {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.Description {
+    padding: 16px;
+    flex-grow: 1; /* Allows description to fill space */
+    display: flex;
+    flex-direction: column;
+}
+
+.name-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.name-rating .name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.name-rating .rating .star {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #ccc;
+  transition: color 0.2s;
+  margin-left: 2px;
+}
+
+.name-rating .rating .star.filled {
+  color: #f5a623;
+}
+
+.Description > p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 12px 0;
+  flex-grow: 1; /* Allows p to fill space */
+}
+
+.Description .price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: orangered;
+}
+
+.price-area {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.food-item-name-rating p{
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.food-item-description{
-    color: #676767;
-    font-size: 13px;
-    padding: 10px;
-}
-
-.food-item-price{
-    color: orangered;
-    font-size: 18px;
-    padding-left: 10px;
-    margin: 10px 0px;
-}
-
-.food-item-img-container{
-    position: relative;
-}
-
-.food-item-img-container .add{
-    width: 35px;
-    position: absolute;
-    bottom: 15px;
-    right: 12px;
-    cursor: pointer;
+.btncart {
+    font-size: 20px;
+    color: #848382;
+     /* width: 38px; */
+     
+   /* height: 38px; */
+    background: #fff;
     border-radius: 50%;
-}
-
-.food-item-counter{
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
+    /* border: 1px solid #ddd; */
+    /* box-shadow: 0 2px 8px rgba(0,0,0,0.05); */
+    cursor: pointer;
+    transition: all 0.2s;
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 6px;
-    border-radius: 50px;
-    background-color: white;
+    justify-content: center;
+}
+.btncart:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background-color: #fff7f0;
+    color: #fa9f18;
 }
 
-.food-item-counter img{
-    width: 30px;
-} 
+/* Remove media queries as the grid is now controlled by FoodDisplay.css */
+/* The above styles are robust enough for different sizes */

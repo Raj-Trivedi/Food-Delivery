@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 body{
-    padding: 5px 80px;
     margin: 0px;
     font-family: outfit;
 }
@@ -10,6 +9,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 5px 80px;
 }
 
 .nav-logo img{
