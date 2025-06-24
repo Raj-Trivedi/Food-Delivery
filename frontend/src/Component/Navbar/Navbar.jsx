@@ -20,9 +20,11 @@ export const Navbar = () => {
         </div>
         <div className="nav-option">
             <ul>
+
                 <li onClick={()=>{ setMenu("home"); navigate("/")}} className={menu==="home"?"active":""}>Home</li>
                 <li onClick={()=>{ setMenu("menu"); navigate("/menu")}} className={menu==="menu"?"active":""}>Menu</li>
                 <li onClick={()=> {setMenu("aboutUs"); navigate("/aboutus")}} className={menu==="aboutUs"?"active":""}>About Us</li>
+
             </ul>
         </div>
         <div className="nav-right">

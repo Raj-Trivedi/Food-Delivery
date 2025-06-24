@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Filter from '../Component/Filter/Filter'
 import FilterItem from '../Component/DisplayFilterItem/FilterItem';
@@ -26,3 +27,4 @@ import './Menu.css';
   )
 }
 export default Menu;
+

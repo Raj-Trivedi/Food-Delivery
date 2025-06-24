@@ -1,19 +1,19 @@
 import React from 'react';
 import { FaMotorcycle, FaUtensils, FaStar, FaLeaf, FaClock, FaHeart } from 'react-icons/fa';
-import '../Component/Styles/AboutUs.css';
+import './AboutUs.css';
 
 const stats = [
   { number: '1000+', label: 'Happy Customers' },
   { number: '50+', label: 'Restaurant Partners' },
   { number: '10,000+', label: 'Meals Delivered' },
-  { number: '30min', label: 'Average Delivery Time' }
+  { number: '15min', label: 'Average Delivery Time' }
 ];
 
 const features = [
   { 
     icon: <FaClock className="feature-icon" />, 
     title: 'Fast Delivery',
-    desc: 'Get your food delivered in under 30 minutes or it\'s on us!',
+    desc: 'Get your food delivered in 15 minutes or it\'s on us!',
     color: '#FF6B6B'
   },
   { 

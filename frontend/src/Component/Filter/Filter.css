@@ -11,7 +11,7 @@
 {
     overflow-x: scroll;
     max-height: 20vw;
-    /* background: #000; */
+
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -52,6 +52,7 @@
 }
 #mychecked{
   accent-color:red; 
+
 
 }
 /* #mychecked :hover{
@@ -156,4 +157,5 @@
 
 .Dietary-list input[type="checkbox"]:checked + label {
     color: rgb(223, 45, 45);
+
 }

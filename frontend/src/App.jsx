@@ -2,7 +2,7 @@ import { Navbar } from './Component/Navbar/Navbar'
 import { Routes, Route, useLocation} from 'react-router-dom'
 import Menu from './Pages/Menu.jsx'
 import { Home } from './Pages/Home'
-import { AboutUs } from './Pages/AboutUs'
+import { AboutUs } from './Component/AboutUs/AboutUs.jsx'
 import Footer from './Component/Footer/Footer.jsx'
 import SignUp from './Component/SignUp/SignUp.jsx'
 import Cart from "./Pages/Cart.jsx" 
