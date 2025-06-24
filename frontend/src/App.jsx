@@ -1,6 +1,6 @@
 import { Navbar } from './Component/Navbar/Navbar'
 import { Routes, Route, useLocation} from 'react-router-dom'
-import { Menu } from './Pages/Menu'
+import Menu from './Pages/Menu.jsx'
 import { Home } from './Pages/Home'
 import { AboutUs } from './Component/AboutUs/AboutUs.jsx'
 import Footer from './Component/Footer/Footer.jsx'
