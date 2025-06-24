@@ -15,13 +15,13 @@ const Login = () => {
     </div>
 
     <div className="login-right">
-    <h2>Welcome</h2>
-    <p>Login in to your account to continue</p>
-    <input type="email" placeholder="Email..." />
-    <input type="password" placeholder="Password..." />
-    <p className="forgot-text">Forgot your password?</p>
-    <button className="btn-filled">LOGIN</button>
-    <p className="switch-text">Don't have an account? <span>Sign up</span></p>
+      <h2>Welcome</h2>
+      <p>Login in to your account to continue</p>
+      <input type="email" placeholder="Email..." />
+      <input type="password" placeholder="Password..." />
+      <p className="forgot-text">Forgot your password?</p>
+      <button className="btn-filled">LOGIN</button>
+      <p className="switch-text">Don't have an account? <span>Sign up</span></p>
     </div>
 </div>
   );

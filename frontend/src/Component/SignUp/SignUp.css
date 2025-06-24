@@ -16,7 +16,7 @@
 .signup-left {
    border-top-right-radius: 22vw;
    border-bottom-left-radius: 15vw;
-  background: linear-gradient(135deg, #006d5b, #0fa77a);
+  background: linear-gradient(135deg, rgb(179, 82, 27),orangered );
   color: white;
 }
 
@@ -27,7 +27,7 @@
 .signup-right {
     border-top-right-radius: 22vw;
   background: white;
-  color: #0f574d;
+  color: black;
   align-items: center;
   text-align: center;
 }
@@ -45,7 +45,7 @@
   padding: 12px 24px;
   border: none;
   border-radius: 25px;
-  background: #0fa77a;
+  background: orangered;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -62,7 +62,7 @@
 }
 
 .signup-switch span {
-  color: #0fa77a;
+  color: orangered;
   cursor: pointer;
 }
 

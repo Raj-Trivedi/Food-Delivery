@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Filter from '../Component/Filter/Filter'
 
-export const Menu = () => {
+const Menu = () => {
+  const [category, setCategory] = React.useState({});
+
   return (
-    <div>Menu</div>
+    <div>
+      {/* <Filter category={category} setCategory={setCategory}/> */}
+    </div>
   )
 }
+
+export default Menu;
