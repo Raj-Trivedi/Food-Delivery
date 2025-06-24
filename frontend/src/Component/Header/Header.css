@@ -3,7 +3,7 @@
 .header-container{
     font-family: satisfy;
     height: 35vw;
-    background-image: url(../../../public/banner.jpg);
+    background-image: url(./banner.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 10px auto;
@@ -26,7 +26,7 @@
 
 .header h1{
     font-weight: 500;
-    font-size: max(4.5vw,22px);
+    font-size: max(2.5vw,22px);
 }
 
 .header p{

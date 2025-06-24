@@ -1,0 +1,159 @@
+.Filter-Container{
+    padding:30px 50px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   max-width: 18vw;
+    
+}
+
+.Catergory_cont
+{
+    overflow-x: scroll;
+    max-height: 20vw;
+    /* background: #000; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:3px;
+    
+    
+}
+.Catergory_cont h3{
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #343a40;
+}
+.Catergory_cont::-webkit-scrollbar {
+    visibility: hidden;
+}
+.categogy_list{
+    display: flex;
+    /* flex-direction: column; */
+    gap: 5px;
+}
+.categogy_item{
+    padding: 10px;
+    border-radius: 4px;
+    /* background-color: #e9ecef; */
+    color: #495057;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+.categogy_item:hover {
+    color: rgb(223, 45, 45);
+    
+
+} 
+#mychecked:checked ~ .categogy_item {
+   
+  color: rgb(223, 45, 45);
+}
+#mychecked{
+  accent-color:red; 
+
+}
+/* #mychecked :hover{
+    color: rgb(223, 45, 45);
+} */
+
+.Range_cont{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+.Range_cont h3{
+     margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #343a40;
+}
+.Range_cont input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    background: #e9ecef;
+    height: 8px;
+    border-radius: 4px; 
+}
+.Range_cont input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background:rgb(223, 45, 45);
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;    
+}
+
+
+.Range_value{
+    display: flex;
+    /* justify-content: space-between; */
+    
+    color: #495057;
+    
+    margin-top: 5px;
+}
+.Range_value span {
+    font-weight: bold;
+}
+.Range_value p{
+    font-size: 14px;
+    margin-right: 5px;
+    color: #6c757d;
+
+}
+.Range_value input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #495057; 
+}
+.Range_item label {
+    color: #343a40;
+}
+.Range_item span{
+   font-size: 0.9rem;
+    color: #495057;
+}
+
+.Dietary_cont{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:3px;
+
+}
+.Dietary_cont h3{
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #343a40;
+}
+.Dietary-item {
+    display: flex;
+    /* flex-direction: column; */
+    gap: 5px;
+
+}
+.Dietary-list label{
+    padding: 10px;
+    border-radius: 4px;
+    /* background-color: #e9ecef; */
+    color: #495057;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+.Dietary-list label:hover {
+    color: rgb(223, 45, 45);
+    
+
+} 
+
+.Dietary-list input[type="checkbox"]:checked + label {
+    color: rgb(223, 45, 45);
+}
