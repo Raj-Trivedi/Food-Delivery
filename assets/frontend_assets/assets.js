@@ -322,7 +322,7 @@ export const food_list = [
   {
   _id: "7",
   name: "Apple Walnut Crunch",
-  image: food_35,
+  image: food_7,
   price: 17,
   description: "Fresh apples, candied walnuts, goat cheese, and spinach with a honey mustard drizzle.",
   category: "Salad"
@@ -330,7 +330,7 @@ export const food_list = [
   {
   _id: "8",
   name: "Avocado Corn Salsa Bowl",
-  image: food_36,
+  image: food_8,
   price: 19,
   description: "Creamy avocado, grilled corn, cherry tomatoes, and black beans over greens with lime.",
   category: "Salad"
@@ -338,7 +338,7 @@ export const food_list = [
   {
   _id: "9",
   name: "Spicy Chicken Roll",
-  image: food_5,
+  image: food_9,
   price: 14,
   description: "Juicy chicken wrapped in soft flatbread with spicy mayo, lettuce, and onions.",
   category: "Rolls"
@@ -346,7 +346,7 @@ export const food_list = [
   {
   _id: "10",
   name: "Peri Peri Paneer Wrap",
-  image: food_6,
+  image: food_10,
   price: 12,
   description: "Grilled paneer cubes marinated in peri peri sauce wrapped with crunchy veggies.",
   category: "Rolls"
@@ -354,7 +354,7 @@ export const food_list = [
   {
   _id: "11",
   name: "Kathi Egg Roll",
-  image: food_7,
+  image: food_11,
   price: 20,
   description: "Soft paratha rolled with masala egg, onions, and green chutney.",
   category: "Rolls"
@@ -362,7 +362,7 @@ export const food_list = [
   {
   _id: "12",
   name: "Spiced Veggie Wrap",
-  image: food_8,
+  image: food_12,
   price: 15,
   description: "Mixed grilled vegetables with hummus, lettuce, and tahini in a whole wheat wrap.",
   category: "Rolls"
@@ -370,7 +370,7 @@ export const food_list = [
   {
   _id: "13",
   name: "Tangy Schezwan Roll",
-  image: food_37,
+  image: food_13,
   price: 17,
   description: "Stuffed with spicy schezwan noodles, sautéed peppers, and crispy onions.",
   category: "Rolls"
@@ -378,7 +378,7 @@ export const food_list = [
   {
   _id: "14",
   name: "BBQ Chicken Roll",
-  image: food_38,
+  image: food_14,
   price: 21,
   description: "Barbecue chicken, caramelized onions, and cheddar rolled in a soft tortilla.",
   category: "Rolls"
@@ -386,7 +386,7 @@ export const food_list = [
   {
   _id: "15",
   name: "Mushroom & Cheese Roll",
-  image: food_39,
+  image: food_15,
   price: 18,
   description: "Creamy mushrooms, cheese, and herbs wrapped in a flaky paratha.",
   category: "Rolls"
@@ -394,7 +394,7 @@ export const food_list = [
   {
   _id: "16",
   name: "Falafel Hummus Wrap",
-  image: food_40,
+  image: food_16,
   price: 16,
   description: "Crunchy falafel, smooth hummus, cucumbers, and pickles in a pita wrap.",
   category: "Rolls"
@@ -402,7 +402,7 @@ export const food_list = [
   {
   _id: "17",
   name: "Classic Club Sandwich",
-  image: food_57,
+  image: food_17,
   price: 20,
   description: "Triple-layer sandwich with chicken, egg, lettuce, and mayo.",
   category: "Sandwich"
@@ -410,7 +410,7 @@ export const food_list = [
   {
   _id: "18",
   name: "Paneer Tikka Sandwich",
-  image: food_58,
+  image: food_18,
   price: 18,
   description: "Grilled sandwich stuffed with marinated paneer and green chutney.",
   category: "Sandwich"
@@ -418,7 +418,7 @@ export const food_list = [
   {
   _id: "19",
   name: "Cheese Burst Sandwich",
-  image: food_59,
+  image: food_19,
   price: 16,
   description: "Melted cheese layered with veggies in perfectly toasted bread.",
   category: "Sandwich"
@@ -426,7 +426,7 @@ export const food_list = [
   {
   _id: "20",
   name: "BBQ Chicken Sandwich",
-  image: food_60,
+  image: food_20,
   price: 24,
   description: "Grilled chicken with smoky BBQ sauce in a sesame sandwich bun.",
   category: "Sandwich"
@@ -434,7 +434,7 @@ export const food_list = [
   {
   _id: "21",
   name: "Veggie Mayo Sandwich",
-  image: food_61,
+  image: food_21,
   price: 14,
   description: "Crunchy vegetables mixed with mayo in multigrain slices.",
   category: "Sandwich"
@@ -442,7 +442,7 @@ export const food_list = [
   {
   _id: "22",
   name: "Spicy Corn Sandwich",
-  image: food_62,
+  image: food_22,
   price: 15,
   description: "Sweet corn sautéed in butter and spices, layered into grilled bread.",
   category: "Sandwich"
@@ -450,7 +450,7 @@ export const food_list = [
   {
   _id: "23",
   name: "Salad Sandwich",
-  image: food_63,
+  image: food_23,
   price: 18,
   description: "Creamy boiled filling with mustard and fresh lettuce.",
   category: "Sandwich"
@@ -458,7 +458,7 @@ export const food_list = [
   {
   _id: "24",
   name: "Mushroom Melt Sandwich",
-  image: food_64,
+  image: food_24,
   price: 19,
   description: "Caramelized mushrooms with melted cheese in a grilled ciabatta.",
   category: "Sandwich"
@@ -466,7 +466,7 @@ export const food_list = [
   {
   _id: "25",
   name: "Punjabi Thali",
-  image: food_17,
+  image: food_25,
   price: 35,
   description: "Cooked in a creamy tomato-based gravy with butter and spices.",
   category: "Punjabi"
@@ -474,7 +474,7 @@ export const food_list = [
   {
   _id: "26",
   name: "Sarson Da Saag",
-  image: food_18,
+  image: food_26,
   price: 28,
   description: "Traditional mustard greens slow-cooked with spices, served with makki di roti.",
   category: "Punjabi"
@@ -482,7 +482,7 @@ export const food_list = [
   {
   _id: "27",
   name: "Amritsari Chole Kulche",
-  image: food_19,
+  image: food_27,
   price: 26,
   description: "Spicy chickpeas paired with soft stuffed kulchas from the streets of Amritsar.",
   category: "Punjabi"
@@ -490,7 +490,7 @@ export const food_list = [
   {
   _id: "28",
   name: "Paneer Lababdar",
-  image: food_20,
+  image: food_28,
   price: 30,
   description: "Chunks of paneer in a rich, creamy tomato-onion gravy with a dash of cream.",
   category: "Punjabi"
@@ -498,7 +498,7 @@ export const food_list = [
   {
   _id: "29",
   name: "Panner Butter Masala Sabji",
-  image: food_21,
+  image: food_29,
   price: 32,
   description: "Panner marinated in yogurt and spices, grilled in a Butter",
   category: "Punjabi"
@@ -506,7 +506,7 @@ export const food_list = [
   {
   _id: "30",
   name: "Rajma Chawal Bowl",
-  image: food_22,
+  image: food_30,
   price: 22,
   description: "Comforting red kidney beans curry served hot with steamed basmati rice.",
   category: "Punjabi"
@@ -514,7 +514,7 @@ export const food_list = [
   {
   _id: "31",
   name: "Aloo Paratha Platter",
-  image: food_23,
+  image: food_31,
   price: 20,
   description: "Flaky flatbread stuffed with spiced mashed potatoes, served with curd and pickle.",
   category: "Punjabi"
@@ -522,7 +522,7 @@ export const food_list = [
   {
   _id: "32",
   name: "Punjabi Lassi",
-  image: food_24,
+  image: food_32,
   price: 15,
   description: "Thick and creamy yogurt-based drink topped with saffron and crushed pistachios.",
   category: "Punjabi"
@@ -530,7 +530,7 @@ export const food_list = [
   {
   __id: "33",
   name: "Dhokla Delight",
-  image: food_41,
+  image: food_33,
   price: 18,
   description: "Fluffy steamed fermented gram cake tempered with mustard seeds.",
   category: "Gujrati"
@@ -538,7 +538,7 @@ export const food_list = [
   {
   _id: "34",
   name: "Undhiyu Mix",
-  image: food_42,
+  image: food_34,
   price: 30,
   description: "Seasonal veggies slow-cooked in aromatic spices and methi muthiyas.",
   category: "Gujrati"
@@ -546,7 +546,7 @@ export const food_list = [
   {
   _id: "35",
   name: "Handvo Bites",
-  image: food_43,
+  image: food_35,
   price: 24,
   description: "Savory lentil cakes made with bottle gourd and sesame crust.",
   category: "Gujrati"
@@ -554,7 +554,7 @@ export const food_list = [
   {
   _id: "36",
   name: "Thepla Pack",
-  image: food_44,
+  image: food_36,
   price: 20,
   description: "Spiced fenugreek flatbreads served with sweet mango pickle.",
   category: "Gujrati"
@@ -562,7 +562,7 @@ export const food_list = [
   {
   _id: "37",
   name: "Kadhi Khichdi Combo",
-  image: food_45,
+  image: food_37,
   price: 28,
   description: "Comfort meal of moong dal khichdi served with sweet-spicy kadhi.",
   category: "Gujrati"
@@ -570,7 +570,7 @@ export const food_list = [
   {
   _id: "38",
   name: "Fafda Jalebi",
-  image: food_46,
+  image: food_38,
   price: 25,
   description: "Crunchy chickpea snacks with sweet spiral jalebi syrup swirls.",
   category: "Gujrati"
@@ -578,7 +578,7 @@ export const food_list = [
   {
   _id: "39",
   name: "Bhakri Shaak Plate",
-  image: food_47,
+  image: food_39,
   price: 22,
   description: "Thick wheat flatbread with seasonal spiced vegetable curry.",
   category: "Gujrati"
@@ -586,7 +586,7 @@ export const food_list = [
   {
   _id: "40",
   name: "Surti Locho",
-  image: food_48,
+  image: food_40,
   price: 19,
   description: "Steamed savory street food topped with oil, chutneys, and sev.",
   category: "Gujrati"
@@ -594,7 +594,7 @@ export const food_list = [
   {
   _id: "41",
   name: "Classic Alfredo Pasta",
-  image: food_25,
+  image: food_41,
   price: 28,
   description: "Creamy white sauce pasta with garlic, parmesan, and a hint of herbs.",
   category: "Pasta"
@@ -602,7 +602,7 @@ export const food_list = [
   {
   _id: "42",
   name: "Spaghetti Arrabbiata",
-  image: food_26,
+  image: food_42,
   price: 24,
   description: "Spicy tomato sauce pasta tossed with chili flakes, garlic, and olive oil.",
   category: "Pasta"
@@ -610,7 +610,7 @@ export const food_list = [
   {
   _id: "43",
   name: "Penne Pesto Pasta",
-  image: food_27,
+  image: food_43,
   price: 26,
   description: "Penne pasta in fresh basil pesto sauce with cherry tomatoes and pine nuts.",
   category: "Pasta"
@@ -618,7 +618,7 @@ export const food_list = [
   {
   _id: "44",
   name: "Lasagna al Forno",
-  image: food_28,
+  image: food_44,
   price: 32,
   description: "Baked layers of pasta, cheese, meat sauce, and béchamel.",
   category: "Pasta"
@@ -626,7 +626,7 @@ export const food_list = [
   {
   _id: "45",
   name: "Cheesy Macaroni Bake",
-  image: food_29,
+  image: food_45,
   price: 22,
   description: "Macaroni in gooey cheese sauce baked to golden perfection.",
   category: "Pasta"
@@ -634,7 +634,7 @@ export const food_list = [
   {
   _id: "46",
   name: "Mushroom Truffle Fettuccine",
-  image: food_30,
+  image: food_46,
   price: 34,
   description: "Rich fettuccine pasta tossed in a creamy mushroom truffle sauce.",
   category: "Pasta"
@@ -642,7 +642,7 @@ export const food_list = [
   {
   _id: "47",
   name: "Tomato Basil Penne",
-  image: food_31,
+  image: food_47,
   price: 23,
   description: "Simple and classic penne pasta in tomato basil sauce with parmesan.",
   category: "Pasta"
@@ -650,7 +650,7 @@ export const food_list = [
   {
   _id: "48",
   name: "Bolognese Spaghetti",
-  image: food_32,
+  image: food_48,
   price: 30,
   description: "Traditional Italian spaghetti in a slow-cooked minced meat tomato sauce.",
   category: "Pasta"
@@ -722,7 +722,7 @@ export const food_list = [
   {
   _id: "57",
   name: "Margherita Pizza",
-  image: food_33,
+  image: food_57,
   price: 16,
   description: "Classic pizza with fresh tomato sauce, mozzarella cheese, and basil.",
   category: "Pizza"
@@ -730,7 +730,7 @@ export const food_list = [
   {
   _id: "58",
   name: "BBQ Chicken Pizza",
-  image: food_34,
+  image: food_58,
   price: 22,
   description: "Savory barbecue chicken, onions, and mozzarella on a crispy crust.",
   category: "Pizza"
@@ -738,7 +738,7 @@ export const food_list = [
   {
   _id: "59",
   name: "Veggie Delight Pizza",
-  image: food_35,
+  image: food_59,
   price: 18,
   description: "Loaded with bell peppers, olives, onions, and sweet corn on cheesy base.",
   category: "Pizza"
@@ -746,7 +746,7 @@ export const food_list = [
   {
   _id: "60",
   name: "Pepperoni Pizza",
-  image: food_36,
+  image: food_60,
   price: 24,
   description: "American-style pizza with spicy pepperoni slices and melted mozzarella.",
   category: "Pizza"
@@ -754,7 +754,7 @@ export const food_list = [
   {
   _id: "61",
   name: "Paneer Tikka Pizza",
-  image: food_37,
+  image: food_61,
   price: 20,
   description: "Indian fusion pizza with paneer tikka chunks and mint sauce.",
   category: "Pizza"
@@ -762,7 +762,7 @@ export const food_list = [
   {
   _id: "62",
   name: "Hawaiian Pizza",
-  image: food_38,
+  image: food_62,
   price: 21,
   description: "Sweet and savory combo of pineapple, ham, and melted cheese.",
   category: "Pizza"
@@ -770,7 +770,7 @@ export const food_list = [
   {
   _id: "63",
   name: "Four Cheese Pizza",
-  image: food_39,
+  image: food_63,
   price: 26,
   description: "A cheesy blend of mozzarella, parmesan, cheddar, and blue cheese.",
   category: "Pizza"
@@ -778,7 +778,7 @@ export const food_list = [
   {
   _id: "64",
   name: "Spicy Jalapeno Pizza",
-  image: food_40,
+  image: food_64,
   price: 19,
   description: "Bold flavors of jalapenos, chili flakes, and spicy tomato sauce.",
   category: "Pizza"
@@ -786,7 +786,7 @@ export const food_list = [
   {
   _id: "65",
   name: "Classic Veg Burger",
-  image: food_41,
+  image: food_65,
   price: 12,
   description: "Crispy veg patty with lettuce, tomatoes, and mayo in a soft bun.",
   category: "Burger"
@@ -794,7 +794,7 @@ export const food_list = [
   {
   _id: "66",
   name: "Cheese Burst Burger",
-  image: food_42,
+  image: food_66,
   price: 15,
   description: "Juicy patty with molten cheese core, lettuce, and tangy sauce.",
   category: "Burger"
@@ -802,7 +802,7 @@ export const food_list = [
   {
   _id: "67",
   name: "Grilled Burger",
-  image: food_43,
+  image: food_67,
   price: 18,
   description: "Grilled fillet, cheddar, and chipotle mayo in a toasted bun.",
   category: "Burger"
@@ -810,7 +810,7 @@ export const food_list = [
   {
   _id: "68",
   name: "Spicy Bean Burger",
-  image: food_44,
+  image: food_68,
   price: 14,
   description: "Spicy mixed-bean patty with jalapenos and salsa sauce.",
   category: "Burger"
@@ -818,7 +818,7 @@ export const food_list = [
   {
   _id: "69",
   name: "Mushroom Melt Burger",
-  image: food_45,
+  image: food_69,
   price: 17,
   description: "Sauteed mushrooms, Swiss cheese, and creamy aioli in a soft roll.",
   category: "Burger"
@@ -826,7 +826,7 @@ export const food_list = [
   {
   _id: "70",
   name: "Tandoori Burger",
-  image: food_46,
+  image: food_70,
   price: 19,
   description: "Tandoori marinated chicken with onions and mint chutney.",
   category: "Burger"
@@ -834,7 +834,7 @@ export const food_list = [
   {
   _id: "71",
   name: "Fish Fillet Burger",
-  image: food_47,
+  image: food_71,
   price: 22,
   description: "Crispy fish fillet with tartar sauce and fresh lettuce.",
   category: "Burger"
@@ -842,7 +842,7 @@ export const food_list = [
   {
   _id: "72",
   name: "Paneer Supreme Burger",
-  image: food_48,
+  image: food_72,
   price: 20,
   description: "Spiced paneer slice with onions, capsicum, and tangy sauce.",
   category: "Burger"
@@ -850,7 +850,7 @@ export const food_list = [
   {
   _id: "73",
   name: "Mango Lassi",
-  image: food_49,
+  image: food_73,
   price: 10,
   description: "Traditional yogurt-based mango drink, sweet and refreshing.",
   category: "Drinks"
@@ -858,7 +858,7 @@ export const food_list = [
   {
   _id: "74",
   name: "Iced Coffee",
-  image: food_50,
+  image: food_74,
   price: 12,
   description: "Chilled brew with rich coffee flavor and a touch of cream.",
   category: "Drinks"
@@ -866,7 +866,7 @@ export const food_list = [
   {
   _id: "75",
   name: "Mint Lemonade",
-  image: food_51,
+  image: food_75,
   price: 8,
   description: "Cool and zesty lemonade with fresh mint infusion.",
   category: "Drinks"
@@ -874,7 +874,7 @@ export const food_list = [
   {
   _id: "76",
   name: "Watermelon Cooler",
-  image: food_52,
+  image: food_76,
   price: 9,
   description: "Hydrating summer cooler made with fresh watermelon juice.",
   category: "Drinks"
@@ -882,7 +882,7 @@ export const food_list = [
   {
   _id: "77",
   name: "Masala Soda",
-  image: food_53,
+  image: food_77,
   price: 7,
   description: "Indian-style carbonated drink with chatpata masala twist.",
   category: "Drinks"
@@ -890,7 +890,7 @@ export const food_list = [
   {
   _id: "78",
   name: "Cold Brew Tonic",
-  image: food_54,
+  image: food_78,
   price: 14,
   description: "Trendy blend of cold brew coffee and sparkling tonic water.",
   category: "Drinks"
@@ -898,7 +898,7 @@ export const food_list = [
   {
   _id: "79",
   name: "Coconut Water",
-  image: food_55,
+  image: food_79,
   price: 11,
   description: "Naturally hydrating coconut water served chilled.",
   category: "Drinks"
@@ -906,7 +906,7 @@ export const food_list = [
   {
   _id: "80",
   name: "Berry Smoothie",
-  image: food_56,
+  image: food_80,
   price: 13,
   description: "Smooth blend of strawberries, blueberries, and yogurt.",
   category: "Drinks"
@@ -914,7 +914,7 @@ export const food_list = [
   {
   _id: "81",
   name: "Masala Dosa",
-  image: food_57,
+  image: food_81,
   price: 18,
   description: "Crispy rice crepe filled with spiced potato masala, served with chutneys.",
   category: "South Indian"
@@ -922,7 +922,7 @@ export const food_list = [
   {
   _id: "82",
   name: "Idli Sambhar",
-  image: food_58,
+  image: food_82,
   price: 14,
   description: "Steamed rice cakes with flavorful lentil-based sambhar.",
   category: "South Indian"
@@ -930,7 +930,7 @@ export const food_list = [
   {
   _id: "83",
   name: "Medu Vada",
-  image: food_59,
+  image: food_83,
   price: 15,
   description: "Deep-fried lentil donuts with crispy edges and soft center.",
   category: "South Indian"
@@ -938,7 +938,7 @@ export const food_list = [
   {
   _id: "84",
   name: "Uttapam",
-  image: food_60,
+  image: food_84,
   price: 16,
   description: "Thick dosa topped with onions, tomatoes, and green chilies.",
   category: "South Indian"
@@ -946,7 +946,7 @@ export const food_list = [
   {
   _id: "85",
   name: "Rasam Rice",
-  image: food_61,
+  image: food_85,
   price: 13,
   description: "Spicy and tangy tomato-based rasam served with hot rice.",
   category: "South Indian"
@@ -954,7 +954,7 @@ export const food_list = [
   {
   _id: "86",
   name: "Pongal",
-  image: food_62,
+  image: food_86,
   price: 15,
   description: "Comforting dish made with rice and lentils, tempered with ghee and spices.",
   category: "South Indian"
@@ -962,7 +962,7 @@ export const food_list = [
   {
   _id: "87",
   name: "Lemon Rice",
-  image: food_63,
+  image: food_87,
   price: 14,
   description: "Flavored rice with tangy lemon, curry leaves, and mustard seeds.",
   category: "South Indian"
@@ -970,7 +970,7 @@ export const food_list = [
   {
   _id: "88",
   name: "Mysore Masala Dosa",
-  image: food_64,
+  image: food_88,
   price: 10,
   description: "Strong South Indian Dosa made with a metal filter and served hot.",
   category: "South Indian"
@@ -978,7 +978,7 @@ export const food_list = [
   {
   _id: "89",
   name: "Kimchi Bokkeumbap",
-  image: food_65,
+  image: food_89,
   price: 18,
   description: "Spicy and savory Korean fried rice with kimchi and vegetables.",
   category: "Korean"
@@ -986,7 +986,7 @@ export const food_list = [
   {
   _id: "90",
   name: "Tteokbokki",
-  image: food_66,
+  image: food_90,
   price: 16,
   description: "Chewy rice cakes simmered in a sweet and spicy gochujang sauce.",
   category: "Korean"
@@ -994,7 +994,7 @@ export const food_list = [
   {
   _id: "91",
   name: "Bibimbap",
-  image: food_67,
+  image: food_91,
   price: 20,
   description: "Mixed rice bowl topped with assorted veggies, egg, and spicy sauce.",
   category: "Korean"
@@ -1002,7 +1002,7 @@ export const food_list = [
   {
   _id: "92",
   name: "Japchae",
-  image: food_68,
+  image: food_92,
   price: 17,
   description: "Stir-fried glass noodles with vegetables and soy-based sauce.",
   category: "Korean"
@@ -1010,7 +1010,7 @@ export const food_list = [
   {
   _id: "93",
   name: "Korean Fried Chicken",
-  image: food_69,
+  image: food_93,
   price: 22,
   description: "Crispy chicken tossed in a sweet and spicy Korean-style glaze.",
   category: "Korean"
@@ -1018,7 +1018,7 @@ export const food_list = [
   {
   _id: "94",
   name: "Kimchi Stew",
-  image: food_70,
+  image: food_94,
   price: 19,
   description: "Hearty stew with aged kimchi, tofu, and pork in a rich broth.",
   category: "Korean"
@@ -1026,7 +1026,7 @@ export const food_list = [
   {
   _id: "95",
   name: "Bulgogi Wrap",
-  image: food_71,
+  image: food_95,
   price: 21,
   description: "Marinated grilled beef wrapped in fresh lettuce with ssamjang.",
   category: "Korean"
@@ -1034,7 +1034,7 @@ export const food_list = [
   {
   _id: "96",
   name: "Hotteok",
-  image: food_72,
+  image: food_96,
   price: 12,
   description: "Sweet Korean pancakes stuffed with brown sugar, nuts, and cinnamon.",
   category: "Korean"
@@ -1042,7 +1042,7 @@ export const food_list = [
   {
   _id: "97",
   name: "Chocolate Lava Cake",
-  image: food_81,
+  image: food_97,
   price: 20,
   description: "Warm chocolate cake with a gooey molten center, served with vanilla ice cream.",
   category: "Deserts"
@@ -1050,7 +1050,7 @@ export const food_list = [
   {
   _id: "98",
   name: "Classic Gulab Jamun",
-  image: food_82,
+  image: food_98,
   price: 12,
   description: "Soft milk-solid dumplings soaked in fragrant sugar syrup.",
   category: "Deserts"
@@ -1058,7 +1058,7 @@ export const food_list = [
   {
   _id: "99",
   name: "Mango Mousse",
-  image: food_83,
+  image: food_99,
   price: 14,
   description: "Light and airy dessert made with ripe mangoes and whipped cream.",
   category: "Deserts"
@@ -1066,7 +1066,7 @@ export const food_list = [
   {
   _id: "100",
   name: "Caramel Custard",
-  image: food_84,
+  image: food_100,
   price: 15,
   description: "Creamy baked custard topped with rich caramel sauce.",
   category: "Deserts"
@@ -1074,7 +1074,7 @@ export const food_list = [
   {
   _id: "101",
   name: "Rabri Malpua",
-  image: food_85,
+  image: food_101,
   price: 18,
   description: "Indian-style pancakes soaked in syrup and topped with thickened milk.",
   category: "Deserts"
@@ -1082,7 +1082,7 @@ export const food_list = [
   {
   _id: "102",
   name: "Strawberry Cheesecake",
-  image: food_86,
+  image: food_102,
   price: 22,
   description: "Creamy cheesecake with a buttery base and fresh strawberry topping.",
   category: "Deserts"
@@ -1090,7 +1090,7 @@ export const food_list = [
   {
   _id: "103",
   name: "Falooda Delight",
-  image: food_87,
+  image: food_103,
   price: 16,
   description: "Chilled dessert drink layered with vermicelli, rose syrup, and ice cream.",
   category: "Deserts"
@@ -1098,7 +1098,7 @@ export const food_list = [
   {
   _id: "104",
   name: "Dry Fruit Halwa",
-  image: food_88,
+  image: food_104,
   price: 19,
   description: "Rich halwa made with dry fruits, ghee, and saffron flavoring.",
   category: "Deserts"

@@ -6,6 +6,9 @@ const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
     const [searchItem, setSearchItem] = useState("");
+    const [CostAfterShipping, setCostAfterShipping] = useState(0);
+    const [shippingCharge, setShippingCharge] = useState(49);
+    const [TotalCost, setTotalCost] = useState(0);
 
     const addToCart = (itemId) => {
         if(!cartItems[itemId]) {
@@ -23,6 +26,25 @@ const StoreContextProvider = (props) => {
     useEffect(() => {
         console.log(cartItems);
     }, [cartItems])
+    
+    useEffect(() => {
+        let total = 0;
+        for (const itemId in cartItems) {
+            const quantity = cartItems[itemId];
+            const item = food_list.find((item) => item._id === itemId);
+            if (item) {
+                total += item.price * quantity;
+            }
+        }
+        setTotalCost(total);
+    }, [cartItems]);
+        // Calculate total cost with shipping charge
+
+    useEffect(() => {
+    const finalCost = TotalCost + parseFloat(shippingCharge || 0);
+    setCostAfterShipping(finalCost);
+    }, [TotalCost, shippingCharge]);
+
 
     const contextValue ={
         food_list,
@@ -31,7 +53,12 @@ const StoreContextProvider = (props) => {
         addToCart,
         removeFromCart,
         searchItem,
-        setSearchItem
+        setSearchItem,
+        CostAfterShipping, 
+        setCostAfterShipping,
+        shippingCharge, 
+        setShippingCharge,
+        TotalCost
     }
 
     return (
@@ -41,4 +68,4 @@ const StoreContextProvider = (props) => {
     )
 }
 
-export default StoreContextProvider
+export default StoreContextProvider;

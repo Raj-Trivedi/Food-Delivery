@@ -43,16 +43,18 @@ const Filter = ({ category, setCategory,minPrice,setMinPrice,maxPrice,setMaxPric
     <div className="Filter-Container">
       <div className="Catergory_cont">
         <h3>Product Category</h3>
-        {menu_list.map((item, index) => (
-          <div className='categogy_list' key={index}>
-            <input id="mychecked"
-              type="checkbox"
-              checked={!!category[item.menu_name]}
-              onChange={() => filterByCategory(item)}
-            />
-            <div className='categogy_item'>{item.menu_name}</div>
-          </div>
+          <div className="filter-content">
+            {menu_list.map((item, index) => (
+            <div className='categogy_list' key={index}>
+              <input id="mychecked"
+                type="checkbox"
+                checked={!!category[item.menu_name]}
+                onChange={() => filterByCategory(item)}
+              />
+              <div className='categogy_item'>{item.menu_name}</div>
+            </div>
         ))}
+          </div>
       </div>
       <hr/>
 

@@ -4,6 +4,7 @@
   padding: 20px 40px; 
   font-family: 'Arial', sans-serif;
   background-color: #eceaea;
+  max-height: 600px;
 }
 
 .CartSummary-container h2 {
@@ -22,4 +23,192 @@
   margin-bottom: 20px;
   color: #555;
   gap:120px;
+}
+.CartSummary-Shipping{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  gap:15px;
+}
+.Shipping-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+}
+.shipping-select{
+  width: 100%;
+  padding: 8px;
+  /* border: 1px solid #ddd; */
+  border-radius: 4px;
+  font-size: 14px;
+  /* color: #555; */
+  background:transparent;
+  outline: none;
+  border:none;
+}
+.CartSummary-CouponCode{
+  display: flex;
+   font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  gap:15px;
+  
+}
+.Coupon-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+}
+.Coupon-input{
+  width: 100%;
+  padding: 8px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  font-size: 14px;
+  background:transparent;
+  outline: none;
+  border:none;
+}
+.Coupon-box button{
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f3685f;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+.CartSummary-totalCost {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+  gap: 20px; /* spacing between total cost and button */
+  padding: 0 10px;
+}
+
+.totalcost {
+  display: flex;
+  justify-content: space-between;
+  
+  border-radius: 6px;
+}
+
+.Subtotal {
+  color: #111;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.TotalCost-box {
+  width: 100%;
+}
+
+.Checkout-btn {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f3685f;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.Checkout-btn:hover {
+  background-color: #f3685f;
+  transform: scale(1.02);
+}
+
+.CartSummary-Address {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  font-size: 14px;
+  color: #555;
+  margin: 20px 0px;
+  gap: 2px;   
+}
+
+.Address-title {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.Address-box {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  padding: 10px 12px;
+  /* border-radius: 6px; */
+  /* margin-bottom: 10px; */
+}
+
+.Address-placeholder {
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.Address-change {
+  /* margin-top: 0px; */
+  background: none;
+  border: none;
+  color: #f3685f;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.Address-change:hover {
+  text-decoration: underline;
+}
+
+.Change-Address {
+  background: #ffffff;
+  border: none;
+  outline: none;
+  border: none;
+  outline: none;
+  
+  /* margin-top: 1px; */
+}
+
+.Change-Address p {
+  text-align: center;
+  color: #f3685f;
+  /* border: 1px solid #d1d1d1; */
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.Change-Address p:hover {
+  background-color: #f9e9e9;
 }

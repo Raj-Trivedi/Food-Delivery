@@ -7,7 +7,7 @@
     
 }
 
-.Catergory_cont
+.filter-content
 {
     overflow-x: scroll;
     max-height: 20vw;
@@ -24,7 +24,7 @@
     font-size: 1.2rem;
     color: #343a40;
 }
-.Catergory_cont::-webkit-scrollbar {
+.filter-content::-webkit-scrollbar {
     visibility: hidden;
 }
 .categogy_list{
@@ -96,6 +96,7 @@
     color: #495057;
     
     margin-top: 5px;
+    margin-bottom: 12px;
 }
 .Range_value span {
     font-weight: bold;
@@ -129,7 +130,9 @@
     gap:3px;
 
 }
+
 .Dietary_cont h3{
+    margin-top: 12px;
     margin-bottom: 10px;
     font-size: 1.2rem;
     color: #343a40;
