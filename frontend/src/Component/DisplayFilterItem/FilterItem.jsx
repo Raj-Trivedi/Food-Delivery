@@ -8,12 +8,16 @@ import { useState } from 'react';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faSolidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 
 const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
     // const [liked, setLiked] = useState(false);
+
+    const navigate= useNavigate();
 
 
  
@@ -73,7 +77,7 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
                             </div>
                              <img src={item.image} alt={item.name} />
                          </div>
-                        <div className="filterItem-des">
+                        <div className="filterItem-des" onClick={()=> navigate(`/product/${item.category}/${item._id}`)}>
                             <h3>{item.name}</h3>
                             <p>Price:  <span>₹{item.price.toFixed(2)}</span>  </p>
                            

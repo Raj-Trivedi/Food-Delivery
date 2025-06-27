@@ -40,8 +40,8 @@ const CartItem = ({totalItems}) => {
                  <button onClick={() => addToCart(item._id)}>+</button>
                  </div>  
 
-                 <p>£{item.price.toFixed(2)}</p>
-                 <p>£{(item.price * cartItems[item._id]).toFixed(2)}</p>
+                 <p>₹{item.price.toFixed(2)}</p>
+                 <p>₹{(item.price * cartItems[item._id]).toFixed(2)}</p>
 
               </div>
 

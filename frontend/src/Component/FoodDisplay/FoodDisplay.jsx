@@ -17,7 +17,6 @@ const FoodDisplay = ({category}) => {
     // console.log("Full food_list:", food_list);
     console.log("Current category:", category);
 
-
     return (
     <div className='food-display' id='food-display'>
         <h2>Top Dishes near you</h2>

@@ -7,12 +7,15 @@ import { useState } from 'react'
 import { StoreContext } from '../../Context/StoreContext'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+// import {AppContext} from '../../Context/AppContext'
 
 export const Navbar = () => {
     const [menu, setMenu] = React.useState("home");
     const navigate = useNavigate();
 
     const {cartItems,searchItem,setSearchItem } = useContext(StoreContext);
+    // const {User} = useContext(AppContext);
+
   return (
     <div className="nav-container">
         <div className="nav-logo">
@@ -24,6 +27,9 @@ export const Navbar = () => {
                 <li onClick={()=>{ setMenu("home"); navigate("/")}} className={menu==="home"?"active":""}>Home</li>
                 <li onClick={()=>{ setMenu("menu"); navigate("/menu")}} className={menu==="menu"?"active":""}>Menu</li>
                 <li onClick={()=> {setMenu("aboutUs"); navigate("/aboutus")}} className={menu==="aboutUs"?"active":""}>About Us</li>
+                {/* {User && (
+                <li onClick={() => { setMenu("myorder"); navigate("/myorder") }} className={menu === "myorder" ? "active" : ""}>My Orders</li>
+                )} */}
 
             </ul>
         </div>
