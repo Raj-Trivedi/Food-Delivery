@@ -83,3 +83,35 @@
   box-shadow: 0px 1px 0px rgb(139, 113, 255);
   padding-bottom: 1px;
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        height: 60vw;
+        min-height: 300px;
+        border-radius: 0;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .header {
+        max-width: 90%;
+        padding: 20px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .header h1 {
+        font-size: 28px;
+    }
+    
+    .header p {
+        font-size: 16px;
+    }
+    
+    .button {
+        margin: 15px auto 0;
+    }
+}

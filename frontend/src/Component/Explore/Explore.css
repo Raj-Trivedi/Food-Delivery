@@ -69,3 +69,47 @@
     transform: scale(1.1);
     transition: transform 0.3s ease;
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .explore-container {
+        margin-top: 20px;
+        padding: 0 15px;
+    }
+    
+    .explore-container h1 {
+        font-size: 24px;
+    }
+    
+    .explore-container p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    .explore-menu-items {
+        gap: 15px;
+        padding: 10px 0;
+    }
+    
+    .explore-menu-items img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .explore-menu-items p {
+        font-size: 12px;
+    }
+    
+    .slider-button {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .slider-button.left {
+        left: 5px;
+    }
+    
+    .slider-button.right {
+        right: 5px;
+    }
+}
