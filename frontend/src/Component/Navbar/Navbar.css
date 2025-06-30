@@ -286,6 +286,37 @@ body {
     font-size: 1rem;
 }
 
+/* Specific adjustment for 412px width */
+@media(max-width: 534px) {
+    .navbar {
+        padding: 0.5rem 4%;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+    
+    .nav-logo img {
+        height: 40px;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+        margin-right: 0.5rem;
+    }
+    
+    .nav-search input {
+        width: 150px;
+    }
+    
+    .nav-actions {
+        gap: 0.75rem;
+    }
+    
+    .nav-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
     .navbar {
@@ -368,7 +399,7 @@ body {
     }
     
     .nav-logo img {
-        height: 30px;
+        height: 50px;
     }
     
     .nav-actions {
