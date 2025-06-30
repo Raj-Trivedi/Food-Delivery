@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="header-container">
       <div className="header">
-        <h1>A Feast of Flavors, <br></br>Anytime, Anywhere</h1>
+        <h1>A Feast of Flavors, <br/> Anytime, Anywhere</h1>
         <p>From breakfast to midnight snacks, we 've got you covered with fresh flavourful dishes made with love. Satisfy your hunger with a single tap.</p>
 
         <button className="button">

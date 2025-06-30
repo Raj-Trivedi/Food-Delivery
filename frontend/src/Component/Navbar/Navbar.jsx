@@ -1,52 +1,108 @@
-import React from 'react'
-import "./Navbar.css"
-import logo from "../../../../assets/frontend_assets/logo.jpg"
-import Search_icon from "../../../../assets/frontend_assets/search_icon.png"
-import Cart_icon from "../../../../assets/frontend_assets/basket_icon.png"
-import { useState } from 'react'
-import { StoreContext } from '../../Context/StoreContext'
-import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-// import {AppContext} from '../../Context/AppContext'
+import React, { useEffect, useState, useContext } from 'react';
+import "./Navbar.css";
+import logo from "../../../../assets/frontend_assets/Project_imgs/Logo.png";
+import Search_icon from "../../../../assets/frontend_assets/search_icon.png";
+import Cart_icon from "../../../../assets/frontend_assets/basket_icon.png";
+import { StoreContext } from '../../Context/StoreContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
-    const [menu, setMenu] = React.useState("home");
+    const [menu, setMenu] = useState("home");
+    const [isMobile, setIsMobile] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
+    const { cartItems, searchItem, setSearchItem } = useContext(StoreContext);
 
-    const {cartItems,searchItem,setSearchItem } = useContext(StoreContext);
-    // const {User} = useContext(AppContext);
+    // Responsive check
+    useEffect(() => {
+        const checkMobile = () => {
+            const mobile = window.innerWidth <= 992;
+            setIsMobile(mobile);
+            if (!mobile) {
+                setMobileMenuOpen(false);
+            }
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
-  return (
-    <div className="nav-container">
-        <div className="nav-logo">
-            <img src={logo} alt='Logo'/>
-        </div>
-        <div className="nav-option">
-            <ul>
+    const handleNav = (menuName, path) => {
+        setMenu(menuName);
+        navigate(path);
+        if (isMobile) {
+            setMobileMenuOpen(false);
+        }
+    };
 
-                <li onClick={()=>{ setMenu("home"); navigate("/")}} className={menu==="home"?"active":""}>Home</li>
-                <li onClick={()=>{ setMenu("menu"); navigate("/menu")}} className={menu==="menu"?"active":""}>Menu</li>
-                <li onClick={()=> {setMenu("aboutUs"); navigate("/aboutus")}} className={menu==="aboutUs"?"active":""}>About Us</li>
-                {/* {User && (
-                <li onClick={() => { setMenu("myorder"); navigate("/myorder") }} className={menu === "myorder" ? "active" : ""}>My Orders</li>
-                )} */}
-
-            </ul>
-        </div>
-        <div className="nav-right">
-            <div className="nav-search">
-                <input type='text' value={searchItem}  onChange={(e) => setSearchItem(e.target.value)} placeholder='Search' />
-                <img src={Search_icon} alt='Search Icon'/>
+    return (
+        <nav className="navbar">
+            {/* Mobile Menu Button - Moved to the left */}
+            <div className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div className="nav-cart">
-                <div className="cart-quantity">{Object.keys(cartItems).length}</div>
-                <img src={Cart_icon} alt='Cart Icon' onClick={() => navigate("/cart")} />
+
+            {/* Logo */}
+            <div className="nav-logo" onClick={() => handleNav("home", "/")}>
+                <img src={logo} alt='Food Delivery Logo' />
             </div>
 
-            <div className="nav-btn">
-                <button onClick={() => navigate("/signUp")}>Sign In</button>
+            {/* Desktop Navigation */}
+            <div className={`nav-links ${mobileMenuOpen ? 'show' : ''}`}>
+                <ul>
+                    <li onClick={() => handleNav("home", "/")} className={menu === "home" ? "active" : ""}>Home</li>
+                    <li onClick={() => handleNav("menu", "/menu")} className={menu === "menu" ? "active" : ""}>Menu</li>
+                    <li onClick={() => handleNav("aboutUs", "/aboutus")} className={menu === "aboutUs" ? "active" : ""}>About Us</li>
+                    
+                    {/* Mobile Search - Only visible in mobile menu */}
+                    {isMobile && (
+                        <li className="mobile-search-container">
+                            <div className="nav-search">
+                                <input 
+                                    type='text' 
+                                    value={searchItem}  
+                                    onChange={(e) => setSearchItem(e.target.value)} 
+                                    placeholder='Search food...' 
+                                />
+                                <img src={Search_icon} alt='Search' className="search-icon"/>
+                            </div>
+                        </li>
+                    )}
+                </ul>
             </div>
-        </div>
-    </div>
-  )
-}
+
+            {/* Desktop Actions - Search, Cart, Sign In */}
+            <div className="nav-actions">
+                {/* Desktop Search - Hidden on mobile */}
+                {!isMobile && (
+                    <div className="nav-search">
+                        <input 
+                            type='text' 
+                            value={searchItem}  
+                            onChange={(e) => setSearchItem(e.target.value)} 
+                            placeholder='Search food...' 
+                        />
+                        <img src={Search_icon} alt='Search' className="search-icon"/>
+                    </div>
+                )}
+                <div className="nav-cart" onClick={() => handleNav(menu, "/cart")}>
+                    <img src={Cart_icon} alt='Cart' />
+                    {Object.keys(cartItems).length > 0 && (
+                        <span className="cart-count">{Object.keys(cartItems).length}</span>
+                    )}
+                </div>
+                <button className="nav-btn" onClick={() => handleNav(menu, "/signUp")}>
+                    Sign In
+                </button>
+            </div>
+
+            {/* Mobile Menu Overlay */}
+            {mobileMenuOpen && (
+                <div className="mobile-menu-overlay" onClick={() => setMobileMenuOpen(false)}></div>
+            )}
+        </nav>
+    );
+};
