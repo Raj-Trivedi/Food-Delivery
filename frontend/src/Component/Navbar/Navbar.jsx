@@ -38,8 +38,12 @@ export const Navbar = () => {
 
     return (
         <nav className="navbar">
-            {/* Mobile Menu Button - Moved to the left */}
-            <div className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {/* Mobile Menu Button */}
+            <div 
+                className={`mobile-menu-btn ${mobileMenuOpen ? 'active' : ''}`} 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+            >
                 <span></span>
                 <span></span>
                 <span></span>
@@ -52,6 +56,14 @@ export const Navbar = () => {
 
             {/* Desktop Navigation */}
             <div className={`nav-links ${mobileMenuOpen ? 'show' : ''}`}>
+                {/* Close Button for Mobile */}
+                <button 
+                    className="mobile-close-btn"
+                    onClick={() => setMobileMenuOpen(false)}
+                    aria-label="Close menu"
+                >
+                    ×
+                </button>
                 <ul>
                     <li onClick={() => handleNav("home", "/")} className={menu === "home" ? "active" : ""}>Home</li>
                     <li onClick={() => handleNav("menu", "/menu")} className={menu === "menu" ? "active" : ""}>Menu</li>
@@ -66,6 +78,7 @@ export const Navbar = () => {
                                     value={searchItem}  
                                     onChange={(e) => setSearchItem(e.target.value)} 
                                     placeholder='Search food...' 
+                                    aria-label="Search food"
                                 />
                                 <img src={Search_icon} alt='Search' className="search-icon"/>
                             </div>
@@ -84,6 +97,7 @@ export const Navbar = () => {
                             value={searchItem}  
                             onChange={(e) => setSearchItem(e.target.value)} 
                             placeholder='Search food...' 
+                            aria-label="Search food"
                         />
                         <img src={Search_icon} alt='Search' className="search-icon"/>
                     </div>
@@ -101,7 +115,10 @@ export const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             {mobileMenuOpen && (
-                <div className="mobile-menu-overlay" onClick={() => setMobileMenuOpen(false)}></div>
+                <div 
+                    className={`mobile-menu-overlay ${mobileMenuOpen ? 'active' : ''}`} 
+                    onClick={() => setMobileMenuOpen(false)}
+                ></div>
             )}
         </nav>
     );

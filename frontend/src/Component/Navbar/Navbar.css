@@ -224,6 +224,32 @@ body {
     transition: var(--transition);
 }
 
+/* Mobile Close Button */
+.mobile-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 0.5rem;
+    z-index: 1002;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.mobile-close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
 /* Mobile Menu Overlay */
 .mobile-menu-overlay {
     position: fixed;
@@ -283,10 +309,14 @@ body {
         justify-content: flex-start;
         padding: 6rem 2rem 2rem;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        transition: var(--transition);
+        transition: right 0.3s ease-in-out;
         z-index: 1000;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+    }
+    
+    .nav-links.show {
+        right: 0;
     }
     
     .nav-links ul {
@@ -306,9 +336,17 @@ body {
         display: flex;
     }
     
-    .mobile-menu-overlay.active {
+    .mobile-menu-overlay {
         opacity: 1;
         visibility: visible;
+    }
+    
+    .mobile-close-btn {
+        display: flex;
+    }
+    
+    .nav-links {
+        padding-top: 5rem;
     }
 }
 
