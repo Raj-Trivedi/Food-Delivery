@@ -7,18 +7,21 @@ import add_icon_green from '../../../../assets/frontend_assets/add_icon_green.pn
 import remove_icon_red from '../../../../assets/frontend_assets/remove_icon_red.png';
 import { assets } from '../../../../assets/frontend_assets/assets'
 import { StoreContext } from '../../Context/StoreContext'
+import { useNavigate } from "react-router-dom";
+
 
 const FoodItems = ({id, name, price, description, image}) => {
 
   const [rating, setRating] = useState(0);
   const {cartItems, addToCart, removeFromCart} = useContext(StoreContext);
+  const navigate = useNavigate();
 
   const handleStarClick = (value) => {
     setRating(value);
   };
   
   return (
-    <div className="food-item">
+    <div className="food-item" onClick={() => navigate(`/product/${name}/${id}`)}>
       <div className="Food-img">
         <img className="img" src={image} alt={name} />
 

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../Context/StoreContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import food_list from '../../../../assets/frontend_assets/food_list.js';
+import {food_list} from '../../../../assets/frontend_assets/assets.js';
 
 const CartSummary = ({ totalItems }) => {
   const [showChangeAddress, setShowChangeAddress] = useState(false);
