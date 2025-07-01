@@ -109,7 +109,7 @@
         display: flex;
         overflow-x: auto;
         gap: 15px;
-        padding-bottom: 10px;
+        padding-bottom:10px;
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none; /* IE and Edge */
     }

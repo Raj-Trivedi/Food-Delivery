@@ -91,7 +91,7 @@ export const Navbar = () => {
             <div className="nav-actions">
                 {/* Desktop Search - Hidden on mobile */}
                 {!isMobile && (
-                    <div className="nav-search">
+                    <div className="nav-search" onClick={()=> navigate("/menu")} >
                         <input 
                             type='text' 
                             value={searchItem}  
@@ -108,7 +108,7 @@ export const Navbar = () => {
                         <span className="cart-count">{Object.keys(cartItems).length}</span>
                     )}
                 </div>
-                <button className="nav-btn" onClick={() => handleNav(menu, "/signUp")}>
+                <button className="nav-btn" onClick={() => handleNav(menu, "/auth")}>
                     Sign In
                 </button>
             </div>

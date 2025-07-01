@@ -113,3 +113,45 @@
         right: 5px;
     }
 }
+@media (max-width: 576px) {
+    .explore-container {
+        margin-top: 20px;
+        padding: 0 15px;
+    }
+    
+    .explore-container h1 {
+        font-size: 22px;
+    }
+    
+    .explore-container p {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .explore-menu-items {
+        gap: 15px;
+        padding: 10px 0;
+    }
+    
+    .explore-menu-items img {
+        width: 100px;
+        height: 60px;
+    }
+    
+    .explore-menu-items p {
+        font-size: 12px;
+    }
+    
+    .slider-button {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .slider-button.left {
+        left: 5px;
+    }
+    
+    .slider-button.right {
+        right: 5px;
+    }
+}
