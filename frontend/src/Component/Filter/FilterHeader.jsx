@@ -1,9 +1,13 @@
 import React from 'react'
 import './FilterHeader.css';
+import headerimg from "../../../../assets/frontend_assets/filterheader.png";
 
 const FilterHeader = ({sortBy,setSortBy}) => {
   return (
     <div className="FilterHeader-Container">
+      <div className="header-img">
+        <img src={headerimg} alt="Filter Header" />
+      </div>
         <div className="filter-sort">
              <label htmlFor="">Sort by: </label>
 

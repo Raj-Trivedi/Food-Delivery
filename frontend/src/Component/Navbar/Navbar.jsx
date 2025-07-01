@@ -4,14 +4,25 @@ import logo from "../../../../assets/frontend_assets/Project_imgs/Logo.png";
 import Search_icon from "../../../../assets/frontend_assets/search_icon.png";
 import Cart_icon from "../../../../assets/frontend_assets/basket_icon.png";
 import { StoreContext } from '../../Context/StoreContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export const Navbar = () => {
     const [menu, setMenu] = useState("home");
     const [isMobile, setIsMobile] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
     const { cartItems, searchItem, setSearchItem } = useContext(StoreContext);
+
+    // Update active menu based on route path
+    useEffect(() => {
+    const path = location.pathname;
+    if (path === "/") setMenu("home");
+    else if (path === "/menu") setMenu("menu");
+    else if (path === "/aboutus") setMenu("aboutUs");
+    else if (path === "/cart") setMenu("cart");
+    else if (path === "/auth") setMenu("auth");
+    }, [location.pathname]);
 
     // Responsive check
     useEffect(() => {

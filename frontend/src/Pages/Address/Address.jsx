@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const Address = () => {
   const { setAddress } = useContext(StoreContext);
   const navigate = useNavigate();
@@ -15,6 +16,17 @@ const Address = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = formRef.current;
+    const formData = Array.from(form.elements).filter(el => el.tagName === 'INPUT');
+  
+    const emptyFields = formData.filter(input => !input.value.trim());
+
+  if (emptyFields.length > 0) {
+    toast.error('Please fill in all fields.', {
+      position: 'top-center',
+      autoClose: 2000,
+    });
+    return;
+  }
     const addressObj = {
       
       street: form[3].value,

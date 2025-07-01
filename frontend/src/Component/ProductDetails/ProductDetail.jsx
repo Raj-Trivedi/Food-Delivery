@@ -26,7 +26,6 @@ const ProductDetail = () => {
   const tags = product?.tags || [
     { label: 'Vegetarian', type: 'nonveg' },
     { label: 'Indian', type: 'cuisine' },
-    { label: 'Main Course', type: 'course' }
   ];
 
   if (!product) {
