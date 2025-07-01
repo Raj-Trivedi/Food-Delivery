@@ -11,14 +11,18 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const { food_list, addToCart, CartItems } = useContext(StoreContext);
   const product = food_list.find(item => item._id === id);
-  const [rating, setRating] = useState(0); // Mock default rating
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
   const [review, setReview] = useState('');
-  const [reviews, setReviews] = useState([]);
-  // const [selectedServe, setSelectedServe] = useState(1);
+  const [reviews, setReviews] = useState([
+    { id: 1, rating: 5, text: 'Amazing food! Loved the taste and quality.', user: 'John Doe', date: '2025-06-15' },
+    { id: 2, rating: 4, text: 'Good food, but delivery was a bit late.', user: 'Jane Smith', date: '2025-06-10' }
+  ]);
   const [mainImg, setMainImg] = useState(product ? product.image : '');
 
   const subtitle = product?.subtitle || 'Product Subtitle';
-  const reviewCount = rating || 0;
+  const reviewCount = reviews.length;
+  const averageRating = reviews.length > 0 ? (reviews.reduce((a, b) => a + b.rating, 0) / reviews.length).toFixed(1) : 0;
   const tags = product?.tags || [
     { label: 'Vegetarian', type: 'nonveg' },
     { label: 'Indian', type: 'cuisine' },
@@ -34,15 +38,37 @@ const ProductDetail = () => {
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
-    if (review.trim()) {
-      setReviews([...reviews, { rating, text: review }]);
+    if (review.trim() && rating > 0) {
+      const newReview = {
+        id: reviews.length + 1,
+        rating,
+        text: review,
+        user: 'You',
+        date: new Date().toISOString().split('T')[0]
+      };
+      setReviews([...reviews, newReview]);
       setReview('');
       setRating(0);
+      toast.success('Review submitted successfully!');
+    } else {
+      toast.error('Please add both rating and review text');
     }
   };
 
   const handleAddToCart = () => {
-       
+    if (!CartItems || !CartItems[product._id]) {
+      addToCart(product._id);
+      toast.success('Item added to cart', { position: 'bottom-left', autoClose: 1200 });
+    } else {
+      addToCart(product._id);
+    }
+  };
+
+  const handleDeleteReview = (reviewId) => {
+   
+      setReviews(reviews.filter(review => review.id !== reviewId));
+      toast.success('Review deleted successfully');
+    
   };
 
   // For thumbnails, use main image for now
@@ -69,16 +95,20 @@ const ProductDetail = () => {
           <h1>{product.name}</h1>
           <div className="product-subtitle">{subtitle}</div>
           <div className="product-rating-row">
-            <span className="product-stars">
-              {[1,2,3,4,5].map(val => (
+            <div className="star-rating">
+              {[1, 2, 3, 4, 5].map((star) => (
                 <span
-                  key={val}
-                  className={val <= rating ? 'star filled' : 'star'}
-                  onClick={() => setRating(val)}
-                >★</span>
+                  key={star}
+                  className={`star ${star <= (hover || rating) ? 'filled' : ''}`}
+                  onClick={() => setRating(star)}
+                  onMouseEnter={() => setHover(star)}
+                  onMouseLeave={() => setHover(0)}
+                >
+                  ★
+                </span>
               ))}
-            </span>
-            <span className="product-review-count">({reviewCount})</span>
+            </div>
+            <span className="product-review-count">({reviewCount} reviews)</span>
           </div>
           <div className="product-tags">
             {tags.map((tag, idx) => (
@@ -87,66 +117,181 @@ const ProductDetail = () => {
           </div>
           <div className="product-price-row">
             <span className="product-price">Price <b>₹{product.price.toFixed(2)}</b></span>
-            {/* <span className="product-serves">Serves
-              {[1,2,3,4,5].map(val => (
-                <button
-                  key={val}
-                  className={`serves-btn${selectedServe === val ? ' selected' : ''}`}
-                  onClick={() => setSelectedServe(val)}
-                >{val}{val === 5 ? '+' : ''}</button>
-              ))}
-            </span> */}
           </div>
-          <button className="add-to-cart-btn" onClick={()=>{
-            if (!CartItems || !CartItems[product._id]) {
-            addToCart(product._id);
-            toast.success('Item added to cart', { position: 'bottom-left', autoClose: 1200 });
-            } else {
-              addToCart(product._id);
-            }
-          }}>
+          <button className="add-to-cart-btn" onClick={handleAddToCart}>
             Add to Cart
           </button>
           <p className="product-long-desc">{product.longDescription || 'This is a long description of the product. More details can be added here.'}</p>
         </div>
       </div>
-      <div className="product-review-section">
-        <h2>Reviews</h2>
-        <form onSubmit={handleReviewSubmit} className="review-form">
-          <textarea
-            value={review}
-            onChange={e => setReview(e.target.value)}
-            placeholder="Write your review..."
-            required
-          />
-          <button type="submit">Add Review</button>
-        </form>
-        <div className="reviews-list">
-          {reviews.length === 0 && <div className="no-reviews">No reviews yet.</div>}
-          {reviews.map((r, idx) => (
-            <div key={idx} className="review-item">
-              <span className="review-rating">{'★'.repeat(r.rating)}</span>
-              <span className="review-text">{r.text}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="related-products">
-        <h2>Related Products</h2>
-        <div className="related-list">
-          {related.map(item => (
-            <div key={item._id} className="related-card" onClick={() => navigate(`/product/${item.category}/${item._id}`)}>
-              <img src={item.image} alt={item.name} />
-              <div>{item.name}</div>
-              <div>₹{item.price.toFixed(2)}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <ToastContainer />
 
+      <div className="product-review-section">
+        <h2>Customer Reviews</h2>
+        <div className="rating-summary">
+          <div className="average-rating">
+            <span className="rating-number">{averageRating}</span>
+            <div className="stars">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span 
+                  key={star} 
+                  className={`star ${star <= Math.round(averageRating) ? 'filled' : ''}`}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
+            <span className="review-count">{reviewCount} {reviewCount === 1 ? 'review' : 'reviews'}</span>
+          </div>
+          
+          <div className="rating-bars">
+            {[5, 4, 3, 2, 1].map((star) => {
+              const count = reviews.filter(r => Math.round(r.rating) === star).length;
+              const percentage = reviewCount ? (count / reviewCount) * 100 : 0;
+              
+              return (
+                <div key={star} className="rating-bar">
+                  <span className="star-label">{star} ★</span>
+                  <div className="bar-container">
+                    <div 
+                      className="bar-fill" 
+                      style={{ width: `${percentage}%` }}
+                    ></div>
+                  </div>
+                  <span className="count">{count}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="write-review">
+          <h3>Write a Review</h3>
+          <form onSubmit={handleReviewSubmit} className="review-form">
+            <div className="star-rating-input">
+              <span className="rating-label">Your Rating:</span>
+              <div className="stars">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span
+                    key={star}
+                    className={`star ${star <= (hover || rating) ? 'filled' : ''}`}
+                    onClick={() => setRating(star)}
+                    onMouseEnter={() => setHover(star)}
+                    onMouseLeave={() => setHover(0)}
+                  >
+                    ★
+                  </span>
+                ))}
+                <span className="rating-text">
+                  {rating === 0 ? 'Rate this product' : 
+                   rating === 1 ? 'Poor' :
+                   rating === 2 ? 'Fair' :
+                   rating === 3 ? 'Good' :
+                   rating === 4 ? 'Very Good' : 'Excellent'}
+                </span>
+              </div>
+            </div>
+            <textarea
+              value={review}
+              onChange={e => setReview(e.target.value)}
+              placeholder="Share your experience with this product..."
+              rows="4"
+              required
+            />
+            <button type="submit" className="submit-review-btn">
+              Submit Review
+            </button>
+          </form>
+        </div>
+
+        <div className="reviews-list">
+          <h3>Customer Reviews ({reviewCount})</h3>
+          {reviews.length === 0 ? (
+            <div className="no-reviews">No reviews yet. Be the first to review!</div>
+          ) : (
+            <div className="reviews-container">
+              {[...reviews].reverse().map((r) => (
+                <div key={r.id} className="review-item">
+                  <div className="review-header">
+                    <div className="reviewer-info">
+                      <div className="reviewer-avatar">
+                        {r.user.charAt(0).toUpperCase()}
+                      </div>
+                      <div>
+                        <div className="reviewer-name">{r.user}</div>
+                        <div className="review-date">
+                          {new Date(r.date).toLocaleDateString('en-US', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="review-actions">
+                      <div className="review-rating">
+                        {Array(5).fill().map((_, i) => (
+                          <span 
+                            key={i} 
+                            className={`star ${i < r.rating ? 'filled' : ''}`}
+                          >
+                            ★
+                          </span>
+                        ))}
+                      </div>
+                     
+                    </div>
+                  </div>
+                  <div className="review-text">{r.text}
+                  {r.user === 'You' && (
+                        <button 
+                          className="delete-review-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDeleteReview(r.id);
+                          }}
+                          title="Delete review"
+                          aria-label="Delete review"
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                          </svg>
+                        </button>
+                      )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {related.length > 0 && (
+        <div className="related-products">
+          <h2>You May Also Like</h2>
+          <div className="related-list">
+            {related.map(item => (
+              <div 
+                key={item._id} 
+                className="related-card" 
+                onClick={() => navigate(`/product/${item.name.toLowerCase().replace(/\s+/g, '-')}/${item._id}`)}
+              >
+                <img src={item.image} alt={item.name} />
+                <div className="related-info">
+                  <h4>{item.name}</h4>
+                  <div className="related-price">₹{item.price.toFixed(2)}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      
+      <ToastContainer position="bottom-left" autoClose={3000} />
     </div>
   );
 };
 
-export default ProductDetail; 
+export default ProductDetail;

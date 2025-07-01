@@ -25,7 +25,7 @@ const FoodItems = ({id, name, price, description, image}) => {
       <div className="Food-img">
         <img className="img" src={image} alt={name} />
 
-        <div className="CountDiv">
+        <div className="CountDiv" onClick={(e) => e.stopPropagation()}>
           {!cartItems[id] ? (
             <p></p>
 
@@ -33,14 +33,20 @@ const FoodItems = ({id, name, price, description, image}) => {
             <div className="btnCountContainer">
               <img
                 className="btnCount"
-                onClick={() => removeFromCart(id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeFromCart(id);
+                }}
                 src={remove_icon_red}
                 alt="Remove"
               />
               <p>{cartItems[id]}</p>
               <img
                 className="btnCount"
-                onClick={() => addToCart(id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  addToCart(id);
+                }}
                 src={add_icon_green}
                 alt="Add more"
               />
@@ -69,7 +75,10 @@ const FoodItems = ({id, name, price, description, image}) => {
           <span className="price">₹{price.toFixed(2)}</span>
           <FontAwesomeIcon 
             className='btncart' 
-            onClick={() => addToCart(id)} 
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart(id);
+            }} 
             icon={faCartShopping}
           />
         </div>
