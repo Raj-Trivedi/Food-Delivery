@@ -18,17 +18,31 @@
   border-bottom-left-radius: 300px;
 }
 .auth-logo{
-  top:-190px;
-  position: absolute;
-  left:-10px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
   cursor: pointer;
-  
- 
-
+  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.auth-logo:hover {
+  transform: translateX(-3px);
+  background: rgba(255, 255, 255, 0.3);
+}
+
 .auth-logo img{
  
-  width: 50px;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
 }
 
 .auth-left::before {
@@ -407,5 +421,15 @@
   .btn-outline {
     width: 60%;
     text-align: center;
+  }
+  
+  .auth-logo {
+    top: 15px;
+    left: 15px;
+  }
+  
+  .auth-logo img {
+    width: 35px;
+    height: 35px;
   }
 }

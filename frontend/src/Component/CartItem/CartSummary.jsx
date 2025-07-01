@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../Context/StoreContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import food_list from '../../../../assets/frontend_assets/food_list.js';
 
 const CartSummary = ({ totalItems }) => {
   const [showChangeAddress, setShowChangeAddress] = useState(false);
@@ -61,32 +61,58 @@ const CartSummary = ({ totalItems }) => {
     setDiscount(found.discount);
   };
 
-  // ...existing code...
   const handlePlaceOrder = () => {
     if (!address) {
       toast.error('Please add a delivery address before placing your order!', {
         position: 'top-center',
         autoClose: 2500,
       });
-      return; // Prevent further execution if no address
+      return;
     }
-    console.log("CartItems:", cartItems);
 
-    // Add items to my order
+    // Create a new order object with all necessary details
+    const orderId = 'ORD' + Math.floor(100000 + Math.random() * 900000);
+    const orderDate = new Date().toISOString();
+    const orderStatus = 'Processing';
+    
+    // Create order items with all required details
+    const orderItems = {};
     Object.keys(cartItems).forEach(itemId => {
-      addToMyOrder(itemId);
+      const item = food_list.find(item => item._id === itemId);
+      if (item) {
+        orderItems[itemId] = {
+          ...cartItems[itemId],
+          name: item.name,
+          price: item.price,
+          image: item.image,
+          orderId,
+          date: orderDate,
+          status: orderStatus,
+          shipping: shippingCharge,
+          discount: discount,
+          address: address,
+          isExpress: isExpress
+        };
+      }
     });
 
-    // Place order logic here (if any)
+    // Update the myorder state with the new order items
+    setMyorder(prevOrder => ({
+      ...prevOrder,
+      ...orderItems
+    }));
+
+    // Clear the cart
+    setCartItems({});
+    
     toast.success('Order placed successfully!', {
       position: 'top-center',
       autoClose: 2500,
     });
-    setTimeout(() => navigate('/'), 500);
-    setCartItems({});
+    
+    // Navigate to orders page after a short delay
+    setTimeout(() => navigate('/myorder'), 500);
   };
-  // ...existing code...
-
 
   return (
     <div className="CartSummary-container">
