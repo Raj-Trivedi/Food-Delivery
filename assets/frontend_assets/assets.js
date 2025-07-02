@@ -145,8 +145,8 @@ import food_99 from '../frontend_assets/Project_imgs/dessert_3.jpg'
 import food_100 from '../frontend_assets/Project_imgs/dessert_4.jpg'
 import food_101 from '../frontend_assets/Project_imgs/dessert_5.jpg'
 import food_102 from '../frontend_assets/Project_imgs/dessert_6.jpg'
-import food_103 from '../frontend_assets/Project_imgs/dessert_7.png'
-import food_104 from '../frontend_assets/Project_imgs/dessert_8.png'
+import food_103 from '../frontend_assets/Project_imgs/dessert_7.jpg'
+import food_104 from '../frontend_assets/Project_imgs/dessert_8.webp'
 
 // Japanese
 import food_105 from '../frontend_assets/Project_imgs/japanese_1.jpg'

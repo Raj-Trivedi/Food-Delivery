@@ -1,10 +1,9 @@
 .CartSummary-container{
-    min-width: 20%;
   margin: 40px auto;
   padding: 20px 40px; 
   font-family: 'Arial', sans-serif;
   background-color: #eceaea;
-  /* max-height: 600px; */
+  max-height: 110vh;
 }
 
 .CartSummary-container h2 {
