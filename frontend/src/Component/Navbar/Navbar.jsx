@@ -83,14 +83,21 @@ export const Navbar = () => {
                     {/* Mobile Search - Only visible in mobile menu */}
                     {isMobile && (
                         <li className="mobile-search-container">
-                            <div className="nav-search">
+                            <div className="nav-search" onClick={()=> navigate("/menu")}>
                                 <input 
                                     type='text' 
                                     value={searchItem}  
                                     onChange={(e) => setSearchItem(e.target.value)} 
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                        setMobileMenuOpen(false);     // Close menu
+                                        navigate('/menu');            // Optionally redirect to menu
+                                        }
+                                    }}
                                     placeholder='Search food...' 
                                     aria-label="Search food"
                                 />
+
                                 <img src={Search_icon} alt='Search' className="search-icon"/>
                             </div>
                         </li>

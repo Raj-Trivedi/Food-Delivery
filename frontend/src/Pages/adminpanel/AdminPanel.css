@@ -1,0 +1,202 @@
+/* Layout */
+.adminpanelnew-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #fafbff;
+}
+
+/* Sidebar */
+.adminpanelnew-sidebar {
+  width: 220px;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.adminpanelnew-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #5b5bf6;
+  padding: 24px 20px 16px 20px;
+}
+.adminpanelnew-logo {
+  font-size: 2.2rem;
+}
+.adminpanelnew-brandname {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.adminpanelnew-sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.adminpanelnew-sidebar nav li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  color: #222;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+.adminpanelnew-sidebar nav li.active {
+  background: #f3f3ff;
+  color: #5b5bf6;
+  border-left: 4px solid #5b5bf6;
+}
+.adminpanelnew-navicon {
+  font-size: 1.3rem;
+}
+
+/* Main content */
+.adminpanelnew-main {
+  flex: 1;
+  padding: 40px 40px 40px 40px;
+  background: #fafbff;
+}
+
+/* Reuse previous styles for form and food list */
+.add-food-form {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(91,91,246,0.07);
+  padding: 32px 28px 24px 28px;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.add-food-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #4343d6;
+  font-size: 1.08rem;
+}
+.add-food-form input,
+.add-food-form textarea,
+.add-food-form select {
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 6px;
+  outline: none;
+  margin-bottom: 4px;
+  background: #f8f9ff;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.add-food-form input:focus,
+.add-food-form textarea:focus,
+.add-food-form select:focus {
+  border: 1.5px solid #5b5bf6;
+  box-shadow: 0 0 0 2px #e5e7ff;
+}
+.add-food-form textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.image-upload-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.image-upload-box {
+  width: 90px;
+  height: 70px;
+  border: 1.5px dashed #cfd2e1;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f6ff;
+  position: relative;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.image-upload-box:hover,
+.image-upload-box:focus-within {
+  border: 1.5px solid #5b5bf6;
+  box-shadow: 0 0 0 2px #e5e7ff;
+}
+.image-upload-label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.image-upload-placeholder {
+  color: #b0b3c7;
+  font-size: 1.1rem;
+  text-align: center;
+  font-weight: 500;
+}
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1.5px solid #e5e7eb;
+}
+
+.price-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+.price-row > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.add-btn {
+  background: linear-gradient(90deg, #5b5bf6 60%, #4343d6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  font-size: 1.13rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(91,91,246,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.add-btn:hover {
+  background: linear-gradient(90deg, #4343d6 60%, #5b5bf6 100%);
+  box-shadow: 0 4px 16px rgba(91,91,246,0.13);
+}
+.status-msg {
+  color: #388e3c;
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.food-list ul {
+  list-style: none;
+  padding: 0;
+}
+.food-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+.food-item img {
+  border-radius: 6px;
+  background: #f5f5f5;
+} 

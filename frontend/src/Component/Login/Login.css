@@ -361,6 +361,8 @@
   .login-right {
     width: 100%;
     padding: 3rem 1rem;
+    border-top-right-radius: 180px;
+    border-bottom-left-radius: 180px;
   }
 
   .login-content {

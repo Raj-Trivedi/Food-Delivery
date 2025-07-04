@@ -1,0 +1,125 @@
+.food-list {
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 24px;
+}
+.food-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(91,91,246,0.07);
+  overflow: hidden;
+}
+.food-table th, .food-table td {
+  padding: 18px 16px;
+  text-align: left;
+  font-size: 1.08rem;
+}
+.food-table th {
+  background: #fafbff;
+  font-weight: 700;
+}
+.food-table tr {
+  border-bottom: 1px solid #f0f0f0;
+}
+.food-product-cell {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.food-product-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #f4f6ff;
+  box-shadow: 0 1px 4px rgba(91,91,246,0.05);
+}
+.food-product-name {
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+.food-category {
+  color: #666;
+  font-size: 1.05rem;
+}
+.food-price {
+  color: #b8860b;
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+.food-actions {
+  display: flex;
+  gap: 10px;
+}
+.food-actions button {
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.98rem;
+}
+.btn-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.delete-btn {
+  font-size: 1.5rem;
+}
+.delete-btn:hover{
+  color: #ff1900;
+}
+.food-actions .edit-btn {
+  /* background: #8484fa; */
+  font-size: 1.5rem;
+}
+.edit-btn:hover{
+  color: #42ac43;
+}
+/* Toggle Switch */
+.food-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 28px;
+}
+.food-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.food-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #b2bec3;
+  border-radius: 34px;
+  transition: background 0.2s;
+}
+.food-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 4px rgba(91,91,246,0.08);
+}
+.food-toggle-switch input:checked + .food-toggle-slider {
+  background: #2563eb;
+}
+.food-toggle-switch input:checked + .food-toggle-slider:before {
+  transform: translateX(20px);
+}
+.food-table td {
+  vertical-align: middle;
+} 

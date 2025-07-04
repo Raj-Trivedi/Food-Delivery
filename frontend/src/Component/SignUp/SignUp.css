@@ -383,8 +383,6 @@
   }
 
   .auth-left {
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
     padding: 4rem 1rem;
   }
 
@@ -401,9 +399,13 @@
 
 @media (max-width: 576px) {
   .auth-left {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem;
+    border-top-right-radius: 180px;
+    border-bottom-left-radius: 180px;
   }
-
+  .auth-content{
+    max-width: 300px;
+  }
   .auth-content h1 {
     font-size: 2rem;
   }

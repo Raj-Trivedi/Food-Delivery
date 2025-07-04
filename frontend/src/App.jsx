@@ -5,13 +5,13 @@ import { Home } from './Pages/Home'
 import { AboutUs } from './Component/AboutUs/AboutUs.jsx'
 import Footer from './Component/Footer/Footer.jsx'
 // import SignUp from './Component/SignUp/SignUp.jsx'
-import Cart from "./Pages/Cart.jsx" 
+import Cart from "./Pages/Cart.jsx";
 import Address from './Pages/Address/Address.jsx';
 import ProductDetail from './Component/ProductDetails/ProductDetail.jsx';
-import myorder from './Component/Myorder/Myorder.jsx'
 import Myorder from './Component/Myorder/Myorder.jsx'
 import Auth from './Pages/Auth.jsx'
-// import 
+import AdminPanel from './Pages/adminpanel/AdminPanel.jsx'
+
 function App() {
 
   const location = useLocation();
@@ -29,7 +29,7 @@ function App() {
         <Route path="/address" element={<Address />} /> 
         <Route path="/product/:category/:id" element={<ProductDetail />} />
         <Route path="/myorder" element={<Myorder />} />
-
+        <Route path="/admin" element={<AdminPanel />} />
       </Routes>
 
       {!isAuth && <Footer />}   

@@ -22,7 +22,7 @@ const Myorder = () => {
                 image: order.image || foodItem.image,
                 quantity: order.quantity || 1,
                 orderId: order.orderId || 'ORD' + Math.floor(1000 + Math.random() * 9000),
-                date: order.date || new Date().toLocaleDateString(),
+                date: order.date || new Date(Date.now() - Math.floor(Math.random() * 10) * 86400000).toLocaleDateString('en-CA'),
                 status: order.status || (Math.random() > 0.5 ? 'Delivered' : 'Processing')
             };
         })
@@ -66,13 +66,16 @@ const Myorder = () => {
             
             <div className="Order-List">
                 {orders.map((order, index) => (
-                    <div key={index} className='order-item'>
-                        <div className="orderItem-Img" onClick={() => navigate(`/product/${order.itemId}`)}>
-                            <img src={order.image} alt={order.name} />
+                    <div className='order-item'>
+                        <div className="order-top-row">
+                            <div className="orderItem-Img" onClick={() => navigate(`/product/${order.itemId}`)}>
+                                <img src={order.image} alt={order.name} />
+                            </div>
+                            <p className="order-name" onClick={() => navigate(`/product/${order.itemId}`)}>
+                                {order.name}
+                            </p>
                         </div>
-                        <p className="order-name" onClick={() => navigate(`/product/${order.itemId}`)}>
-                            {order.name}
-                        </p>
+
                         <p className="order-id">{order.orderId}</p>
                         <p className="order-date">{order.date}</p>
                         <p className={`order-status ${order.status.toLowerCase()}`}>
