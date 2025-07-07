@@ -25,6 +25,11 @@ const foodSchema = new mongoose.Schema({
         type: Boolean,
         default: true,
     },
+    seller: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'seller',
+        required: true
+    },
 });
 
 const foodModel = mongoose.models.food || mongoose.model('food', foodSchema);

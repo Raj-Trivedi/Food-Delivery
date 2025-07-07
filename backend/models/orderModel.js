@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const orderItemSchema = new mongoose.Schema({
   foodId: { type: mongoose.Schema.Types.ObjectId, ref: 'food', required: true },
+  seller: { type: mongoose.Schema.Types.ObjectId, ref: 'seller', required: true },
   name: String,
   price: Number,
   quantity: Number,
@@ -9,7 +10,7 @@ const orderItemSchema = new mongoose.Schema({
 });
 
 const orderSchema = new mongoose.Schema({
-  user: { type: String, required: true }, // can be replaced with userId ref later
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true },
   items: [orderItemSchema],
   total: { type: Number, required: true },
   status: { type: String, default: 'Pending' },

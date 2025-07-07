@@ -68,10 +68,10 @@ const Myorder = () => {
                 {orders.map((order, index) => (
                     <div className='order-item'>
                         <div className="order-top-row">
-                            <div className="orderItem-Img" onClick={() => navigate(`/product/${order.itemId}`)}>
+                            <div className="orderItem-Img" onClick={() => navigate(`/product/${order.name}/${order.itemId}`)}>
                                 <img src={order.image} alt={order.name} />
                             </div>
-                            <p className="order-name" onClick={() => navigate(`/product/${order.itemId}`)}>
+                            <p className="order-name" onClick={() => navigate(`/product/${order.name}/${order.itemId}`)}>
                                 {order.name}
                             </p>
                         </div>

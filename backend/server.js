@@ -2,9 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/Connectdb.js';
 import { foodRouter } from './routes/foodRoute.js';
-import { orderRouter } from './routes/orderRoute.js';
+import orderRoute from './routes/orderRoute.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import sellerAuthRoute from './routes/sellerAuthRoute.js';
+import userAuthRoute from './routes/userAuthRoute.js';
+import cartRoute from './routes/cartRoute.js';
+import reviewRoute from './routes/reviewRoute.js';
+import addressRoute from './routes/addressRoute.js';
 
 const app = express();
 
@@ -22,7 +27,12 @@ const PORT = process.env.PORT || 5000;
 //DB connection
 connectDB();
 app.use('/api/food',foodRouter);
-app.use('/api/order', orderRouter);
+app.use('/api/order', orderRoute);
+app.use('/api/seller', sellerAuthRoute);
+app.use('/api/user', userAuthRoute);
+app.use('/api/cart', cartRoute);
+app.use('/api/review', reviewRoute);
+app.use('/api/address', addressRoute);
 
 app.get('/', (req, res) => {
   res.send('Api Testing');

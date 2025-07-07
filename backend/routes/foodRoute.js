@@ -1,29 +1,25 @@
 import express from "express";
-import { addFood, getAllFoods, deleteFood, updateFood, toggleInStock } from "../controllers/foodController.js";
-
+import { addFood, getAllFoods, deleteFood, updateFood, toggleInStock, getMyFoods } from "../controllers/foodController.js";
 import multer from "multer"; //for image storing system
-
+import { authenticateJWT } from '../middleware/authMiddleware.js';
 
 const foodRouter = express.Router();
 const storage=multer.diskStorage({
     destination:"upload",
     filename:(req,file,cb)=>{
         return  cb(null,`${Date.now()}${file.originalname}`)
-
     }
 })
 
 const upload=multer({storage:storage})
 
-foodRouter.post("/add",upload.single("image"),addFood); // for collecting data from body(form etc)
-foodRouter.get("/", getAllFoods); // for getting all food items
-foodRouter.delete('/:id', deleteFood);
-foodRouter.patch('/:id', updateFood);
-foodRouter.patch('/:id/toggle-instock', toggleInStock);
+foodRouter.post("/add", authenticateJWT, upload.single("image"), addFood); // protected
+foodRouter.get("/", getAllFoods); // public
+foodRouter.delete('/:id', authenticateJWT, deleteFood); // protected
+foodRouter.patch('/:id', authenticateJWT, upload.single('image'), updateFood); // protected
+foodRouter.patch('/:id/toggle-instock', authenticateJWT, toggleInStock); // protected
+foodRouter.get("/mine", authenticateJWT, getMyFoods); // seller's own food
 
 // img storage engine
-
-
-
 
 export {foodRouter}

@@ -14,7 +14,7 @@
     font-size: 2.1rem;
     font-weight: 700;
     margin: 18px 0;
-    color: #7c2ae8;
+    color: orangered;
     letter-spacing: 1px;
 }
 
@@ -108,7 +108,7 @@
 
 .order-name {
     grid-column: 2;
-    color: #7c2ae8;
+    color: orangered;
     font-weight: 600;
     cursor: pointer;
     text-align: left;
@@ -116,7 +116,7 @@
 }
 
 .order-name:hover {
-    color: #5c1bb0;
+    color: rgb(250, 120, 73);
     text-decoration: underline;
 }
 
@@ -246,7 +246,7 @@
     font-weight: 700;
     font-size: 1rem;
     margin: 0;
-    color: #7c2ae8;
+    color: orangered;
   }
 
   .order-item > .order-top-row {

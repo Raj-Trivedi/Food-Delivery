@@ -22,7 +22,8 @@ const addFood = async (req,res)=>{
     description: req.body.description,
     price: req.body.price,
     image: image_fileName,
-    category: req.body.category
+    category: req.body.category,
+    seller: req.user.id // associate food with seller
  });
     try {
         await food.save(); // saving the food item to the database
@@ -49,6 +50,17 @@ const getAllFoods = async (req, res) => {
   }
 };
 
+// Get all food items for the logged-in seller
+const getMyFoods = async (req, res) => {
+  try {
+    const foods = await foodModel.find({ seller: req.user.id });
+    res.json({ success: true, data: foods });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Error fetching your food items" });
+  }
+};
+
 // Delete food item
 const deleteFood = async (req, res) => {
   try {
@@ -62,7 +74,19 @@ const deleteFood = async (req, res) => {
 // Update food item
 const updateFood = async (req, res) => {
   try {
-    const update = req.body;
+    let update = req.body;
+    // If an image was uploaded, update the image field
+    if (req.file) {
+      update = { ...update, image: req.file.filename };
+      // Optionally: delete old image file
+      const food = await foodModel.findById(req.params.id);
+      if (food && food.image && food.image !== req.file.filename) {
+        const oldPath = `upload/${food.image}`;
+        if (fs.existsSync(oldPath)) {
+          fs.unlinkSync(oldPath);
+        }
+      }
+    }
     const food = await foodModel.findByIdAndUpdate(req.params.id, update, { new: true });
     res.json({ success: true, message: 'Food item updated', food });
   } catch (error) {
@@ -83,4 +107,4 @@ const toggleInStock = async (req, res) => {
   }
 };
 
-export {addFood, getAllFoods, deleteFood, updateFood, toggleInStock};
+export {addFood, getAllFoods, deleteFood, updateFood, toggleInStock, getMyFoods};

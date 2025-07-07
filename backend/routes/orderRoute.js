@@ -1,12 +1,14 @@
-import express from "express";
-import { createOrder, getAllOrders, getUserOrders, updateOrderStatus, deleteOrder } from "../controllers/orderController.js";
+import express from 'express';
+import { placeOrder, getMyOrders, getAllOrders, getSellerOrders, updateOrderStatus } from '../controllers/orderController.js';
+import { authenticateJWT } from '../middleware/authMiddleware.js';
 
-const orderRouter = express.Router();
+const orderRoute = express.Router();
 
-orderRouter.post("/add", createOrder);
-orderRouter.get("/", getAllOrders);
-orderRouter.get("/user/:user", getUserOrders);
-orderRouter.patch("/:id/status", updateOrderStatus);
-orderRouter.delete("/:id", deleteOrder);
+orderRoute.post('/', authenticateJWT, placeOrder);
+orderRoute.get('/myorder', authenticateJWT, getMyOrders);
+orderRoute.get('/all', getAllOrders); // for admin
+orderRoute.post('/add', authenticateJWT, placeOrder);
+orderRoute.get('/seller-orders', authenticateJWT, getSellerOrders);
+orderRoute.patch('/:id', authenticateJWT, updateOrderStatus);
 
-export { orderRouter }; 
+export default orderRoute;
