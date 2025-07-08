@@ -3,6 +3,7 @@ import './FilterItem.css'
 import { StoreContext } from '../../Context/StoreContext'
 import { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { toast } from 'react-toastify';
 
 import { useState } from 'react';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
@@ -66,7 +67,13 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
                             <div className="Item-overlay">
                                 <FontAwesomeIcon
                                 className="btncart1"
-                                onClick={() => addToCart(item._id)}
+                                onClick={() => {
+                                  addToCart(item._id);
+                                  toast.success('Added to cart!', {
+                                    position: 'top-center',
+                                    autoClose: 1500,
+                                  });
+                                }}
                                 icon={faCartShopping}
                                 />
                                 {/* <FontAwesomeIcon
@@ -75,7 +82,7 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
                                 icon={liked[item._id]===1 ? faSolidHeart : faRegularHeart}
                                 /> */}
                             </div>
-                             <img src={item.image} alt={item.name} />
+                             <img src={item.image && !item.image.startsWith('http') ? `http://localhost:5000/upload/${item.image}` : item.image} alt={item.name} />
                          </div>
                         <div className="filterItem-des" onClick={()=> navigate(`/product/${item.category}/${item._id}`)}>
                             <h3>{item.name}</h3>

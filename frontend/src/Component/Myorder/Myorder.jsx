@@ -5,31 +5,12 @@ import './Myorder.css'
 import { useNavigate } from 'react-router-dom';
 
 const Myorder = () => {
-    const { myorder, food_list } = useContext(StoreContext);
+    const { myorder } = useContext(StoreContext);
     const navigate = useNavigate();
-    
-    // Convert myorder object to array and filter out invalid entries
-    const orders = Object.entries(myorder)
-        .map(([itemId, order]) => {
-            const foodItem = food_list.find(item => item._id === itemId);
-            if (!foodItem) return null;
-            
-            return {
-                ...order,
-                itemId,
-                name: order.name || foodItem.name,
-                price: order.price || foodItem.price,
-                image: order.image || foodItem.image,
-                quantity: order.quantity || 1,
-                orderId: order.orderId || 'ORD' + Math.floor(1000 + Math.random() * 9000),
-                date: order.date || new Date(Date.now() - Math.floor(Math.random() * 10) * 86400000).toLocaleDateString('en-CA'),
-                status: order.status || (Math.random() > 0.5 ? 'Delivered' : 'Processing')
-            };
-        })
-        .filter(Boolean);
+    const orders = Array.isArray(myorder) ? myorder : [];
 
     const totalSpent = orders.reduce((sum, order) => {
-        return sum + (order.price * order.quantity);
+      return sum + order.items.reduce((itemSum, item) => itemSum + (item.price * item.quantity), 0);
     }, 0);
 
     if (orders.length === 0) {
@@ -51,7 +32,6 @@ const Myorder = () => {
                 <span>Total Orders: <b>{orders.length}</b></span>
                 <span>Total Spent: <b>₹{totalSpent.toFixed(2)}</b></span>
             </div>
-            
             <div className="order-header">
                 <p>Product</p>
                 <p>Order Name</p>
@@ -63,31 +43,27 @@ const Myorder = () => {
                 <p>Total</p>
             </div>
             <hr />
-            
             <div className="Order-List">
-                {orders.map((order, index) => (
-                    <div className='order-item'>
-                        <div className="order-top-row">
-                            <div className="orderItem-Img" onClick={() => navigate(`/product/${order.name}/${order.itemId}`)}>
-                                <img src={order.image} alt={order.name} />
-                            </div>
-                            <p className="order-name" onClick={() => navigate(`/product/${order.name}/${order.itemId}`)}>
-                                {order.name}
-                            </p>
+                {orders.map((order, orderIdx) =>
+                  order.items.map((item, idx) => (
+                    <div className='order-item' key={item._id || idx}>
+                      <div className="order-top-row">
+                        <div className="orderItem-Img" onClick={() => navigate(`/product/${item.name}/${item.foodId || item._id}`)}>
+                          <img src={item.image && !item.image.startsWith('http') ? `http://localhost:5000/upload/${item.image}` : item.image} alt={item.name} />
                         </div>
-
-                        <p className="order-id">{order.orderId}</p>
-                        <p className="order-date">{order.date}</p>
-                        <p className={`order-status ${order.status.toLowerCase()}`}>
-                            {order.status}
+                        <p className="order-name" onClick={() => navigate(`/product/${item.name}/${item.foodId || item._id}`)}>
+                          {item.name}
                         </p>
-                        <p className="order-quantity">{order.quantity}</p>
-                        <p className="order-price">₹{order.price}</p>
-                        <p className="order-total">
-                            ₹{(order.price * order.quantity).toFixed(2)}
-                        </p>
+                      </div>
+                      <p className="order-id">{order._id}</p>
+                      <p className="order-date">{order.createdAt ? new Date(order.createdAt).toLocaleDateString() : ''}</p>
+                      <p className={`order-status ${order.status ? order.status.toLowerCase() : ''}`}>{order.status || 'Processing'}</p>
+                      <p className="order-quantity">{item.quantity}</p>
+                      <p className="order-price">₹{item.price}</p>
+                      <p className="order-total">₹{(item.price * item.quantity).toFixed(2)}</p>
                     </div>
-                ))}
+                  ))
+                )}
             </div>
         </div>
     );

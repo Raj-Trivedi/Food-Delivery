@@ -22,8 +22,9 @@ export const addReview = async (req, res) => {
       comment,
     });
     res.json({ success: true, review });
-  } catch (err) {
-    res.status(500).json({ success: false, message: 'Server error' });
+  } catch (error) {
+    console.error("Review Add Error:", error);
+    res.status(500).json({ success: false, message: error.message || "Server error" });
   }
 };
 

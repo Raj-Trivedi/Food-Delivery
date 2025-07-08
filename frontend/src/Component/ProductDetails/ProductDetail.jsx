@@ -1,10 +1,17 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './ProductDetail.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../Context/StoreContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+
+const getImageUrl = (img) => {
+  if (!img) return "";
+  if (img.startsWith("http")) return img;
+  // If the backend serves images from /upload and runs on port 5000:
+  return `http://localhost:5000/${img.startsWith("upload") ? img : "upload/" + img}`;
+};
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -14,11 +21,11 @@ const ProductDetail = () => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [review, setReview] = useState('');
-  const [reviews, setReviews] = useState([
-    { id: 1, rating: 5, text: 'Amazing food! Loved the taste and quality.', user: 'John Doe', date: '2025-06-15' },
-    { id: 2, rating: 4, text: 'Good food, but delivery was a bit late.', user: 'Jane Smith', date: '2025-06-10' }
-  ]);
+  const [reviews, setReviews] = useState([]);
+  const [reviewsLoading, setReviewsLoading] = useState(true);
+  const [reviewsError, setReviewsError] = useState(null);
   const [mainImg, setMainImg] = useState(product ? product.image : '');
+  const { currentUserId } = useContext(StoreContext);
 
   const subtitle = product?.subtitle || 'Product Subtitle';
   const reviewCount = reviews.length;
@@ -28,6 +35,26 @@ const ProductDetail = () => {
     { label: 'Indian', type: 'cuisine' },
   ];
 
+  useEffect(() => {
+    const fetchReviews = async () => {
+      setReviewsLoading(true);
+      setReviewsError(null);
+      try {
+        const res = await fetch(`/api/review/${id}`);
+        const data = await res.json();
+        if (data.success && data.reviews) {
+          setReviews(data.reviews);
+        } else {
+          setReviewsError(data.message || 'Failed to fetch reviews');
+        }
+      } catch (err) {
+        setReviewsError('Failed to fetch reviews');
+      }
+      setReviewsLoading(false);
+    };
+    fetchReviews();
+  }, [id]);
+
   if (!product) {
     return <div className="product-not-found">Product not found.</div>;
   }
@@ -35,20 +62,39 @@ const ProductDetail = () => {
   // Related products (same category, exclude self)
   const related = food_list.filter(item => item.category === product.category && item._id !== product._id).slice(0, 4);
 
-  const handleReviewSubmit = (e) => {
+  const handleReviewSubmit = async (e) => {
     e.preventDefault();
     if (review.trim() && rating > 0) {
-      const newReview = {
-        id: reviews.length + 1,
-        rating,
-        text: review,
-        user: 'You',
-        date: new Date().toISOString().split('T')[0]
-      };
-      setReviews([...reviews, newReview]);
-      setReview('');
-      setRating(0);
-      toast.success('Review submitted successfully!');
+      const token = localStorage.getItem('token');
+      if (!token) {
+        toast.error('You must be logged in to submit a review');
+        return;
+      }
+      try {
+        const res = await fetch('/api/review/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            foodId: id,
+            rating,
+            comment: review
+          })
+        });
+        const data = await res.json();
+        if (data.success && data.review) {
+          setReviews([...reviews, data.review]);
+          setReview('');
+          setRating(0);
+          toast.success('Review submitted successfully!');
+        } else {
+          toast.error(data.message || 'Failed to submit review');
+        }
+      } catch (err) {
+        toast.error('Failed to submit review');
+      }
     } else {
       toast.error('Please add both rating and review text');
     }
@@ -63,11 +109,30 @@ const ProductDetail = () => {
     }
   };
 
-  const handleDeleteReview = (reviewId) => {
-   
-      setReviews(reviews.filter(review => review.id !== reviewId));
-      toast.success('Review deleted successfully');
-    
+  const handleDeleteReview = async (reviewId) => {
+    const token = localStorage.getItem('token');
+    await fetch(`/api/review/${reviewId}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    // Refetch reviews after delete
+    const fetchReviews = async () => {
+      setReviewsLoading(true);
+      setReviewsError(null);
+      try {
+        const res = await fetch(`/api/review/${id}`);
+        const data = await res.json();
+        if (data.success && data.reviews) {
+          setReviews(data.reviews);
+        } else {
+          setReviewsError(data.message || 'Failed to fetch reviews');
+        }
+      } catch (err) {
+        setReviewsError('Failed to fetch reviews');
+      }
+      setReviewsLoading(false);
+    };
+    fetchReviews();
   };
 
   // For thumbnails, use main image for now
@@ -77,18 +142,10 @@ const ProductDetail = () => {
     <div className="product-detail-container">
       <div className="product-main modern-layout">
         <div className="product-img-section">
-          <img src={mainImg} alt={product.name} className="product-detail-img-large" />
-          <div className="product-thumbnails">
-            {thumbnails.map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={`thumb-${idx}`}
-                className={`product-thumb ${mainImg === img ? 'selected' : ''}`}
-                onClick={() => setMainImg(img)}
-              />
-            ))}
-          </div>
+          {mainImg && mainImg !== "" && (
+            <img src={getImageUrl(mainImg)} alt={product.name} className="product-detail-img-large" />
+          )}
+          
         </div>
         <div className="product-info modern-info">
           <h1>{product.name}</h1>
@@ -126,6 +183,8 @@ const ProductDetail = () => {
 
       <div className="product-review-section">
         <h2>Customer Reviews</h2>
+        {reviewsLoading ? <p>Loading reviews...</p> : reviewsError ? <p style={{color:'red'}}>{reviewsError}</p> : (
+        <>
         <div className="rating-summary">
           <div className="average-rating">
             <span className="rating-number">{averageRating}</span>
@@ -209,20 +268,16 @@ const ProductDetail = () => {
           ) : (
             <div className="reviews-container">
               {[...reviews].reverse().map((r) => (
-                <div key={r.id} className="review-item">
+                <div key={r._id || r.id} className="review-item">
                   <div className="review-header">
                     <div className="reviewer-info">
                       <div className="reviewer-avatar">
-                        {r.user.charAt(0).toUpperCase()}
+                        {r.user?.name?.charAt(0) || r.user?.charAt(0) || 'A'}
                       </div>
                       <div>
-                        <div className="reviewer-name">{r.user}</div>
+                        <div className="reviewer-name">{r.user && r.user.name ? r.user.name : "Anonymous"}</div>
                         <div className="review-date">
-                          {new Date(r.date).toLocaleDateString('en-US', { 
-                            year: 'numeric', 
-                            month: 'long', 
-                            day: 'numeric' 
-                          })}
+                          {r.date ? new Date(r.date).toLocaleDateString() : ''}
                         </div>
                       </div>
                     </div>
@@ -240,13 +295,13 @@ const ProductDetail = () => {
                      
                     </div>
                   </div>
-                  <div className="review-text">{r.text}
-                  {r.user === 'You' && (
+                  <div className="review-text">{r.comment}
+                  {r.user && r.user._id === currentUserId && (
                         <button 
                           className="delete-review-btn"
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleDeleteReview(r.id);
+                            handleDeleteReview(r._id);
                           }}
                           title="Delete review"
                           aria-label="Delete review"
@@ -265,6 +320,8 @@ const ProductDetail = () => {
             </div>
           )}
         </div>
+        </>
+        )}
       </div>
 
       {related.length > 0 && (

@@ -4,15 +4,20 @@ import './OrderList.css';
 const OrderList = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchOrders = async () => {
       setLoading(true);
       try {
-        const res = await fetch('/api/order/');
+        const res = await fetch('/api/order/seller-orders', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         const data = await res.json();
         if (data.success) {
-          setOrders(data.data);
+          setOrders(data.orders);
         }
       } catch (err) {
         setOrders([]);
@@ -20,45 +25,65 @@ const OrderList = () => {
       setLoading(false);
     };
     fetchOrders();
-  }, []);
+  }, [token]);
+
+  const handleStatusChange = async (orderId, newStatus) => {
+    try {
+      await fetch(`/api/order/${orderId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ status: newStatus })
+      });
+      // Refresh orders after update
+      setLoading(true);
+      const res = await fetch('/api/order/seller-orders', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      const data = await res.json();
+      if (data.success) setOrders(data.orders);
+      setLoading(false);
+    } catch (err) {
+      // Optionally show error
+    }
+  };
 
   return (
     <div className="order-list">
       <h2>Orders List</h2>
       {loading ? <p>Loading...</p> : (
         <div className="order-cards">
-          {orders.map(order => (
+          {orders.length === 0 ? <p>No orders yet.</p> : orders.map(order => (
             <div key={order._id} className="order-card">
-              <div className="order-card-product">
-                {order.items[0]?.foodId ? (
-                  <img
-                    src={order.items[0].image && !order.items[0].image.startsWith('http') ? `http://localhost:5000/upload/${order.items[0].image}` : order.items[0].image}
-                    alt={order.items[0].name}
-                    className="order-card-img"
-                  />
-                ) : (
-                  <div className="order-card-img" style={{background:'#e0f2e9',display:'flex',alignItems:'center',justifyContent:'center'}}>
-                    <span role="img" aria-label="food">🥕</span> 
-                  </div>
-                )}
-                <span className="order-card-product-name">
-                  {order.items[0]?.name} <span className="order-card-qty">x {order.items[0]?.quantity}</span>
-                </span>
-              </div>
               <div className="order-card-info">
-                
-                <div>{order.user}</div>
-
-                {/* Add address if available: <div>{order.address}</div>
-                 */}
+                <div><b>Buyer:</b> {order.buyer?.name || 'Unknown'}</div>
+                <div><b>Date:</b> {new Date(order.createdAt).toLocaleDateString()}</div>
+                <div><b>Status:</b> 
+                  <select value={order.status} onChange={e => handleStatusChange(order._id, e.target.value)}>
+                    <option value="Pending">Pending</option>
+                    <option value="Out for Delivery">Out for Delivery</option>
+                    <option value="Delivered">Delivered</option>
+                  </select>
+                </div>
+              </div>
+              <div className="order-card-items">
+                {order.items.map((item, idx) => (
+                  <div key={idx} style={{ display: "inline-block", marginRight: "1rem" }}>
+                    <img
+                      src={item.image && !item.image.startsWith('http') ? `http://localhost:5000/upload/${item.image}` : item.image}
+                      alt={item.name}
+                      style={{ width: 50, height: 50 }}
+                    />
+                    <span className="order-card-product-name">
+                      {item.name} <span className="order-card-qty">x {item.quantity}</span>
+                    </span>
+                  </div>
+                ))}
               </div>
               <div className="order-card-price">
-                ${order.total}
-              </div>
-              <div className="order-card-meta">
-                <span>Method: COD</span>
-                <span>Date: {new Date(order.createdAt).toLocaleDateString()}</span>
-                <span>Payment: {order.status || 'Pending'}</span>
+                <b>Total:</b> ₹{order.total}
               </div>
             </div>
           ))}

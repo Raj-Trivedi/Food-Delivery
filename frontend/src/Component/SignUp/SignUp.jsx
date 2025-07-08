@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import "./SignUp.css"
 import backlogo from "../../../../assets/frontend_assets/left-arrow_7131308.png";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const SignUp = ({ onToggle }) => {
@@ -66,14 +68,41 @@ const SignUp = ({ onToggle }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting signup form", formData);
     
     if (validateForm()) {
       setIsLoading(true);
       try {
-        console.log("Form is valid, submitting:", formData);
-        // Add your signup logic here
+        const endpoint = '/api/user/signup';
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: formData.name, email: formData.email, password: formData.password })
+        });
+        let data;
+        try {
+          data = await res.json();
+        } catch (jsonErr) {
+          toast.error('Server error: Invalid response format.', { position: 'top-center', autoClose: 2000 });
+          setIsLoading(false);
+          return;
+        }
+        console.log('Signup response:', data);
+        if (!res.ok || !data.success) {
+          setErrors({ submit: data.message || 'Signup failed!' });
+          toast.error(data.message || 'Signup failed!', { position: 'top-center', autoClose: 2000 });
+          setIsLoading(false);
+          return;
+        }
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        localStorage.setItem('role', 'user');
+        setErrors({});
+        toast.success('Signup successful! Redirecting...', { position: 'top-center', autoClose: 2000 });
+        setTimeout(() => navigate('/'), 1200);
       } catch (error) {
-        setErrors({ submit: error.message });
+        setErrors({ submit: error.message || 'Network error. Please try again.' });
+        toast.error(error.message || 'Network error. Please try again.', { position: 'top-center', autoClose: 2000 });
       } finally {
         setIsLoading(false);
       }
@@ -248,6 +277,7 @@ const SignUp = ({ onToggle }) => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

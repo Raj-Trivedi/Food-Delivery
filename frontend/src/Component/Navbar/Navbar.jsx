@@ -13,6 +13,7 @@ export const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { cartItems, searchItem, setSearchItem } = useContext(StoreContext);
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
     // Update active menu based on route path
     useEffect(() => {
@@ -39,12 +40,29 @@ export const Navbar = () => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
+    useEffect(() => {
+        const handleStorageChange = () => {
+            setIsLoggedIn(!!localStorage.getItem('token'));
+        };
+        window.addEventListener('storage', handleStorageChange);
+        return () => window.removeEventListener('storage', handleStorageChange);
+    }, []);
+
     const handleNav = (menuName, path) => {
         setMenu(menuName);
         navigate(path);
         if (isMobile) {
             setMobileMenuOpen(false);
         }
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('role');
+        setIsLoggedIn(false);
+        navigate('/');
+        window.location.reload(); // Ensures all state is reset
     };
 
     return (
@@ -79,6 +97,13 @@ export const Navbar = () => {
                     <li onClick={() => handleNav("home", "/")} className={menu === "home" ? "active" : ""}>Home</li>
                     <li onClick={() => handleNav("menu", "/menu")} className={menu === "menu" ? "active" : ""}>Menu</li>
                     <li onClick={() => handleNav("aboutUs", "/aboutus")} className={menu === "aboutUs" ? "active" : ""}>About Us</li>
+                    <li onClick={() => handleNav("seller", "/seller-signin")} className={menu === "seller" ? "active" : ""}>Seller</li>
+
+                    {isLoggedIn && (
+                        <li onClick={() => handleNav("myorder", "/myorder")} className={menu === "myorder" ? "active" : ""}>
+                            My Orders
+                        </li>
+                    )}
                     
                     {/* Mobile Search - Only visible in mobile menu */}
                     {isMobile && (
@@ -126,8 +151,10 @@ export const Navbar = () => {
                         <span className="cart-count">{Object.keys(cartItems).length}</span>
                     )}
                 </div>
-                <button className="nav-btn" onClick={() => handleNav(menu, "/auth")}>
-                    Sign In
+                <button className="nav-btn" 
+                    onClick={isLoggedIn ? handleLogout : () => handleNav(menu, "/auth")}
+                >
+                    {isLoggedIn ? 'Logout' : 'Sign In'}
                 </button>
             </div>
 

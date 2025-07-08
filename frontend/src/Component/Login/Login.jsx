@@ -56,12 +56,25 @@ const Login = ({ onToggle }) => {
     if (validateForm()) {
       setIsLoading(true);
       try {
-        console.log("Logging in with:", formData);
-        // Add your login logic here
-        // await loginUser(formData);
-        // navigate('/dashboard');
+        const endpoint = '/api/user/login';
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: formData.email, password: formData.password })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          setErrors({ submit: data.message || 'Login failed!' });
+          setIsLoading(false);
+          return;
+        }
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        localStorage.setItem('role', 'user');
+        setErrors({});
+        navigate('/');
       } catch (error) {
-        setErrors({ submit: error.message });
+        setErrors({ submit: error.message || 'Network error. Please try again.' });
       } finally {
         setIsLoading(false);
       }

@@ -1,11 +1,21 @@
 .food-list {
-  max-width: 1100px;
-  margin: 0 auto;
+ 
+  /* margin: 0 auto; */
   margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+ /* align-items: center; */
+}
+.food-list h2{
+  font-family: 'Inter', 'Poppins', 'Roboto', Arial, sans-serif;
+   font-size: 28px;
+
+   font-weight: 700;
+   margin-bottom: 20px;
 }
 .food-table {
   width: 100%;
-  border-collapse: separate;
+  /* border-collapse: separate; */
   border-spacing: 0;
   background: #fff;
   border-radius: 12px;
@@ -13,12 +23,12 @@
   overflow: hidden;
 }
 .food-table th, .food-table td {
-  padding: 18px 16px;
+  padding: 25px 30px;
   text-align: left;
   font-size: 1.08rem;
 }
 .food-table th {
-  background: #fafbff;
+  background: #e5e5e9;
   font-weight: 700;
 }
 .food-table tr {
@@ -52,17 +62,9 @@
 }
 .food-actions {
   display: flex;
-  gap: 10px;
+  gap: 18px;
 }
-.food-actions button {
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 14px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 0.98rem;
-}
+
 .btn-div{
   display: flex;
   align-items: center;
@@ -81,6 +83,21 @@
 }
 .edit-btn:hover{
   color: #42ac43;
+}
+.editdone-btn {
+  color: #3f3f3f;
+  cursor: pointer;
+  font-size: 1.6rem;
+  /* margin-right: 40px; */
+  transition: background 0.2s;
+  display: inline-block;
+}
+.editdone-btn:hover {
+  color: #368a34;
+}
+
+.editdone-btn:last-child:hover {
+  color: #c0392b;
 }
 /* Toggle Switch */
 .food-toggle-switch {
@@ -122,4 +139,13 @@
 }
 .food-table td {
   vertical-align: middle;
+}
+
+.edit-food-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 24px 0;
+  background: #f9f9f9;
 } 

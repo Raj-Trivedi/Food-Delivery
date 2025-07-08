@@ -7,7 +7,7 @@ const FoodDisplay = ({category}) => {
     const {food_list} = useContext(StoreContext)
 
     const selectedIndices = [1, 9, 21, 24, 33, 43, 53, 58, 66, 79, 80, 91, 99, 109, 115];
-    const selectedItems = selectedIndices.map(index => food_list[index])
+    const selectedItems = selectedIndices.map(index => food_list[index]).filter(Boolean);
 
     const filteredItems = food_list.filter(item => item.category === category);
 
@@ -21,9 +21,10 @@ const FoodDisplay = ({category}) => {
     <div className='food-display' id='food-display'>
         <h2>Top Dishes near you</h2>
         <div className="food-display-list">
-            {itemsToRender.map((item, index) => {   
-                return <FoodItems key={index} id={item._id} name={item.name} description={item.description} price={item.price} image={item.image} />
-        })}
+            {itemsToRender.map((item, index) => {
+                if (!item) return null;
+                return <FoodItems key={item._id || index} id={item._id} name={item.name} description={item.description} price={item.price} image={item.image} />
+            })}
         </div>
     </div>
   );

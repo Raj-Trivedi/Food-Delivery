@@ -10,16 +10,20 @@ import Address from './Pages/Address/Address.jsx';
 import ProductDetail from './Component/ProductDetails/ProductDetail.jsx';
 import Myorder from './Component/Myorder/Myorder.jsx'
 import Auth from './Pages/Auth.jsx'
-import AdminPanel from './Pages/adminpanel/AdminPanel.jsx'
+import AdminPanel from './Pages/adminpanel/AdminPanelNew.jsx'
+import SellerSignIn from './Component/Login/SellerSignIn.jsx';
+import SellerRegister from './Component/Login/SellerRegister.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
   const location = useLocation();
-  const isAuth = location.pathname === "/auth";
+  const hideNavFooter = /admin|seller/i.test(location.pathname);
   
   return (
     <>
-      {!isAuth && <Navbar />}
+      {!hideNavFooter && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
@@ -30,9 +34,12 @@ function App() {
         <Route path="/product/:category/:id" element={<ProductDetail />} />
         <Route path="/myorder" element={<Myorder />} />
         <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/seller-signin" element={<SellerSignIn />} />
+        <Route path="/seller-register" element={<SellerRegister />} />
       </Routes>
 
-      {!isAuth && <Footer />}   
+      {!hideNavFooter && <Footer />}   
+      <ToastContainer />
     </>
   )
 }

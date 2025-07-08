@@ -8,13 +8,19 @@ import remove_icon_red from '../../../../assets/frontend_assets/remove_icon_red.
 import { assets } from '../../../../assets/frontend_assets/assets'
 import { StoreContext } from '../../Context/StoreContext'
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 
 const FoodItems = ({id, name, price, description, image}) => {
 
   const [rating, setRating] = useState(0);
+  const [showControls, setShowControls] = useState(false);
   const {cartItems, addToCart, removeFromCart} = useContext(StoreContext);
   const navigate = useNavigate();
+
+  // Find the cart item for this food
+  const cartItem = Array.isArray(cartItems) ? cartItems.find(item => item.food && item.food._id === id) : null;
+  const quantity = cartItem ? cartItem.quantity : (showControls ? 1 : 0);
 
   const handleStarClick = (value) => {
     setRating(value);
@@ -23,24 +29,26 @@ const FoodItems = ({id, name, price, description, image}) => {
   return (
     <div className="food-item" onClick={() => navigate(`/product/${name}/${id}`)}>
       <div className="Food-img">
-        <img className="img" src={image} alt={name} />
+        <img className="img" src={image && !image.startsWith('http') ? `http://localhost:5000/upload/${image}` : image} alt={name} />
 
         <div className="CountDiv" onClick={(e) => e.stopPropagation()}>
-          {!cartItems[id] ? (
+          {!(cartItem || showControls) ? (
             <p></p>
-
           ) : (
             <div className="btnCountContainer">
               <img
                 className="btnCount"
                 onClick={(e) => {
                   e.stopPropagation();
-                  removeFromCart(id);
+                  if (cartItem) {
+                    removeFromCart(cartItem._id, cartItem.quantity);
+                    if (cartItem.quantity === 1) setShowControls(false);
+                  }
                 }}
                 src={remove_icon_red}
                 alt="Remove"
               />
-              <p>{cartItems[id]}</p>
+              <p>{quantity}</p>
               <img
                 className="btnCount"
                 onClick={(e) => {
@@ -77,7 +85,16 @@ const FoodItems = ({id, name, price, description, image}) => {
             className='btncart' 
             onClick={(e) => {
               e.stopPropagation();
+              const wasInCart = !!cartItem;
               addToCart(id);
+              setShowControls(true);
+              if (!wasInCart) {
+                toast.success('Added to cart!', {
+                  position: 'top-center',
+                  autoClose: 1500,
+                  toastId: `add-to-cart-${id}`
+                });
+              }
             }} 
             icon={faCartShopping}
           />

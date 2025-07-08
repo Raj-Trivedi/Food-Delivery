@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import Header from "../Component/Header/Header"
 import Explore from '../Component/Explore/Explore'
 import FoodDisplay from '../Component/FoodDisplay/FoodDisplay'
-
+import { toast } from 'react-toastify';
 export const Home = () => {
+  // toast.success('Test Toast!');
+
 
   const [category, setCategory] = React.useState('All');
   return (

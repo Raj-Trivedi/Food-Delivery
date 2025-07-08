@@ -19,8 +19,8 @@ const CartSummary = ({ totalItems }) => {
     setShippingCharge,
     isExpress,
     setIsExpress,
-    address, setMyorder, cartItems, addToMyOrder, setCartItems
-
+    address, setMyorder, cartItems, addToMyOrder, setCartItems,
+    placeOrder
   } = useContext(StoreContext);
 
   const [couponInput, setCouponInput] = useState("");
@@ -61,66 +61,13 @@ const CartSummary = ({ totalItems }) => {
     setDiscount(found.discount);
   };
 
-  const handlePlaceOrder = () => {
-    if (!address) {
-      toast.error('Please add a delivery address before placing your order!', {
-        position: 'top-center',
-        autoClose: 2500,
-      });
-      return;
-    }
-
-    // Create a new order object with all necessary details
-    const orderId = 'ORD' + Math.floor(100000 + Math.random() * 900000);
-    const orderDate = new Date().toISOString();
-    const orderStatus = 'Processing';
-    
-    // Create order items with all required details
-    const orderItems = {};
-    Object.keys(cartItems).forEach(itemId => {
-      const item = food_list.find(item => item._id === itemId);
-      if (item) {
-        orderItems[itemId] = {
-          ...cartItems[itemId],
-          name: item.name,
-          price: item.price,
-          image: item.image,
-          orderId,
-          date: orderDate,
-          status: orderStatus,
-          shipping: shippingCharge,
-          discount: discount,
-          address: address,
-          isExpress: isExpress
-        };
-      }
-    });
-
-    // Update the myorder state with the new order items
-    setMyorder(prevOrder => ({
-      ...prevOrder,
-      ...orderItems
-    }));
-
-    // Clear the cart
-    setCartItems({});
-    
-    toast.success('Order placed successfully!', {
-      position: 'top-center',
-      autoClose: 2500,
-    });
-    
-    // Navigate to orders page after a short delay
-    setTimeout(() => navigate('/myorder'), 500);
-  };
-
   return (
     <div className="CartSummary-container">
       <h2>
         Order Summary
       </h2>
       <div className='CartSummary-heading'>
-        <p>ITEMS : <span> {totalItems} </span></p>
+        <p>ITEMS : {cartItems.length}</p>
         <p>PRICE : ₹{TotalCost}</p>
       </div>
       <div className="CartSummary-Address">
@@ -212,7 +159,18 @@ const CartSummary = ({ totalItems }) => {
 
         <div className="TotalCost-box">
 
-          <button className='Checkout-btn' onClick={() => { handlePlaceOrder() }}>Place Order</button>
+          <button className='Checkout-btn' onClick={() => {
+            if (!address) {
+              toast.error('Please add a delivery address before placing your order!', {
+                position: 'top-center',
+                autoClose: 2500,
+              });
+              return;
+            }
+            placeOrder(shippingCharge, discount);
+          }}>
+            Place Order
+          </button>
         </div>
       </div>
       <ToastContainer />

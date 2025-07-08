@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddFoodForm.css';
 
-const AddFoodForm = () => {
+const AddFoodForm = ({ refreshFoods }) => {
   const [form, setForm] = useState({
     name: '',
     description: '',
@@ -36,14 +36,19 @@ const AddFoodForm = () => {
     // Only send the first image to backend for now
     if (form.images[0]) data.append('image', form.images[0]);
     try {
+      const token = localStorage.getItem('token');
       const res = await fetch('/api/food/add', {
         method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
         body: data,
       });
       const result = await res.json();
       if (result.success) {
         setStatus('Food item added successfully!');
         setForm({ name: '', description: '', price: '', offerPrice: '', category: '', images: [null, null, null, null] });
+        if (refreshFoods) refreshFoods();
       } else {
         setStatus(result.message || 'Failed to add food item.');
       }
