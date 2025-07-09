@@ -4,6 +4,14 @@ import { useContext } from 'react'
 import './Myorder.css'
 import { useNavigate } from 'react-router-dom';
 
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('/upload')) {
+    return `http://localhost:5000${imagePath}`;
+  }
+  return imagePath;
+};
+
 const Myorder = () => {
     const { myorder } = useContext(StoreContext);
     const navigate = useNavigate();
@@ -49,7 +57,7 @@ const Myorder = () => {
                     <div className='order-item' key={item._id || idx}>
                       <div className="order-top-row">
                         <div className="orderItem-Img" onClick={() => navigate(`/product/${item.name}/${item.foodId || item._id}`)}>
-                          <img src={item.image && !item.image.startsWith('http') ? `http://localhost:5000/upload/${item.image}` : item.image} alt={item.name} />
+                          <img src={getImageUrl(item.image)} alt={item.name} />
                         </div>
                         <p className="order-name" onClick={() => navigate(`/product/${item.name}/${item.foodId || item._id}`)}>
                           {item.name}

@@ -125,10 +125,7 @@ const StoreContextProvider = (props) => {
                 if (data.success && data.cartItem) {
                     fetchCart();
                     if (!alreadyInCart) {
-                        toast.success('Added to cart!', {
-                            position: 'top-center',
-                            autoClose: 1500,
-                        });
+                        toast.success('Item added to cart', { position: 'top-center', autoClose: 1200, toastId: `add-to-cart-${foodId}` });
                     }
                 }
             });

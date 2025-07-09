@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './OrderList.css';
 
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('/upload')) {
+    return `http://localhost:5000${imagePath}`;
+  }
+  return imagePath;
+};
+
 const OrderList = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -72,7 +80,7 @@ const OrderList = () => {
                 {order.items.map((item, idx) => (
                   <div key={idx} style={{ display: "inline-block", marginRight: "1rem" }}>
                     <img
-                      src={item.image && !item.image.startsWith('http') ? `http://localhost:5000/upload/${item.image}` : item.image}
+                      src={getImageUrl(item.image)}
                       alt={item.name}
                       style={{ width: 50, height: 50 }}
                     />

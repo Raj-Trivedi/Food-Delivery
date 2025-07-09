@@ -6,12 +6,12 @@ import FoodItems from '../FoodItems/FoodItems'
 const FoodDisplay = ({category}) => {
     const {food_list} = useContext(StoreContext)
 
-    const selectedIndices = [1, 9, 21, 24, 33, 43, 53, 58, 66, 79, 80, 91, 99, 109, 115];
-    const selectedItems = selectedIndices.map(index => food_list[index]).filter(Boolean);
+    // const selectedIndices = [1, 9, 21, 24, 33, 43, 53, 58, 66, 79, 80, 91, 99, 109, 115];
+    // const selectedItems = selectedIndices.map(index => food_list[index]).filter(Boolean);
 
     const filteredItems = food_list.filter(item => item.category === category);
 
-    const itemsToRender = category === "All" ? selectedItems : filteredItems;
+    const itemsToRender = category === "All" ? food_list : filteredItems;
 
     console.log("Items to render:", itemsToRender);
     // console.log("Full food_list:", food_list);

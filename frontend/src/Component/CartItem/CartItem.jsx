@@ -3,6 +3,14 @@ import { StoreContext } from '../../Context/StoreContext'
 import './CartItem.css'
 import { toast } from 'react-toastify';
 
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('/upload')) {
+    return `http://localhost:5000${imagePath}`;
+  }
+  return imagePath;
+};
+
 const CartItem = ({totalItems}) => {
   const { food_list, cartItems, addToCart, removeFromCart, updateCartItemQuantity } = useContext(StoreContext);
 
@@ -25,9 +33,13 @@ const CartItem = ({totalItems}) => {
       {cartItems.map((cartItem, index) => (
         <div key={cartItem._id || index} className='cart-items'>
           <div className='Cart-item_details'>
-            <img src={cartItem.food.image && !cartItem.food.image.startsWith('http') ? `http://localhost:5000/upload/${cartItem.food.image}` : cartItem.food.image} alt={cartItem.food.name} />
+            {cartItem.food && cartItem.food.image ? (
+              <img src={getImageUrl(cartItem.food.image)} alt={cartItem.food.name} />
+            ) : (
+              <div className="img-placeholder">No image</div>
+            )}
             <div>
-              <p>{cartItem.food.name}</p>
+              {cartItem.food && cartItem.food.name && <p>{cartItem.food.name}</p>}
               <span onClick={() => removeFromCart(cartItem._id)}>Remove</span>
             </div>
           </div>
@@ -43,8 +55,16 @@ const CartItem = ({totalItems}) => {
               <p>{cartItem.quantity}</p>
               <button onClick={() => addToCart(cartItem.food._id)}>+</button>
             </div>
-            <p>₹{cartItem.food.price.toFixed(2)}</p>
-            <p>₹{(cartItem.food.price * cartItem.quantity).toFixed(2)}</p>
+            <p>
+              {cartItem.food && typeof cartItem.food.price === 'number' && (
+                <p>₹{cartItem.food.price.toFixed(2)}</p>
+              )}
+            </p>
+            {cartItem.food && typeof cartItem.food.price === 'number' ? (
+              <p>₹{(cartItem.food.price * cartItem.quantity).toFixed(2)}</p>
+            ) : (
+              <p>No price</p>
+            )}
           </div>
         </div>
       ))}

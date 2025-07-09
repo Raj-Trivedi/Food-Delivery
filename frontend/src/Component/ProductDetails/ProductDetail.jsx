@@ -7,10 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 const getImageUrl = (img) => {
-  if (!img) return "";
-  if (img.startsWith("http")) return img;
-  // If the backend serves images from /upload and runs on port 5000:
-  return `http://localhost:5000/${img.startsWith("upload") ? img : "upload/" + img}`;
+  if (!img) return '';
+  if (img.startsWith('/upload')) {
+    return `http://localhost:5000${img}`;
+  }
+  return img;
 };
 
 const ProductDetail = () => {
@@ -103,7 +104,7 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (!CartItems || !CartItems[product._id]) {
       addToCart(product._id);
-      toast.success('Item added to cart', { position: 'bottom-left', autoClose: 1200 });
+      //  toast.success('Item added to cart', { position: 'top-center', autoClose: 1200 });
     } else {
       addToCart(product._id);
     }
@@ -334,7 +335,7 @@ const ProductDetail = () => {
                 className="related-card" 
                 onClick={() => navigate(`/product/${item.name.toLowerCase().replace(/\s+/g, '-')}/${item._id}`)}
               >
-                <img src={item.image} alt={item.name} />
+                <img src={getImageUrl(item.image)} alt={item.name} />
                 <div className="related-info">
                   <h4>{item.name}</h4>
                   <div className="related-price">₹{item.price.toFixed(2)}</div>

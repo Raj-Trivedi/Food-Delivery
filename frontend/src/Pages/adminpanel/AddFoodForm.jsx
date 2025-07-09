@@ -57,6 +57,14 @@ const AddFoodForm = ({ refreshFoods }) => {
     }
   };
 
+  const getImageUrl = (imagePath) => {
+    if (!imagePath) return '';
+    if (imagePath.startsWith('/upload')) {
+      return `http://localhost:5000${imagePath}`;
+    }
+    return imagePath;
+  };
+
   return (
     <form className="add-food-form" onSubmit={handleSubmit}>
       <label>Product Image</label>
@@ -65,7 +73,7 @@ const AddFoodForm = ({ refreshFoods }) => {
           <div className="image-upload-box" key={idx}>
             {form.images[idx] ? (
               <img
-                src={URL.createObjectURL(form.images[idx])}
+                src={getImageUrl(form.images[idx])}
                 alt="preview"
                 className="image-preview"
                 onClick={() => handleImageChange(idx, null)}

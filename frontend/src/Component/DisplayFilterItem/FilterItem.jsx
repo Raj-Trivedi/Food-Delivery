@@ -53,6 +53,14 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
 
     console.log("Filtered Food List:", filteredFoodList);
 
+  const getImageUrl = (imagePath) => {
+    if (!imagePath) return '';
+    if (imagePath.startsWith('/upload')) {
+      return `http://localhost:5000${imagePath}`;
+    }
+    return imagePath;
+  };
+
   return (
     <div className="FilterItem-container">
         <div className="FilterItem-header">
@@ -82,7 +90,7 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
                                 icon={liked[item._id]===1 ? faSolidHeart : faRegularHeart}
                                 /> */}
                             </div>
-                             <img src={item.image && !item.image.startsWith('http') ? `http://localhost:5000/upload/${item.image}` : item.image} alt={item.name} />
+                             <img src={getImageUrl(item.image)} alt={item.name} />
                          </div>
                         <div className="filterItem-des" onClick={()=> navigate(`/product/${item.category}/${item._id}`)}>
                             <h3>{item.name}</h3>

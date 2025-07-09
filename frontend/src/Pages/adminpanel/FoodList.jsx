@@ -52,6 +52,14 @@ const FoodList = ({ foods, loading, refreshFoods }) => {
     if (refreshFoods) refreshFoods();
   };
 
+  const getImageUrl = (imagePath) => {
+    if (!imagePath) return '';
+    if (imagePath.startsWith('/upload')) {
+      return `http://localhost:5000${imagePath}`;
+    }
+    return imagePath;
+  };
+
   const EditFoodForm = ({ food, onSave, onCancel }) => {
     const [form, setForm] = useState({
       name: food.name || '',
@@ -111,7 +119,7 @@ const FoodList = ({ foods, loading, refreshFoods }) => {
           <div className="image-upload-box">
             {form.image && typeof form.image === 'string' ? (
               <img
-                src={form.image.startsWith('http') ? form.image : `http://localhost:5000/upload/${form.image}`}
+                src={getImageUrl(form.image)}
                 alt="preview"
                 className="image-preview"
                 onClick={() => handleImageChange(null)}
@@ -193,7 +201,7 @@ const FoodList = ({ foods, loading, refreshFoods }) => {
                     <td>
                       <div className="food-product-cell">
                         <img
-                          src={food.image && !food.image.startsWith('http') ? `http://localhost:5000/upload/${food.image}` : food.image}
+                          src={getImageUrl(food.image)}
                           alt={food.name}
                           className="food-product-img"
                         />

@@ -11,6 +11,15 @@ import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('/upload')) {
+    return `http://localhost:5000${imagePath}`;
+  }
+  // For /assets/... or any other path, serve as is (Vite public folder)
+  return imagePath;
+};
+
 const FoodItems = ({id, name, price, description, image}) => {
 
   const [rating, setRating] = useState(0);
@@ -29,7 +38,7 @@ const FoodItems = ({id, name, price, description, image}) => {
   return (
     <div className="food-item" onClick={() => navigate(`/product/${name}/${id}`)}>
       <div className="Food-img">
-        <img className="img" src={image && !image.startsWith('http') ? `http://localhost:5000/upload/${image}` : image} alt={name} />
+        <img className="img" src={getImageUrl(image)} alt={name} />
 
         <div className="CountDiv" onClick={(e) => e.stopPropagation()}>
           {!(cartItem || showControls) ? (
@@ -85,16 +94,10 @@ const FoodItems = ({id, name, price, description, image}) => {
             className='btncart' 
             onClick={(e) => {
               e.stopPropagation();
-              const wasInCart = !!cartItem;
               addToCart(id);
               setShowControls(true);
-              if (!wasInCart) {
-                toast.success('Added to cart!', {
-                  position: 'top-center',
-                  autoClose: 1500,
-                  toastId: `add-to-cart-${id}`
-                });
-              }
+              
+              
             }} 
             icon={faCartShopping}
           />
