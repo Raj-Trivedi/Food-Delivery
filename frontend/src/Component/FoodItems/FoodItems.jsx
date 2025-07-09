@@ -1,6 +1,6 @@
 // import React, { useContext} from 'react'
 import "./FoodItem.css"
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import add_icon_green from '../../../../assets/frontend_assets/add_icon_green.png';
@@ -26,6 +26,34 @@ const FoodItems = ({id, name, price, description, image}) => {
   const [showControls, setShowControls] = useState(false);
   const {cartItems, addToCart, removeFromCart} = useContext(StoreContext);
   const navigate = useNavigate();
+  const [reviews, setReviews] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
+
+  useEffect(() => {
+    // Fetch reviews for this food item
+    const fetchReviews = async () => {
+      try {
+        const res = await fetch(`/api/review/${id}`);
+        const data = await res.json();
+        if (data.success && data.reviews) {
+          setReviews(data.reviews);
+          if (data.reviews.length > 0) {
+            const avg = data.reviews.reduce((sum, r) => sum + r.rating, 0) / data.reviews.length;
+            setAverageRating(avg);
+          } else {
+            setAverageRating(0);
+          }
+        } else {
+          setReviews([]);
+          setAverageRating(0);
+        }
+      } catch (err) {
+        setReviews([]);
+        setAverageRating(0);
+      }
+    };
+    fetchReviews();
+  }, [id]);
 
   // Find the cart item for this food
   const cartItem = Array.isArray(cartItems) ? cartItems.find(item => item.food && item.food._id === id) : null;
@@ -75,12 +103,17 @@ const FoodItems = ({id, name, price, description, image}) => {
       <div className="Description">
         <div className="name-rating">
           <span className="name">{name}</span>
-          <span className="rating">
+          <span className="rating" style={{ display: 'flex', alignItems: 'center' }}>
             {[1, 2, 3, 4, 5].map((value) => (
               <span
                 key={value}
-                className={value <= rating ? 'star filled' : 'star'}
-                onClick={() => handleStarClick(value)}
+                className={`star${value <= Math.round(averageRating) ? ' filled' : ''}`}
+                style={{
+                  fontSize: '24px',
+                  color: value <= Math.round(averageRating) ? '#ffc107' : '#ddd',
+                  marginRight: 2,
+                  transition: 'transform 0.2s, color 0.2s',
+                }}
               >
                 ★
               </span>

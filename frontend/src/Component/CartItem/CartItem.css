@@ -31,16 +31,20 @@
 
 .cart-items {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  justify-content: flex-start;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+  gap: 120px; /* Remove gap here, use fixed widths instead */
 }
 
 .Cart-item_details {
   display: flex;
   align-items: center;
-  
-  gap: 15px;
+  min-width: 220px;
+  max-width: 220px;   /* Fixed width for product details */
+  flex: 0 0 220px;    /* Prevents growing/shrinking */
+  gap: 16px;
 }
 
 .Cart-item_details img {
@@ -53,6 +57,10 @@
 .Cart-item_details p {
   margin: 0;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
 }
 
 .Cart-item_details span {
@@ -65,6 +73,11 @@
 
 .Cart-item_details span:hover {
   text-decoration: underline;
+}
+.cartitem-des{
+  display: flex;
+  justify-content: space-between;
+  
 }
 
 .QuantityControl {
@@ -81,11 +94,12 @@
   cursor: pointer;
   font-size: 16px;
 }
-.cartitem-des{
+.cartitem-des {
   display: flex;
-  gap:100px;
-
-  
+  align-items: center;
+  gap: 32px;
+  flex: 1;            /* Take remaining space */
+  min-width: 0;
 }
 
 .QuantityControl p {

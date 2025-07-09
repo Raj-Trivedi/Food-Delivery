@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './Filter.css';
 import { menu_list } from "../../../../assets/frontend_assets/assets";
 
-const Filter = ({ category, setCategory,minPrice,setMinPrice,maxPrice,setMaxPrice }) => {
+const Filter = ({ category, setCategory, minPrice, setMinPrice, maxPrice, setMaxPrice, maxProductPrice }) => {
   
 
  const filterByCategory = (item) => {
@@ -67,7 +67,7 @@ const Filter = ({ category, setCategory,minPrice,setMinPrice,maxPrice,setMaxPric
           <input
             type="range"
             min="0"
-            max="1000"
+            max={maxProductPrice}
             step="10"
             value={minPrice}
             onChange={handleMinChange}
@@ -81,7 +81,7 @@ const Filter = ({ category, setCategory,minPrice,setMinPrice,maxPrice,setMaxPric
           <input
             type="range"
             min="0"
-            max="1000"
+            max={maxProductPrice}
             step="10"
             value={maxPrice}
             onChange={handleMaxChange}
