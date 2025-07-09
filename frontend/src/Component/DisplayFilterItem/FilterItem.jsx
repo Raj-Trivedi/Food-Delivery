@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
+const FilterItem = ({category,minPrice,maxPrice,sortBy,dietary}) => {
     // const [liked, setLiked] = useState(false);
 
     const navigate= useNavigate();
@@ -47,8 +47,9 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
         
         const isCategoryMatch = Object.keys(category).length === 0 ? true : !!category[item.category];
         const isPriceMatch = item.price >= minPrice && item.price <= maxPrice;
-        return isCategoryMatch && isPriceMatch;
-
+        const isDietaryMatch =
+    Object.keys(dietary).length === 0 || dietary[item.Dietary];
+  return isCategoryMatch && isPriceMatch && isDietaryMatch;
     });
 
     console.log("Filtered Food List:", filteredFoodList);

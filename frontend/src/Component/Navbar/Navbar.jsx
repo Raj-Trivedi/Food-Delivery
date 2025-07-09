@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import "./Navbar.css";
-import logo from "../../../../assets/frontend_assets/Project_imgs/Logo.png";
+import logo from "/assets/frontend_assets/Project_imgs/Logo.png";
 import Search_icon from "../../../../assets/frontend_assets/search_icon.png";
 import Cart_icon from "../../../../assets/frontend_assets/basket_icon.png";
 import { StoreContext } from '../../Context/StoreContext';

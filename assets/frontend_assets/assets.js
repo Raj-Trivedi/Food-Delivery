@@ -1,4 +1,5 @@
 import basket_icon from './basket_icon.png'
+import logo from "./Project_imgs/logo.png";
 // import logo from './logo.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
@@ -225,7 +226,7 @@ export const menu_list = [
         menu_image: menu_4
     },
     {
-        menu_name: "Gujrati",
+        menu_name: "Gujarati",
         menu_image: menu_5
     },
     {

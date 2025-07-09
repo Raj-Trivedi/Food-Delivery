@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "dotenv": "^17.1.0",
-    "mongoose": "^8.16.2"
+    "mongoose": "^8.16.2",
+    "react-select": "^5.10.1"
   }
 }

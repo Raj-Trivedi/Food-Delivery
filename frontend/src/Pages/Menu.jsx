@@ -13,6 +13,7 @@ const Menu = () => {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [sortBy, setSortBy] = useState('default');
   const { food_list } = useContext(StoreContext);
+  const [dietary, setDietary] = useState({});
 
   // Compute the max price dynamically
   const maxProductPrice = food_list.length > 0 ? Math.max(...food_list.map(item => item.price)) : 1000;
@@ -25,14 +26,19 @@ const Menu = () => {
   return (
     <div className='menu-container'>
       <Filter 
-        category={category} setCategory={setCategory} 
-        minPrice={minPrice} setMinPrice={setMinPrice} 
-        maxPrice={maxPrice} setMaxPrice={setMaxPrice}
+        category={category}
+        setCategory={setCategory}
+        minPrice={minPrice}
+        setMinPrice={setMinPrice}
+        maxPrice={maxPrice}
+        setMaxPrice={setMaxPrice}
         maxProductPrice={maxProductPrice}
+        dietary={dietary}
+        setDietary={setDietary}
       />
       <div className="right-menu">
         <FilterHeader sortBy={sortBy} setSortBy={setSortBy} />
-        <FilterItem  category={category} minPrice={minPrice} maxPrice={maxPrice}  sortBy={sortBy}/>
+        <FilterItem  category={category} minPrice={minPrice} maxPrice={maxPrice}  sortBy={sortBy} dietary={dietary}/>
       </div>
     </div>
   )

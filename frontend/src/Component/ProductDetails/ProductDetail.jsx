@@ -150,7 +150,7 @@ const ProductDetail = () => {
         </div>
         <div className="product-info modern-info">
           <h1>{product.name}</h1>
-          <div className="product-subtitle">{subtitle}</div>
+          <div className="product-subtitle">{product.description}</div>
           <div className="product-rating-row">
           <div className="stars">
               {[1, 2, 3, 4, 5].map((star) => (
@@ -175,7 +175,6 @@ const ProductDetail = () => {
           <button className="add-to-cart-btn" onClick={handleAddToCart}>
             Add to Cart
           </button>
-          <p className="product-long-desc">{product.longDescription || 'This is a long description of the product. More details can be added here.'}</p>
         </div>
       </div>
 

@@ -10,7 +10,7 @@ import Address from './Pages/Address/Address.jsx';
 import ProductDetail from './Component/ProductDetails/ProductDetail.jsx';
 import Myorder from './Component/Myorder/Myorder.jsx'
 import Auth from './Pages/Auth.jsx'
-import AdminPanel from './Pages/adminpanel/AdminPanelNew.jsx'
+import AdminPanel from './Pages/adminpanel/AdminPanel.jsx'
 import SellerSignIn from './Component/Login/SellerSignIn.jsx';
 import SellerRegister from './Component/Login/SellerRegister.jsx';
 import { ToastContainer } from 'react-toastify';
