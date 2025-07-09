@@ -10,9 +10,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faSolidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
 import { useNavigate } from 'react-router-dom';
-
-
-
+import { menu_list } from "../../../../assets/frontend_assets/assets";
 
 
 const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
@@ -23,32 +21,33 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
 
  
     const { food_list ,addToCart,liked,toggleLike,searchItem } = useContext(StoreContext);
+    // const order =food_list
     const SortItem = (food_list, sortBy) => {
+     
     if (sortBy === 'default') return food_list;
     if (sortBy === 'LH'){
-        return food_list.sort((a, b) => a.price - b.price);
+        return food_list.slice().sort((a, b) => a.price - b.price);
     }
     if (sortBy === 'HL'){
-        return food_list.sort((a, b) => b.price - a.price);
+        return food_list.slice().sort((a, b) => b.price - a.price);
     }
    
     return food_list; 
   };
     const Updatedlist =SortItem(food_list, sortBy);
 
+    const menuNames = menu_list.map(item => item.menu_name);
     const filteredFoodList = Updatedlist.filter(item => {
         const isSearchMatch = searchItem ? item.name.toLowerCase().includes(searchItem.toLowerCase()) : true;
-        if (!isSearchMatch) return false;   
-        
-      
-        
+        if (!isSearchMatch) return false;
 
-        
-        
+        // If 'Others' is selected, show items whose category is not in menuNames
+        if (category['Others']) {
+          return !menuNames.includes(item.category);
+        }
         const isCategoryMatch = Object.keys(category).length === 0 ? true : !!category[item.category];
         const isPriceMatch = item.price >= minPrice && item.price <= maxPrice;
         return isCategoryMatch && isPriceMatch;
-
     });
 
     console.log("Filtered Food List:", filteredFoodList);
@@ -79,10 +78,7 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
                                 className="btncart1"
                                 onClick={() => {
                                   addToCart(item._id);
-                                  toast.success('Added to cart!', {
-                                    position: 'top-center',
-                                    autoClose: 1500,
-                                  });
+                                  
                                 }}
                                 icon={faCartShopping}
                                 />

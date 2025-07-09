@@ -54,6 +54,15 @@ const Filter = ({ category, setCategory, minPrice, setMinPrice, maxPrice, setMax
               <div className='categogy_item'>{item.menu_name}</div>
             </div>
         ))}
+           {/* Others option */}
+           <div className='categogy_list' key="others">
+             <input id="mychecked-others"
+               type="checkbox"
+               checked={!!category['Others']}
+               onChange={() => filterByCategory({ menu_name: 'Others' })}
+             />
+             <div className='categogy_item'>Others</div>
+           </div>
           </div>
       </div>
       <hr/>
