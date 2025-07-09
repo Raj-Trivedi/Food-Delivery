@@ -56,6 +56,12 @@ const ProductDetail = () => {
     fetchReviews();
   }, [id]);
 
+  useEffect(() => {
+    if (product) {
+      setMainImg(product.image);
+    }
+  }, [product]);
+
   if (!product) {
     return <div className="product-not-found">Product not found.</div>;
   }

@@ -67,8 +67,8 @@ const Filter = ({ category, setCategory, minPrice, setMinPrice, maxPrice, setMax
               />
               <div className='categogy_item'>{item.menu_name}</div>
             </div>
-          ))}
-        </div>
+        ))}
+          </div>
       </div>
       <hr />
 

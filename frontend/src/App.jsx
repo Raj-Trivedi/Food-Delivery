@@ -15,6 +15,7 @@ import SellerSignIn from './Component/Login/SellerSignIn.jsx';
 import SellerRegister from './Component/Login/SellerRegister.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from './Component/ScrollToTop';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
   
   return (
     <>
+      <ScrollToTop />
       {!hideNavFooter && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
