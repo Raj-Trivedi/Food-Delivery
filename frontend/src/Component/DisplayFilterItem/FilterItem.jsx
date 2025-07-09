@@ -45,13 +45,15 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy}) => {
 
         
         
-        const isCategoryMatch = Object.keys(category).length === 0 || category[item.category] === true; 
+        const isCategoryMatch = Object.keys(category).length === 0 ? true : !!category[item.category];
         const isPriceMatch = item.price >= minPrice && item.price <= maxPrice;
         return isCategoryMatch && isPriceMatch;
 
     });
 
     console.log("Filtered Food List:", filteredFoodList);
+    console.log('category prop:', category);
+    console.log('food_list:', food_list);
 
   return (
     <div className="FilterItem-container">

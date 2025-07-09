@@ -151,14 +151,11 @@ const ProductDetail = () => {
           <h1>{product.name}</h1>
           <div className="product-subtitle">{subtitle}</div>
           <div className="product-rating-row">
-            <div className="star-rating">
+          <div className="stars">
               {[1, 2, 3, 4, 5].map((star) => (
-                <span
-                  key={star}
-                  className={`star ${star <= (hover || rating) ? 'filled' : ''}`}
-                  onClick={() => setRating(star)}
-                  onMouseEnter={() => setHover(star)}
-                  onMouseLeave={() => setHover(0)}
+                <span 
+                  key={star} 
+                  className={`star ${star <= Math.round(averageRating) ? 'filled' : ''}`}
                 >
                   ★
                 </span>

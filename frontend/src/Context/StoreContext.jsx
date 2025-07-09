@@ -107,7 +107,7 @@ const StoreContextProvider = (props) => {
     const addToCart = (foodId) => {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = '/signup';
+            window.location.href = '/auth';
             return;
         }
         // Check if the item is already in the cart
@@ -138,7 +138,7 @@ const StoreContextProvider = (props) => {
     const updateCartItemQuantity = (cartItemId, quantity) => {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = '/signup';
+            window.location.href = '/auth';
             return;
         }
         fetch('/api/cart/update', {
@@ -161,7 +161,7 @@ const StoreContextProvider = (props) => {
     const removeFromCart = (cartItemId, currentQuantity = 1) => {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = '/signup';
+            window.location.href = '/auth';
             return;
         }
         if (currentQuantity > 1) {
@@ -212,7 +212,7 @@ const StoreContextProvider = (props) => {
     const placeOrder = async (shipping = 0, discount = 0) => {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = '/signin';
+            window.location.href = '/auth';
             return;
         }
         const items = cartItems.map((item) => ({
@@ -260,7 +260,7 @@ const StoreContextProvider = (props) => {
     const clearCart = () => {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = '/signup';
+            window.location.href = '/auth';
             return;
         }
         fetch('/api/cart/clear', {
