@@ -11,8 +11,10 @@ import ProductDetail from './Component/ProductDetails/ProductDetail.jsx';
 import Myorder from './Component/Myorder/Myorder.jsx'
 import Auth from './Pages/Auth.jsx'
 import AdminPanel from './Pages/adminpanel/AdminPanel.jsx'
+
 import SellerSignIn from './Component/Login/SellerSignIn.jsx';
 import SellerRegister from './Component/Login/SellerRegister.jsx';
+import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from './Component/ScrollToTop';
@@ -20,7 +22,7 @@ import ScrollToTop from './Component/ScrollToTop';
 function App() {
 
   const location = useLocation();
-  const hideNavFooter = /admin|seller/i.test(location.pathname);
+  const hideNavFooter = /admin|admin-panel|seller/i.test(location.pathname);
   
   return (
     <>
@@ -35,7 +37,13 @@ function App() {
         <Route path="/address" element={<Address />} /> 
         <Route path="/product/:category/:id" element={<ProductDetail />} />
         <Route path="/myorder" element={<Myorder />} />
-        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin" element={
+          <ProtectedRoute>
+            <AdminPanel />
+          </ProtectedRoute>
+        } />
+        
+        
         <Route path="/seller-signin" element={<SellerSignIn />} />
         <Route path="/seller-register" element={<SellerRegister />} />
       </Routes>
