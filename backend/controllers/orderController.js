@@ -5,7 +5,7 @@ import Food from '../models/foodModel.js';
 export const placeOrder = async (req, res) => {
   console.log('placeOrder called', req.user, req.body); // Debug log
   try {
-    const { items, total } = req.body;
+    const { items, total, address, phone } = req.body;
     // For each item, fetch the food and set the seller field
     const itemsWithSeller = await Promise.all(items.map(async (item) => {
       const food = await Food.findById(item.foodId);
@@ -22,6 +22,8 @@ export const placeOrder = async (req, res) => {
       user: req.user.id,
       items: itemsWithSeller,
       total,
+      address,
+      phone,
     });
     console.log('Order created:', order);
     res.json({ success: true, order });
@@ -109,7 +111,9 @@ export const getSellerOrders = async (req, res) => {
       createdAt: order.createdAt,
       status: order.status,
       items: order.items.filter(item => item.seller.toString() === req.user.id),
-      total: order.total
+      total: order.total,
+      address: order.address,
+      phone: order.phone
     })).filter(order => order.items.length > 0);
     res.json({ success: true, orders: sellerOrders });
   } catch (err) {

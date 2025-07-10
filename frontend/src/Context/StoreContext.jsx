@@ -220,7 +220,15 @@ const StoreContextProvider = (props) => {
             image: item.food.image
         }));
         const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0) + shipping - discount;
-        const orderData = { items, total };
+        // Compose address string from address object if needed
+        let addressString = '';
+        if (address) {
+            if (typeof address === 'string') addressString = address;
+            else addressString = [address.street, address.city, address.state, address.zip, address.country].filter(Boolean).join(', ');
+        }
+        // Try to get phone from address object or context
+        let phone = address && address.phone ? address.phone : '';
+        const orderData = { items, total, address: addressString, phone };
         console.log('[placeOrder] Sending orderData:', orderData);
         try {
             const res = await fetch('/api/order/add', {

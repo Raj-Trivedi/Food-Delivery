@@ -67,9 +67,19 @@ const OrderList = () => {
             <div key={order._id} className="order-card">
               <div className="order-card-info">
                 <div><b>Buyer:</b> {order.buyer?.name || 'Unknown'}</div>
+                <div><b>Address:</b> {order.address || 'N/A'}</div>
+                <div><b>Phone:</b> {order.phone || 'N/A'}</div>
                 <div><b>Date:</b> {new Date(order.createdAt).toLocaleDateString()}</div>
-                <div><b>Status:</b> 
-                  <select value={order.status} onChange={e => handleStatusChange(order._id, e.target.value)}>
+                <div className="order-card-status">
+                  <b>Status:</b>
+                  <select
+                    value={order.status}
+                    onChange={e => handleStatusChange(order._id, e.target.value)}
+                    style={{
+                      background: order.status === "Pending" ? "#fffbe6" : order.status === "Out for Delivery" ? "#e6f0ff" : "#e6ffe6",
+                      color: order.status === "Pending" ? "#b59f00" : order.status === "Out for Delivery" ? "#2563eb" : "#27ae60"
+                    }}
+                  >
                     <option value="Pending">Pending</option>
                     <option value="Out for Delivery">Out for Delivery</option>
                     <option value="Delivered">Delivered</option>
@@ -78,14 +88,15 @@ const OrderList = () => {
               </div>
               <div className="order-card-items">
                 {order.items.map((item, idx) => (
-                  <div key={idx} style={{ display: "inline-block", marginRight: "1rem" }}>
+                  <div key={idx} className="order-card-product">
                     <img
                       src={getImageUrl(item.image)}
                       alt={item.name}
-                      style={{ width: 50, height: 50 }}
+                      className="order-card-img"
                     />
                     <span className="order-card-product-name">
-                      {item.name} <span className="order-card-qty">x {item.quantity}</span>
+                      {item.name}
+                      <span className="order-card-qty">x {item.quantity}</span>
                     </span>
                   </div>
                 ))}
