@@ -6,6 +6,13 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import AddFoodForm from './AddFoodForm.jsx';
+import Select from 'react-select';
+import { menu_list } from '../../../../assets/frontend_assets/assets';
+
+const categoryOptions = [
+  ...menu_list.map(item => ({ value: item.menu_name, label: item.menu_name })),
+  { value: 'Others', label: 'Others' }
+];
 
 
 const FoodList = ({ foods, loading, refreshFoods }) => {
@@ -65,8 +72,8 @@ const FoodList = ({ foods, loading, refreshFoods }) => {
       name: food.name || '',
       description: food.description || '',
       price: food.price || '',
-      offerPrice: food.offerPrice || '',
       category: food.category || '',
+      Dietary: food.Dietary || '',
       image: food.image || null,
     });
     const [status, setStatus] = useState('');
@@ -83,22 +90,23 @@ const FoodList = ({ foods, loading, refreshFoods }) => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       setStatus('');
-      const payload = {
-        name: form.name,
-        description: form.description,
-        price: form.price,
-        category: form.category,
-        offerPrice: form.offerPrice,
-      };
+      const data = new FormData();
+      data.append('name', form.name);
+      data.append('description', form.description);
+      data.append('price', form.price);
+      data.append('category', form.category);
+      data.append('Dietary', form.Dietary);
+      if (form.image && form.image instanceof File) {
+        data.append('image', form.image);
+      }
       try {
         const token = localStorage.getItem('token');
         const res = await fetch(`/api/food/${food._id}`, {
           method: 'PATCH',
           headers: {
-            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           },
-          body: JSON.stringify(payload),
+          body: data,
         });
         const result = await res.json();
         if (result.success) {
@@ -149,15 +157,73 @@ const FoodList = ({ foods, loading, refreshFoods }) => {
         <label>Product Description</label>
         <textarea name="description" value={form.description} onChange={handleChange} placeholder="Type here" required />
         <label>Category</label>
-        <input name="category" value={form.category} onChange={handleChange} placeholder="Type category here" required />
+        <Select
+          options={categoryOptions}
+          value={categoryOptions.find(opt => opt.value === form.category) || null}
+          onChange={option => setForm(prev => ({ ...prev, category: option.value }))}
+          placeholder="Select category"
+          menuPlacement="bottom"
+          styles={{
+            control: (base, state) => ({
+              ...base,
+              borderRadius: 6,
+              borderColor: state.isFocused ? '#5b5bf6' : '#e5e7eb',
+              minHeight: 44,
+              boxShadow: state.isFocused ? '0 0 0 2px #e5e7ff' : '0 2px 8px rgba(91,91,246,0.04)',
+              fontSize: '1rem',
+              background: '#f8f9ff'
+            }),
+            menu: (base) => ({
+              ...base,
+              borderRadius: 8,
+              marginTop: 2,
+              zIndex: 9999
+            }),
+            option: (base, state) => ({
+              ...base,
+              background: state.isSelected
+                ? '#5b5bf6'
+                : state.isFocused
+                ? '#e5e7ff'
+                : '#fff',
+              color: state.isSelected ? '#fff' : '#333',
+              fontWeight: state.isSelected ? 700 : 400,
+              cursor: 'pointer'
+            })
+          }}
+          isSearchable={false}
+        />
         <div className="price-row">
           <div>
             <label>Product Price</label>
             <input name="price" type="number" value={form.price} onChange={handleChange} required />
           </div>
-          <div>
-            <label>Offer Price</label>
-            <input name="offerPrice" type="number" value={form.offerPrice} onChange={handleChange} />
+        </div>
+        <div className="dietary-row">
+          <label>Dietary Option</label>
+          <div className="dietary-options">
+            <label className='dietary-label'>
+              <input
+                type="radio"
+                name="Dietary"
+                value="Veg"
+                checked={form.Dietary === 'Veg'}
+                onChange={handleChange}
+                required
+              />
+              Vegetarian
+            </label>
+            <label className='dietary-label' style={{ marginLeft: '24px' }}>
+              <input
+                type="radio"
+                name="Dietary"
+                value="Non Veg"
+                checked={form.Dietary === 'Non Veg'}
+                onChange={handleChange}
+                required
+              />
+              Non Vegetarian
+            </label>
           </div>
         </div>
         <div style={{display:'flex',gap:'12px',marginTop:'10px'}}>

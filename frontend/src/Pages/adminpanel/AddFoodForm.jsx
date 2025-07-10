@@ -15,7 +15,7 @@ const AddFoodForm = ({ refreshFoods }) => {
     price: '',
     category: '',
     Dietary: '',
-    images: [null, null, null, null],
+    images: [null], // keep as array for now for minimal change
   });
   const [status, setStatus] = useState('');
 
@@ -24,12 +24,8 @@ const AddFoodForm = ({ refreshFoods }) => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleImageChange = (idx, file) => {
-    setForm((prev) => {
-      const newImages = [...prev.images];
-      newImages[idx] = file;
-      return { ...prev, images: newImages };
-    });
+  const handleImageChange = (file) => {
+    setForm((prev) => ({ ...prev, images: [file] }));
   };
 
   const handleSubmit = async (e) => {
@@ -55,7 +51,7 @@ const AddFoodForm = ({ refreshFoods }) => {
       const result = await res.json();
       if (result.success) {
         setStatus('Food item added successfully!');
-        setForm({ name: '', description: '', price: '', category: '', Dietary: '', images: [null, null, null, null] });
+        setForm({ name: '', description: '', price: '', category: '', Dietary: '', images: [null] });
         if (refreshFoods) refreshFoods();
       } else {
         setStatus(result.message || 'Failed to add food item.');
@@ -65,40 +61,44 @@ const AddFoodForm = ({ refreshFoods }) => {
     }
   };
 
-  const getImageUrl = (imagePath) => {
-    if (!imagePath) return '';
-    if (imagePath.startsWith('/upload')) {
-      return `http://localhost:5000${imagePath}`;
+  const getImageUrl = (image) => {
+    if (!image) return '';
+    if (typeof image === 'string') {
+      if (image.startsWith('/upload')) {
+        return `http://localhost:5000${image}`;
+      }
+      return image;
     }
-    return imagePath;
+    if (image instanceof File) {
+      return URL.createObjectURL(image);
+    }
+    return '';
   };
 
   return (
     <form className="add-food-form" onSubmit={handleSubmit}>
       <label>Product Image</label>
       <div className="image-upload-row">
-        {[0, 1, 2, 3].map((idx) => (
-          <div className="image-upload-box" key={idx}>
-            {form.images[idx] ? (
-              <img
-                src={getImageUrl(form.images[idx])}
-                alt="preview"
-                className="image-preview"
-                onClick={() => handleImageChange(idx, null)}
+        <div className="image-upload-box">
+          {form.images[0] ? (
+            <img
+              src={getImageUrl(form.images[0])}
+              alt="preview"
+              className="image-preview"
+              onClick={() => handleImageChange(null)}
+            />
+          ) : (
+            <label className="image-upload-label">
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                onChange={(e) => handleImageChange(e.target.files[0])}
               />
-            ) : (
-              <label className="image-upload-label">
-                <input
-                  type="file"
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  onChange={(e) => handleImageChange(idx, e.target.files[0])}
-                />
-                <div className="image-upload-placeholder">Upload</div>
-              </label>
-            )}
-          </div>
-        ))}
+              <div className="image-upload-placeholder">Upload</div>
+            </label>
+          )}
+        </div>
       </div>
       <label>Product Name</label>
       <input name="name" value={form.name} onChange={handleChange} placeholder="Type here" required />

@@ -11,7 +11,7 @@ const addFood = async (req,res)=>{
   return res.status(400).json({ success: false, message: "No image uploaded" });
 }
 
- let image_fileName= `${req.file.filename}`; // getting image file name from request
+ let image_fileName= `/upload/${req.file.filename}`; // getting image file name from request
 
  
  
@@ -23,6 +23,7 @@ const addFood = async (req,res)=>{
     price: req.body.price,
     image: image_fileName,
     category: req.body.category,
+    Dietary: req.body.Dietary,
     seller: req.user.id // associate food with seller
  });
     try {
@@ -77,15 +78,19 @@ const updateFood = async (req, res) => {
     let update = req.body;
     // If an image was uploaded, update the image field
     if (req.file) {
-      update = { ...update, image: req.file.filename };
+      update = { ...update, image: `/upload/${req.file.filename}` };
       // Optionally: delete old image file
       const food = await foodModel.findById(req.params.id);
-      if (food && food.image && food.image !== req.file.filename) {
-        const oldPath = `upload/${food.image}`;
+      if (food && food.image && food.image !== `/upload/${req.file.filename}`) {
+        const oldPath = food.image.substring(1); // Remove leading slash
         if (fs.existsSync(oldPath)) {
           fs.unlinkSync(oldPath);
         }
       }
+    }
+    // Ensure Dietary field is included in update
+    if (req.body.Dietary) {
+      update.Dietary = req.body.Dietary;
     }
     const food = await foodModel.findByIdAndUpdate(req.params.id, update, { new: true });
     res.json({ success: true, message: 'Food item updated', food });

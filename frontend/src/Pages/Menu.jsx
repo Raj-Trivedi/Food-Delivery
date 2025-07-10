@@ -10,14 +10,14 @@ import './Menu.css';
 const Menu = () => {
   const [category, setCategory] = React.useState({});
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000);
+  
   const [sortBy, setSortBy] = useState('default');
   const { food_list } = useContext(StoreContext);
   const [dietary, setDietary] = useState({});
 
   // Compute the max price dynamically
   const maxProductPrice = food_list.length > 0 ? Math.max(...food_list.map(item => item.price)) : 1000;
-
+  const [maxPrice, setMaxPrice] = useState(maxProductPrice);
   // Ensure maxPrice never exceeds maxProductPrice
   React.useEffect(() => {
     if (maxPrice > maxProductPrice) setMaxPrice(maxProductPrice);

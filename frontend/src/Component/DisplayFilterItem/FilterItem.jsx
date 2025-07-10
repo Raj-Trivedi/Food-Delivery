@@ -51,6 +51,7 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy,dietary}) => {
         const isDietaryMatch =
     Object.keys(dietary).length === 0 || dietary[item.Dietary];
   return isCategoryMatch && isPriceMatch && isDietaryMatch;
+        return isCategoryMatch && isPriceMatch;
 
     });
 
@@ -58,12 +59,18 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy,dietary}) => {
     console.log('category prop:', category);
     console.log('food_list:', food_list);
 
-  const getImageUrl = (imagePath) => {
-    if (!imagePath) return '';
-    if (imagePath.startsWith('/upload')) {
-      return `http://localhost:5000${imagePath}`;
+  const getImageUrl = (image) => {
+    if (!image) return '';
+    if (typeof image === 'string') {
+      if (image.startsWith('/upload')) {
+        return `http://localhost:5000${image}`;
+      }
+      return image;
     }
-    return imagePath;
+    if (image instanceof File) {
+      return URL.createObjectURL(image);
+    }
+    return '';
   };
 
   return (
@@ -92,7 +99,11 @@ const FilterItem = ({category,minPrice,maxPrice,sortBy,dietary}) => {
                                 icon={liked[item._id]===1 ? faSolidHeart : faRegularHeart}
                                 /> */}
                             </div>
-                             <img src={getImageUrl(item.image)} alt={item.name} />
+                             <img
+  src={getImageUrl(item.image)}
+  alt={item.name}
+  onError={e => { e.target.onerror = null; e.target.src = '/assets/frontend_assets/logo.jpg'; }}
+/>
                          </div>
                         <div className="filterItem-des" onClick={()=> navigate(`/product/${item.category}/${item._id}`)}>
                             <h3>{item.name}</h3>
