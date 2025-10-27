@@ -24,23 +24,25 @@ const Menu = () => {
   }, [maxProductPrice]);
 
   return (
-    <div className='menu-container'>
-      <Filter 
-        category={category}
-        setCategory={setCategory}
-        minPrice={minPrice}
-        setMinPrice={setMinPrice}
-        maxPrice={maxPrice}
-        setMaxPrice={setMaxPrice}
-        maxProductPrice={maxProductPrice}
-        dietary={dietary}
-        setDietary={setDietary}
-      />
-      <div className="right-menu">
-        <FilterHeader sortBy={sortBy} setSortBy={setSortBy} />
-        <FilterItem  category={category} minPrice={minPrice} maxPrice={maxPrice}  sortBy={sortBy} dietary={dietary}/>
+    <>
+      <div className='menu-container'>
+        <Filter 
+          category={category}
+          setCategory={setCategory}
+          minPrice={minPrice}
+          setMinPrice={setMinPrice}
+          maxPrice={maxPrice}
+          setMaxPrice={setMaxPrice}
+          maxProductPrice={maxProductPrice}
+          dietary={dietary}
+          setDietary={setDietary}
+        />
+        <div className="right-menu">
+          <FilterHeader sortBy={sortBy} setSortBy={setSortBy} />
+          <FilterItem  category={category} minPrice={minPrice} maxPrice={maxPrice}  sortBy={sortBy} dietary={dietary}/>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 export default Menu;

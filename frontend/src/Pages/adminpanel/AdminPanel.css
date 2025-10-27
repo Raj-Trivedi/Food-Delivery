@@ -276,3 +276,230 @@
 .adminpanel-logo:hover{
   transform: scale(1.05);
 }
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .adminpanelnew-layout {
+    flex-direction: column;
+  }
+  
+  .adminpanelnew-sidebar {
+    width: 100%;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .adminpanelnew-sidebar nav ul {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 0;
+    gap: 0;
+  }
+  
+  .adminpanelnew-sidebar nav li {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 10px 15px;
+    border-left: none;
+    border-bottom: 4px solid transparent;
+  }
+  
+  .adminpanelnew-sidebar nav li.active {
+    border-left: none;
+    border-bottom: 4px solid #5b5bf6;
+    background: transparent;
+  }
+  
+  .adminpanelnew-main {
+    padding: 20px;
+  }
+  
+  .adminpanelnew-brand {
+    padding: 20px;
+    font-size: 1.5rem;
+  }
+  
+  .adminpanelnew-logo {
+    font-size: 1.8rem;
+  }
+  
+  .adminpanelnew-brandname {
+    font-size: 1.3rem;
+  }
+  
+  .logout-btn {
+    margin: 0;
+    width: auto;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .adminpanelnew-main {
+    padding: 15px;
+  }
+  
+  .adminpanelnew-main h1 {
+    font-size: 1.5rem;
+  }
+  
+  .add-food-form {
+    padding: 20px;
+  }
+  
+  .add-food-form label {
+    font-size: 1rem;
+  }
+  
+  .add-food-form input,
+  .add-food-form textarea,
+  .add-food-form select {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+  
+  .add-btn {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+  
+  .image-upload-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .price-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .seller-profile-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 12px;
+  }
+  
+  .seller-profile-avatar {
+    margin: 0 auto 10px;
+  }
+  
+  .seller-profile-name,
+  .seller-profile-email,
+  .seller-profile-restaurant {
+    font-size: 0.9rem;
+  }
+  
+  .adminpanel-logo {
+    height: 50px;
+  }
+  
+  .status-msg {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .adminpanelnew-brand {
+    font-size: 1rem;
+    padding: 12px 15px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .adminpanelnew-logo {
+    font-size: 1.3rem;
+  }
+  
+  .adminpanelnew-brandname {
+    font-size: 0.9rem;
+  }
+  
+  .adminpanelnew-sidebar nav {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  
+  .adminpanelnew-sidebar nav ul {
+    display: flex;
+    padding: 8px 0;
+    min-width: fit-content;
+  }
+  
+  .adminpanelnew-sidebar nav li {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  
+  .adminpanelnew-navicon {
+    font-size: 1rem;
+  }
+  
+  .adminpanelnew-main {
+    padding: 15px 10px;
+  }
+  
+  .adminpanelnew-main h1 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  
+  .add-food-form {
+    padding: 15px;
+    margin-top: 0;
+    border-radius: 10px;
+  }
+  
+  .add-food-form label {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+  }
+  
+  .add-food-form input,
+  .add-food-form textarea,
+  .add-food-form select {
+    font-size: 0.95rem;
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .add-food-form textarea {
+    min-height: 80px;
+  }
+  
+  .image-upload-box {
+    width: 80px;
+    height: 70px;
+  }
+  
+  .image-upload-placeholder {
+    font-size: 0.9rem;
+  }
+  
+  .dietary-row {
+    font-size: 0.95rem;
+  }
+  
+  .dietary-options {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .dietary-label {
+    font-size: 0.9rem;
+  }
+  
+  .adminpanel-logo {
+    height: 45px;
+  }
+  
+  .logout-btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}

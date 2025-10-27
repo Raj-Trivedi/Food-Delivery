@@ -6,6 +6,148 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   /* gap: 0px; */
   row-gap: 40px;
+  column-gap: 30px;
+}
+
+/* Responsive styles */
+@media (max-width: 1400px) {
+  .FilterItem-container {
+    padding: 25px 60px;
+  }
+  
+  .FilterItem-items {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    row-gap: 35px;
+    column-gap: 25px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .FilterItem-container {
+    padding: 20px 40px;
+  }
+  
+  .FilterItem-items {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    row-gap: 30px;
+    column-gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .FilterItem-container {
+    padding: 20px 30px;
+  }
+  
+  .FilterItem-items {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    row-gap: 25px;
+    column-gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .FilterItem-container {
+    padding: 15px 20px;
+  }
+  
+  .FilterItem-items {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    row-gap: 25px;
+    column-gap: 15px;
+  }
+  
+  .FilterItem-item {
+    width: 100%;
+  }
+  
+  .filterItem-des {
+    padding: 12px;
+  }
+  
+  .filterItem-des h3 {
+    font-size: 0.95rem;
+  }
+  
+  .filterItem-des p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .FilterItem-container {
+    padding: 10px 15px;
+  }
+  
+  .FilterItem-items {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 15px;
+    column-gap: 10px;
+  }
+  
+  .FilterItem-item {
+    width: 100%;
+  }
+  
+  .filterItem-IMG {
+    aspect-ratio: 1/1;
+  }
+  
+  .filterItem-des {
+    padding: 10px;
+  }
+  
+  .filterItem-des h3 {
+    font-size: 0.9rem;
+  }
+  
+  .filterItem-des p {
+    font-size: 0.8rem;
+    margin-top: 5px;
+  }
+  
+  .filterItem-des span {
+    font-size: 0.75rem;
+  }
+  
+  .Item-overlay {
+    gap: 15px;
+  }
+  
+  .btncart1 {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .FilterItem-container {
+    padding: 10px;
+  }
+  
+  .FilterItem-items {
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+  }
+  
+  .FilterItem-item {
+    max-width: 100%;
+  }
+  
+  .filterItem-IMG {
+    aspect-ratio: 16/10;
+  }
+  
+  .filterItem-des {
+    padding: 12px;
+  }
+  
+  .filterItem-des h3 {
+    font-size: 1rem;
+  }
+  
+  .filterItem-des p {
+    font-size: 0.9rem;
+  }
 }
 
 

@@ -56,24 +56,57 @@ const Login = ({ onToggle }) => {
     if (validateForm()) {
       setIsLoading(true);
       try {
-        const endpoint = '/api/user/login';
+        // Use the full backend URL to ensure the request reaches the server
+        const backendUrl = 'http://localhost:5000';
+        const endpoint = `${backendUrl}/api/user/login`;
+        
+        console.log('Making login request to:', endpoint);
+        
         const res = await fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
           body: JSON.stringify({ email: formData.email, password: formData.password })
         });
-        const data = await res.json();
-        if (!res.ok || !data.success) {
+        
+        console.log('Login response status:', res.status);
+        
+        let data;
+        try {
+          data = await res.json();
+          console.log('Login response data:', data);
+        } catch (jsonErr) {
+          console.error('Login JSON parsing error:', jsonErr);
+          setErrors({ submit: 'Server error: Invalid response format.' });
+          setIsLoading(false);
+          return;
+        }
+        
+        if (!res.ok) {
+          console.error('Login HTTP error:', res.status, data);
+          setErrors({ submit: data.message || `HTTP ${res.status}: Login failed!` });
+          setIsLoading(false);
+          return;
+        }
+        
+        if (!data.success) {
+          console.error('Login API error:', data);
           setErrors({ submit: data.message || 'Login failed!' });
           setIsLoading(false);
           return;
         }
+        
+        // Success case
+        console.log('Login successful:', data);
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         localStorage.setItem('role', 'user');
         setErrors({});
         navigate('/');
       } catch (error) {
+        console.error('Login network error:', error);
         setErrors({ submit: error.message || 'Network error. Please try again.' });
       } finally {
         setIsLoading(false);

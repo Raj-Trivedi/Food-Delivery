@@ -36,7 +36,9 @@ export const placeOrder = async (req, res) => {
 // Get all orders for the logged-in user
 export const getMyOrders = async (req, res) => {
   try {
-    const orders = await orderModel.find({ user: req.user.id }).populate('items.foodId');
+    const orders = await orderModel.find({ user: req.user.id })
+      .populate('items.foodId')
+      .sort({ createdAt: -1 });
     res.json({ success: true, orders });
   } catch (err) {
     console.error('getMyOrders error:', err);
@@ -47,7 +49,10 @@ export const getMyOrders = async (req, res) => {
 // (Admin) Get all orders
 export const getAllOrders = async (req, res) => {
   try {
-    const orders = await orderModel.find().populate('user', 'name email').populate('items.food');
+    const orders = await orderModel.find()
+      .populate('user', 'name email')
+      .populate('items.food')
+      .sort({ createdAt: -1 });
     res.json({ success: true, orders });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Server error' });
@@ -100,10 +105,11 @@ const deleteOrder = async (req, res) => {
 
 export const getSellerOrders = async (req, res) => {
   try {
-    // Find all orders that have at least one item for this seller
+    // Find all orders that have at least one item for this seller, sorted by creation date (newest first)
     const orders = await orderModel.find({ 'items.seller': req.user.id })
       .populate('user', 'name email')
-      .populate('items.foodId');
+      .populate('items.foodId')
+      .sort({ createdAt: -1 });
     // Filter each order's items to only those for this seller
     const sellerOrders = orders.map(order => ({
       _id: order._id,

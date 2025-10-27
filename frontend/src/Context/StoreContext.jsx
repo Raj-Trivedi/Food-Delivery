@@ -27,8 +27,15 @@ const StoreContextProvider = (props) => {
             try {
                 const res = await fetch('/api/food/');
                 const data = await res.json();
-                if (data.success) setFoodList(data.data);
-                else setError(data.message || 'Failed to fetch foods');
+                if (data.success) {
+                    // Sort foods by creation date (newest first)
+                    const sortedFoods = data.data.sort((a, b) => 
+                        new Date(b.createdAt) - new Date(a.createdAt)
+                    );
+                    setFoodList(sortedFoods);
+                } else {
+                    setError(data.message || 'Failed to fetch foods');
+                }
             } catch (err) {
                 setError('Failed to fetch foods');
             } finally {

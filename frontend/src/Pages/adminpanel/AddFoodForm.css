@@ -167,4 +167,104 @@
   color: black !important;
   display: flex;
   gap:20px;
- }  
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .add-food-form {
+    max-width: 100%;
+    padding: 24px 20px;
+  }
+  
+  .price-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .image-upload-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .image-upload-box {
+    width: 80px;
+    height: 65px;
+  }
+  
+  .dietary-options {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .add-food-form {
+    padding: 20px 15px;
+  }
+  
+  .add-food-form label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+  .add-food-form input,
+  .add-food-form textarea,
+  .add-food-form select {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+  
+  .add-food-form textarea {
+    min-height: 60px;
+  }
+  
+  .image-upload-box {
+    width: 70px;
+    height: 60px;
+  }
+  
+  .image-upload-placeholder {
+    font-size: 1rem;
+  }
+  
+  .add-btn {
+    font-size: 1rem;
+    padding: 10px 0;
+    letter-spacing: 0.5px;
+  }
+  
+  .status-msg {
+    font-size: 1rem;
+  }
+  
+  .price-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .dietary-options {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .dietary-label {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .add-food-form {
+    padding: 15px 10px;
+  }
+  
+  .image-upload-row {
+    gap: 10px;
+  }
+  
+  .image-upload-box {
+    width: 65px;
+    height: 55px;
+  }
+}  

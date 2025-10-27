@@ -258,3 +258,90 @@
   border-top: 1px solid #e0e0e0;
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .CartSummary-container {
+    padding: 20px 30px;
+  }
+  
+  .CartSummary-container h2 {
+    font-size: 20px;
+  }
+  
+  .CartSummary-heading {
+    gap: 60px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  .CartSummary-container {
+    padding: 15px 20px;
+    margin: 20px auto;
+  }
+  
+  .CartSummary-container h2 {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .CartSummary-heading {
+    gap: 40px;
+    font-size: 12px;
+    display: none;
+  }
+  
+  .CartSummary-Shipping {
+    font-size: 13px;
+  }
+  
+  .CartSummary-CouponCode {
+    font-size: 13px;
+  }
+  
+  .CartSummary-totalCost {
+    font-size: 14px;
+  }
+  
+  .Subtotal {
+    font-size: 16px;
+  }
+  
+  .Checkout-btn {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  .Address-box {
+    padding: 8px 10px;
+  }
+  
+  .Address-title {
+    font-size: 11px;
+  }
+  
+  .Address-placeholder {
+    font-size: 13px;
+  }
+  
+  .Address-change {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .CartSummary-container {
+    padding: 10px 15px;
+  }
+  
+  .Shipping-box,
+  .Coupon-box {
+    padding: 8px;
+  }
+  
+  .Coupon-box button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+

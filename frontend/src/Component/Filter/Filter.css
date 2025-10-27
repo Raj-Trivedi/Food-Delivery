@@ -1,10 +1,85 @@
+/* Filter Toggle Button (Mobile Only) */
+.filter-toggle-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+  transition: all 0.3s ease;
+  align-items: center;
+  gap: 8px;
+  flex-direction: row;
+}
+
+.filter-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 107, 107, 0.5);
+}
+
+.filter-toggle-btn svg {
+  flex-shrink: 0;
+}
+
+/* Filter Overlay */
+.filter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  animation: fadeIn 0.3s ease;
+  pointer-events: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Filter Close Button (Mobile Only) */
+.filter-close-btn {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #495057;
+  padding: 5px;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+
+.filter-close-btn:hover {
+  transform: rotate(90deg);
+  color: #ff6b6b;
+}
+
 .Filter-Container{
     padding:30px 50px;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   max-width: 18vw;
-    
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 280px;
+    min-width: 250px;
+    height: fit-content;
+    transition: transform 0.3s ease;
 }
 
 .filter-content
@@ -15,14 +90,15 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap:3px;
+    gap: 5px;
     
     
 }
 .Catergory_cont h3{
     margin-bottom: 10px;
     font-size: 1.2rem;
-    color: #343a40;
+    color: #212529;
+    font-weight: 700;
 }
 .filter-content::-webkit-scrollbar {
     visibility: hidden;
@@ -36,7 +112,8 @@
     padding: 10px;
     border-radius: 4px;
     /* background-color: #e9ecef; */
-    color: #495057;
+    color: #212529;
+    font-weight: 500;
     cursor: pointer;
     transition: 0.3s;
     font-size: 1rem;
@@ -44,16 +121,18 @@
 .categogy_item:hover {
     color: rgb(223, 45, 45);
     
-
-} 
+ 
+}
 #mychecked:checked ~ .categogy_item {
    
   color: rgb(223, 45, 45);
 }
-#mychecked{
-  accent-color:red; 
-
-
+#mychecked,
+#mychecked-others {
+  accent-color: #df2d2d;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
 }
 /* #mychecked :hover{
     color: rgb(223, 45, 45);
@@ -68,24 +147,29 @@
 .Range_cont h3{
      margin-bottom: 10px;
     font-size: 1.2rem;
-    color: #343a40;
+    color: #212529;
+    font-weight: 700;
 }
 .Range_cont input[type="range"] {
     width: 100%;
     -webkit-appearance: none;
-    background: #e9ecef;
-    height: 8px;
+    appearance: none;
+    background: #dee2e6;
+    height: 6px;
     border-radius: 4px; 
+    cursor: pointer;
 }
 .Range_cont input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
+    appearance: none;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background:rgb(223, 45, 45);
-    border: 2px solid #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;    
+    background: #df2d2d;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 6px rgba(223, 45, 45, 0.4);
+    cursor: pointer;
+    transition: transform 0.2s ease;    
 }
 
 
@@ -93,7 +177,8 @@
     display: flex;
     /* justify-content: space-between; */
     
-    color: #495057;
+    color: #212529;
+    font-weight: 600;
     
     margin-top: 5px;
     margin-bottom: 12px;
@@ -102,9 +187,10 @@
     font-weight: bold;
 }
 .Range_value p{
-    font-size: 14px;
+    font-size: 15px;
     margin-right: 5px;
-    color: #6c757d;
+    color: #212529;
+    font-weight: 600;
 
 }
 .Range_value input {
@@ -113,14 +199,17 @@
     border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 1rem;
-    color: #495057; 
+    color: #212529; 
+    font-weight: 600;
 }
 .Range_item label {
-    color: #343a40;
+    color: #212529;
+    font-weight: 600;
 }
 .Range_item span{
-   font-size: 0.9rem;
-    color: #495057;
+   font-size: 0.95rem;
+    color: #212529;
+    font-weight: 600;
 }
 
 .Dietary_cont{
@@ -135,7 +224,8 @@
     margin-top: 12px;
     margin-bottom: 10px;
     font-size: 1.2rem;
-    color: #343a40;
+    color: #212529;
+    font-weight: 700;
 }
 .Dietary-item {
     display: flex;
@@ -143,11 +233,19 @@
     gap: 5px;
 
 }
+.Dietary-list input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #df2d2d;
+}
+
 .Dietary-list label{
     padding: 10px;
     border-radius: 4px;
     /* background-color: #e9ecef; */
-    color: #495057;
+    color: #212529;
+    font-weight: 500;
     cursor: pointer;
     transition: 0.3s;
     font-size: 1rem;
@@ -161,4 +259,169 @@
 .Dietary-list input[type="checkbox"]:checked + label {
     color: rgb(223, 45, 45);
 
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .Filter-Container {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 30px;
+  }
+  
+  .Catergory_cont h3,
+  .Range_cont h3,
+  .Dietary_cont h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Show toggle button on mobile */
+  .filter-toggle-btn {
+    display: flex;
+  }
+  
+  /* Hide filter container by default on mobile */
+  .Filter-Container.closed {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 320px;
+    max-width: 85vw;
+    height: 100vh;
+    z-index: 1000;
+    max-width: none;
+    min-width: 280px;
+    border-radius: 0;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    padding: 60px 25px 30px 25px;
+  }
+  
+  /* Show filter container when open */
+  .Filter-Container.open {
+    left: 0;
+    z-index: 1000;
+  }
+  
+  /* Show close button */
+  .filter-close-btn {
+    display: block;
+  }
+  
+  /* Other non-mobile styles removed */
+}
+
+@media (max-width: 768px) {
+  .Filter-Container {
+    padding: 20px;
+    border-radius: 6px;
+  }
+  
+  .filter-content {
+    max-height: 30vw;
+  }
+  
+  .Catergory_cont h3,
+  .Range_cont h3,
+  .Dietary_cont h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  
+  .categogy_item,
+  .Dietary-list label {
+    padding: 8px;
+    font-size: 0.95rem;
+  }
+  
+  .Range_cont input[type="range"] {
+    height: 6px;
+  }
+  
+  .Range_cont input[type="range"]::-webkit-slider-thumb {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .Range_value {
+    font-size: 0.9rem;
+  }
+  
+  .Range_value input {
+    width: 50px;
+    padding: 4px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .Filter-Container {
+    padding: 15px;
+  }
+  
+  .filter-content {
+    max-height: 35vw;
+    gap: 2px;
+  }
+  
+  .Catergory_cont,
+  .Range_cont,
+  .Dietary_cont {
+    margin-top: 15px;
+  }
+  
+  .Catergory_cont h3,
+  .Range_cont h3,
+  .Dietary_cont h3 {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+  
+  .categogy_list {
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  
+  .categogy_item,
+  .Dietary-list label {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .Range_cont {
+    gap: 8px;
+  }
+  
+  .Range_value p {
+    font-size: 0.85rem;
+  }
+  
+  .Range_value input {
+    width: 45px;
+    font-size: 0.85rem;
+  }
+  
+  .Range_item span {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .Filter-Container {
+    padding: 12px;
+  }
+  
+  .categogy_item,
+  .Dietary-list label {
+    padding: 5px 8px;
+    font-size: 0.85rem;
+  }
+  
+  .Range_value input {
+    width: 40px;
+    padding: 3px;
+  }
 }

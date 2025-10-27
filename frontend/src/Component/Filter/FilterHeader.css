@@ -1,8 +1,10 @@
 .FilterHeader-Container{
     display: flex;
     justify-content: space-between;
-    padding-left: 80px;
-    padding-right: 120px;
+    padding: 20px 80px;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 .filter-sort{
     display: flex;
@@ -53,6 +55,8 @@
     display: flex;
     overflow: hidden;
     border-radius: 20px;
+    flex: 1;
+    min-width: 250px;
 }
 
 .header-img img{
@@ -60,4 +64,86 @@
     height: 100%;
     object-fit: cover;
     background-position: center center;
+}
+
+/* Responsive styles */
+@media (max-width: 1400px) {
+  .FilterHeader-Container {
+    padding: 15px 60px;
+  }
+  
+  .header-img {
+    width: 70vh;
+  }
+}
+
+@media (max-width: 1200px) {
+  .FilterHeader-Container {
+    padding: 15px 40px;
+  }
+  
+  .header-img {
+    width: 60vh;
+    height: 100px;
+  }
+}
+
+@media (max-width: 992px) {
+  .FilterHeader-Container {
+    padding: 15px 30px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .header-img {
+    width: 100%;
+    height: 100px;
+  }
+  
+  .filter-sort {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .filter-select {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .FilterHeader-Container {
+    padding: 10px 20px;
+  }
+  
+  .header-img {
+    height: 80px;
+    border-radius: 12px;
+  }
+  
+  .filter-select {
+    width: 100%;
+    height: 38px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .FilterHeader-Container {
+    padding: 10px 15px;
+  }
+  
+  .header-img {
+    height: 70px;
+    border-radius: 10px;
+  }
+  
+  .filter-sort label {
+    font-size: 14px;
+  }
+  
+  .filter-select {
+    font-size: 13px;
+    height: 36px;
+  }
 }

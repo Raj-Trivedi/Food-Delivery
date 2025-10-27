@@ -20,9 +20,29 @@ body{
   padding: 0px 100px;
 }
 
+/* Tablet devices */
+@media (max-width: 1024px) {
+  .Home-container{
+    padding: 0px 50px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .Home-container{
+    padding: 0px 30px;
+  }
+}
+
 @media (max-width: 576px) {
   .Home-container{
-    padding: 0px 25px;
+    padding: 0px 20px;
   }
+}
 
+/* Extra small devices */
+@media (max-width: 400px) {
+  .Home-container{
+    padding: 0px 15px;
+  }
 }

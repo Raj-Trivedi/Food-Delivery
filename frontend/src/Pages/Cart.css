@@ -11,3 +11,26 @@
     align-items: center;
     text-align: center;
 }
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .cart-container {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .cart-container {
+    min-height: auto;
+  }
+  
+  .empty-cart-msg {
+    padding: 20px;
+  }
+}

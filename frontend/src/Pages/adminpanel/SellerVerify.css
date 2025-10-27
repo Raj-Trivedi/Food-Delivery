@@ -1,0 +1,68 @@
+.verify-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.verify-left {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.verify-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 2rem;
+}
+
+.verify-form-container {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.otp-inputs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.otp-input {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.verify-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.timer {
+  background: #f8f9fa;
+  padding: 12px 20px;
+  border-radius: 25px;
+  color: #e74c3c;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}

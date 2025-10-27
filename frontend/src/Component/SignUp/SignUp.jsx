@@ -73,27 +73,58 @@ const SignUp = ({ onToggle }) => {
     if (validateForm()) {
       setIsLoading(true);
       try {
-        const endpoint = '/api/user/signup';
+        // Use the full backend URL to ensure the request reaches the server
+        const backendUrl = 'http://localhost:5000';
+        const endpoint = `${backendUrl}/api/user/signup`;
+        
+        console.log('Making request to:', endpoint);
+        console.log('Request payload:', { name: formData.name, email: formData.email, password: formData.password });
+        
         const res = await fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: formData.name, email: formData.email, password: formData.password })
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ 
+            name: formData.name, 
+            email: formData.email, 
+            password: formData.password 
+          })
         });
+        
+        console.log('Response status:', res.status);
+        console.log('Response headers:', res.headers);
+        
         let data;
         try {
           data = await res.json();
+          console.log('Response data:', data);
         } catch (jsonErr) {
+          console.error('JSON parsing error:', jsonErr);
           toast.error('Server error: Invalid response format.', { position: 'top-center', autoClose: 2000 });
           setIsLoading(false);
           return;
         }
-        console.log('Signup response:', data);
-        if (!res.ok || !data.success) {
+        
+        if (!res.ok) {
+          console.error('HTTP error:', res.status, data);
+          setErrors({ submit: data.message || `HTTP ${res.status}: Signup failed!` });
+          toast.error(data.message || `HTTP ${res.status}: Signup failed!`, { position: 'top-center', autoClose: 2000 });
+          setIsLoading(false);
+          return;
+        }
+        
+        if (!data.success) {
+          console.error('API error:', data);
           setErrors({ submit: data.message || 'Signup failed!' });
           toast.error(data.message || 'Signup failed!', { position: 'top-center', autoClose: 2000 });
           setIsLoading(false);
           return;
         }
+        
+        // Success case
+        console.log('Signup successful:', data);
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         localStorage.setItem('role', 'user');
@@ -101,6 +132,7 @@ const SignUp = ({ onToggle }) => {
         toast.success('Signup successful! Redirecting...', { position: 'top-center', autoClose: 2000 });
         setTimeout(() => navigate('/'), 1200);
       } catch (error) {
+        console.error('Network error:', error);
         setErrors({ submit: error.message || 'Network error. Please try again.' });
         toast.error(error.message || 'Network error. Please try again.', { position: 'top-center', autoClose: 2000 });
       } finally {

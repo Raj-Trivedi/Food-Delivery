@@ -43,49 +43,56 @@ const SellerSignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    let data;
+    setLoading(true);
+    
     try {
-      const endpoint = '/api/seller/login';
-      const res = await fetch(endpoint, {
+      const response = await fetch('http://localhost:5000/api/seller/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify(formData)
       });
-      try {
-        data = await res.json();
-      } catch (jsonErr) {
-        toast.error('Server error: Invalid response format.', { position: 'top-center', autoClose: 2000 });
-        return;
-      }
-      if (!res.ok) {
-        toast.error(data.message || 'Login failed!', { position: 'top-center', autoClose: 2000 });
-        return;
-      }
-      if (!data.success) {
-        toast.error(data.message || 'Login failed!', { position: 'top-center', autoClose: 2000 });
-        return;
-      }
-    } catch (err) {
-      toast.error('Network error. Please try again.', { position: 'top-center', autoClose: 2000 });
-      return;
-    }
 
-    // Now handle the rest, and catch errors here
-    try {
-      console.log('Seller login data:', data);
+      const data = await response.json();
+      
+      if (!response.ok) {
+        // If email is not verified, redirect to OTP verification
+        if (data.error === 'EMAIL_NOT_VERIFIED') {
+          navigate('/seller-verify', { 
+            state: { 
+              email: formData.email,
+              message: 'Please verify your email to continue.'
+            } 
+          });
+          return;
+        }
+        throw new Error(data.message || 'Login failed');
+      }
+
+      // If login is successful, save token and redirect
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.seller));
       localStorage.setItem('role', 'seller');
+      
       if (typeof setUser === 'function') setUser(data.seller);
       if (typeof setIsAuthenticated === 'function') setIsAuthenticated(true);
       if (typeof fetchUserData === 'function') fetchUserData();
-      toast.success('Seller login successful!', { position: 'top-center', autoClose: 2000 });
+      
+      toast.success('Login successful!', { position: 'top-center', autoClose: 2000 });
       setTimeout(() => {
         navigate('/admin');
-      }, 1200);
-    } catch (err) {
-      console.error('Error after login:', err);
-      toast.error('App error after login: ' + err.message, { position: 'top-center', autoClose: 2000 });
+      }, 1000);
+      
+    } catch (error) {
+      console.error('Login error:', error);
+      toast.error(error.message || 'Login failed. Please try again.', { 
+        position: 'top-center', 
+        autoClose: 2000 
+      });
+    } finally {
+      setLoading(false);
     }
   };
 

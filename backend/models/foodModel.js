@@ -35,7 +35,7 @@ const foodSchema = new mongoose.Schema({
         ref: 'seller',
         required: true
     },
-});
+}, { timestamps: true });
 
 const foodModel = mongoose.models.food || mongoose.model('food', foodSchema);
 

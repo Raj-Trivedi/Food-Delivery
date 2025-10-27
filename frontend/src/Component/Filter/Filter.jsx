@@ -4,6 +4,27 @@ import './Filter.css';
 import { menu_list } from "../../../../assets/frontend_assets/assets";
 
 const Filter = ({ category, setCategory, minPrice, setMinPrice, maxPrice, setMaxPrice, maxProductPrice, dietary, setDietary }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile view
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 992);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeSidebar = () => {
+    setIsOpen(false);
+  };
 
   const filterByCategory = (item) => {
     setCategory((prev) => {
@@ -54,8 +75,50 @@ const Filter = ({ category, setCategory, minPrice, setMinPrice, maxPrice, setMax
   };
 
   return (
-    <div className="Filter-Container">
-      <div className="Catergory_cont">
+    <>
+      {/* Mobile Filter Toggle Button */}
+      {isMobile && (
+        <button 
+          className="filter-toggle-btn"
+          onClick={toggleSidebar}
+          aria-label="Open filters"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <circle cx="20" cy="4" r="2" fill="currentColor"/>
+            <circle cx="20" cy="12" r="2" fill="currentColor"/>
+          </svg>
+          <span>Filters</span>
+        </button>
+      )}
+
+      {/* Overlay for mobile */}
+      {isMobile && isOpen && (
+        <div 
+          className="filter-overlay active"
+          onClick={closeSidebar}
+        ></div>
+      )}
+
+      {/* Filter Sidebar */}
+      <div 
+        className={`Filter-Container ${isMobile ? (isOpen ? 'open' : 'closed') : ''}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close button for mobile */}
+        {isMobile && (
+          <button 
+            className="filter-close-btn"
+            onClick={closeSidebar}
+            aria-label="Close filters"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+          </button>
+        )}
+
+        <div className="Catergory_cont">
         <h3>Product Category</h3>
         <div className="filter-content">
           {menu_list.map((item, index) => (
@@ -139,7 +202,8 @@ const Filter = ({ category, setCategory, minPrice, setMinPrice, maxPrice, setMax
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

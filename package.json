@@ -2,6 +2,7 @@
   "dependencies": {
     "dotenv": "^17.1.0",
     "mongoose": "^8.16.2",
+    "nodemailer": "^7.0.5",
     "react-select": "^5.10.1"
   }
 }

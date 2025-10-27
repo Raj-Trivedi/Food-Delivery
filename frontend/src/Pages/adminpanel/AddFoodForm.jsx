@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './AddFoodForm.css';
 import Select from 'react-select';
 import { menu_list } from '../../../../assets/frontend_assets/assets';
+import { toast } from 'react-toastify';
 
 const categoryOptions = [
   ...menu_list.map(item => ({ value: item.menu_name, label: item.menu_name })),
@@ -50,9 +51,19 @@ const AddFoodForm = ({ refreshFoods }) => {
       });
       const result = await res.json();
       if (result.success) {
+        console.log('Food item added successfully, refreshing foods...');
         setStatus('Food item added successfully!');
+        toast.success('Food item added successfully!', { position: 'top-center', autoClose: 2000 });
         setForm({ name: '', description: '', price: '', category: '', Dietary: '', images: [null] });
-        if (refreshFoods) refreshFoods();
+        if (refreshFoods) {
+          console.log('Calling refreshFoods...');
+          // Add a small delay to ensure the backend has processed the new item
+          setTimeout(() => {
+            refreshFoods();
+          }, 500);
+        } else {
+          console.log('refreshFoods function not provided');
+        }
       } else {
         setStatus(result.message || 'Failed to add food item.');
       }

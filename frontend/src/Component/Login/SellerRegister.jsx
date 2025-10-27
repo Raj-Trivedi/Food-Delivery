@@ -40,28 +40,48 @@ const SellerRegister = () => {
     e.preventDefault();
     if (!validateForm()) return;
     setLoading(true);
+
     try {
-      const res = await fetch('/api/seller/signup', {
+      console.log('Sending signup request to backend...');
+      const response = await fetch('http://localhost:5000/api/seller/signup', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password
-        })
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        toast.error(data.message || 'Registration failed!', { position: 'top-center', autoClose: 2000 });
-        setLoading(false);
-        return;
+
+      console.log('Response status:', response.status);
+      const data = await response.json();
+      console.log('Response data:', data);
+      
+      if (!response.ok) {
+        throw new Error(data.message || 'Signup failed');
       }
-      toast.success('Registration successful! Please log in.', { position: 'top-center', autoClose: 2000 });
-      setTimeout(() => navigate('/seller-signin'), 1200);
-    } catch (err) {
-      toast.error('Network error. Please try again.', { position: 'top-center', autoClose: 2000 });
+      
+      // Success - redirect to OTP verification
+      toast.success('OTP sent to your email!', { 
+        position: 'top-center',
+        autoClose: 2000 
+      });
+      
+      navigate('/seller-verify', { 
+        state: { 
+          email: formData.email,
+          message: 'Please enter the OTP sent to your email to complete registration.'
+        } 
+      });
+      
+    } catch (error) {
+      console.error('Registration error:', error);
+      toast.error(error.message || 'Registration failed. Please try again.', { 
+        position: 'top-center',
+        autoClose: 2000 
+      });
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const Bubble = ({ size, left, top, delay, duration }) => (

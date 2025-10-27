@@ -28,17 +28,24 @@ const AdminPanel = () => {
   const fetchFoods = async () => {
     setLoading(true);
     try {
+      console.log('Fetching foods...');
       const res = await fetch('/api/food/mine', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
       const data = await res.json();
+      console.log('Foods response:', data);
       if (data.success) {
-        setFoods(data.data);
+        // Sort foods by creation date (newest first)
+        const sortedFoods = data.data.sort((a, b) => 
+          new Date(b.createdAt) - new Date(a.createdAt)
+        );
+        console.log('Sorted foods:', sortedFoods);
+        setFoods(sortedFoods);
       }
     } catch (err) {
-      // handle error
+      console.error('Error fetching foods:', err);
     }
     setLoading(false);
   };
@@ -84,6 +91,13 @@ const AdminPanel = () => {
     fetchFoods();
     fetchSellerProfile();
   }, []);
+
+  // Refresh foods when switching to itemlisting tab
+  useEffect(() => {
+    if (active === 'itemlisting') {
+      fetchFoods();
+    }
+  }, [active]);
 
   if (showLoader) return <Loader message="loggin out..." />;
 

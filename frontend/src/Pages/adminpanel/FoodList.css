@@ -148,4 +148,186 @@
   width: 100%;
   padding: 24px 0;
   background: #f9f9f9;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .food-table th, .food-table td {
+    padding: 20px 20px;
+    font-size: 1rem;
+  }
+  
+  .food-product-img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 992px) {
+  .food-list h2 {
+    font-size: 24px;
+  }
+  
+  .food-table {
+    overflow-x: auto;
+    display: block;
+  }
+  
+  .food-table th, .food-table td {
+    padding: 15px 12px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  
+  .food-product-img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .food-product-name {
+    font-size: 0.95rem;
+  }
+  
+  .btn-div {
+    gap: 25px;
+  }
+  
+  .delete-btn, .edit-btn, .editdone-btn {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .food-list {
+    margin-top: 15px;
+  }
+  
+  .food-list h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .food-table {
+    border-radius: 8px;
+  }
+  
+  .food-table th {
+    font-size: 0.85rem;
+    padding: 12px 10px;
+  }
+  
+  .food-table td {
+    font-size: 0.85rem;
+    padding: 12px 8px;
+  }
+  
+  .food-product-cell {
+    gap: 10px;
+  }
+  
+  .food-product-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+  }
+  
+  .food-product-name {
+    font-size: 0.9rem;
+  }
+  
+  .food-category {
+    font-size: 0.85rem;
+  }
+  
+  .food-price {
+    font-size: 0.9rem;
+  }
+  
+  .btn-div {
+    gap: 20px;
+  }
+  
+  .delete-btn, .edit-btn, .editdone-btn {
+    font-size: 1.2rem;
+  }
+  
+  .food-toggle-switch {
+    width: 44px;
+    height: 24px;
+  }
+  
+  .food-toggle-slider:before {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .food-toggle-switch input:checked + .food-toggle-slider:before {
+    transform: translateX(20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .food-list h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .food-table th {
+    font-size: 0.8rem;
+    padding: 10px 6px;
+  }
+  
+  .food-table td {
+    font-size: 0.8rem;
+    padding: 10px 6px;
+  }
+  
+  .food-product-cell {
+    gap: 8px;
+  }
+  
+  .food-product-img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .food-product-name {
+    font-size: 0.85rem;
+  }
+  
+  .food-category {
+    font-size: 0.8rem;
+  }
+  
+  .food-price {
+    font-size: 0.85rem;
+  }
+  
+  .food-actions {
+    gap: 10px;
+  }
+  
+  .btn-div {
+    gap: 15px;
+  }
+  
+  .delete-btn, .edit-btn, .editdone-btn {
+    font-size: 1.1rem;
+  }
+  
+  .edit-food-form-wrapper {
+    padding: 15px 0;
+  }
+}
+
+/* Hide less important columns on very small screens */
+@media (max-width: 400px) {
+  .food-category {
+    display: none;
+  }
+  
+  .food-table th:nth-child(2),
+  .food-table td:nth-child(2) {
+    display: none;
+  }
 } 

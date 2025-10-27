@@ -25,7 +25,11 @@ const OrderList = () => {
         });
         const data = await res.json();
         if (data.success) {
-          setOrders(data.orders);
+          // Sort orders by creation date (newest first)
+          const sortedOrders = data.orders.sort((a, b) => 
+            new Date(b.createdAt) - new Date(a.createdAt)
+          );
+          setOrders(sortedOrders);
         }
       } catch (err) {
         setOrders([]);
@@ -51,7 +55,13 @@ const OrderList = () => {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
-      if (data.success) setOrders(data.orders);
+      if (data.success) {
+        // Sort orders by creation date (newest first)
+        const sortedOrders = data.orders.sort((a, b) => 
+          new Date(b.createdAt) - new Date(a.createdAt)
+        );
+        setOrders(sortedOrders);
+      }
       setLoading(false);
     } catch (err) {
       // Optionally show error
@@ -67,8 +77,7 @@ const OrderList = () => {
             <div key={order._id} className="order-card">
               <div className="order-card-info">
                 <div><b>Buyer:</b> {order.buyer?.name || 'Unknown'}</div>
-                <div><b>Address:</b> {order.address || 'N/A'}</div>
-                <div><b>Phone:</b> {order.phone || 'N/A'}</div>
+              
                 <div><b>Date:</b> {new Date(order.createdAt).toLocaleDateString()}</div>
                 <div className="order-card-status">
                   <b>Status:</b>

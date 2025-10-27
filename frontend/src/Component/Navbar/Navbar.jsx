@@ -10,10 +10,24 @@ export const Navbar = () => {
     const [menu, setMenu] = useState("home");
     const [isMobile, setIsMobile] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     const { cartItems, searchItem, setSearchItem } = useContext(StoreContext);
     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+    const [userData, setUserData] = useState(null);
+
+    // Get user data from localStorage
+    useEffect(() => {
+        const user = localStorage.getItem('user');
+        if (user) {
+            try {
+                setUserData(JSON.parse(user));
+            } catch (error) {
+                console.error('Error parsing user data:', error);
+            }
+        }
+    }, [isLoggedIn]);
 
     // Update active menu based on route path
     useEffect(() => {
@@ -48,12 +62,25 @@ export const Navbar = () => {
         return () => window.removeEventListener('storage', handleStorageChange);
     }, []);
 
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (profileDropdownOpen && !event.target.closest('.profile-dropdown')) {
+                setProfileDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [profileDropdownOpen]);
+
     const handleNav = (menuName, path) => {
         setMenu(menuName);
         navigate(path);
         if (isMobile) {
             setMobileMenuOpen(false);
         }
+        setProfileDropdownOpen(false);
     };
 
     const handleLogout = () => {
@@ -61,8 +88,28 @@ export const Navbar = () => {
         localStorage.removeItem('user');
         localStorage.removeItem('role');
         setIsLoggedIn(false);
+        setUserData(null);
+        setProfileDropdownOpen(false);
         navigate('/');
         window.location.reload(); // Ensures all state is reset
+    };
+
+    const handleSellerLogin = () => {
+        setProfileDropdownOpen(false);
+        navigate('/seller-signin');
+    };
+
+    const handleMyOrders = () => {
+        setProfileDropdownOpen(false);
+        navigate('/myorder');
+    };
+
+    // Get user initials
+    const getUserInitials = () => {
+        if (!userData || !userData.name) return 'U';
+        const names = userData.name.split(' ');
+        if (names.length === 1) return names[0].charAt(0).toUpperCase();
+        return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
     };
 
     return (
@@ -97,13 +144,7 @@ export const Navbar = () => {
                     <li onClick={() => handleNav("home", "/")} className={menu === "home" ? "active" : ""}>Home</li>
                     <li onClick={() => handleNav("menu", "/menu")} className={menu === "menu" ? "active" : ""}>Menu</li>
                     <li onClick={() => handleNav("aboutUs", "/aboutus")} className={menu === "aboutUs" ? "active" : ""}>About Us</li>
-                    <li onClick={() => handleNav("seller", "/seller-signin")} className={menu === "seller" ? "active" : ""}>Seller</li>
-
-                    {isLoggedIn && (
-                        <li onClick={() => handleNav("myorder", "/myorder")} className={menu === "myorder" ? "active" : ""}>
-                            My Orders
-                        </li>
-                    )}
+                   
                     
                     {/* Mobile Search - Only visible in mobile menu */}
                     {isMobile && (
@@ -151,11 +192,36 @@ export const Navbar = () => {
                         <span className="cart-count">{Object.keys(cartItems).length}</span>
                     )}
                 </div>
-                <button className="nav-btn" 
-                    onClick={isLoggedIn ? handleLogout : () => handleNav(menu, "/auth")}
-                >
-                    {isLoggedIn ? 'Logout' : 'Sign In'}
-                </button>
+                
+                {/* Profile Dropdown for logged in users */}
+                {isLoggedIn ? (
+                    <div className="profile-dropdown">
+                        <div 
+                            className="profile-icon" 
+                            onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+                        >
+                            <span className="profile-initials">{getUserInitials()}</span>
+                        </div>
+                        
+                        {profileDropdownOpen && (
+                            <div className="profile-dropdown-menu">
+                                <div className="dropdown-item" onClick={handleMyOrders}>
+                                    My Orders
+                                </div>
+                                <div className="dropdown-item" onClick={handleSellerLogin}>
+                                    Seller Login
+                                </div>
+                                <div className="dropdown-item logout" onClick={handleLogout}>
+                                    Logout
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <button className="nav-btn" onClick={() => handleNav(menu, "/auth")}>
+                        Sign In
+                    </button>
+                )}
             </div>
 
             {/* Mobile Menu Overlay */}

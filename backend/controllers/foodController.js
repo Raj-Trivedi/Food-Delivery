@@ -27,7 +27,9 @@ const addFood = async (req,res)=>{
     seller: req.user.id // associate food with seller
  });
     try {
+        console.log('Saving food item:', food);
         await food.save(); // saving the food item to the database
+        console.log('Food item saved successfully with ID:', food._id);
         res.json({ success:true ,message: "Food item added successfully"}); // sending success response
         } catch (error) {
         console.log(error);
@@ -43,7 +45,7 @@ const addFood = async (req,res)=>{
 // Get all food items
 const getAllFoods = async (req, res) => {
   try {
-    const foods = await foodModel.find();
+    const foods = await foodModel.find().sort({ createdAt: -1 });
     res.json({ success: true, data: foods });
   } catch (error) {
     console.log(error);
@@ -54,7 +56,9 @@ const getAllFoods = async (req, res) => {
 // Get all food items for the logged-in seller
 const getMyFoods = async (req, res) => {
   try {
-    const foods = await foodModel.find({ seller: req.user.id });
+    console.log('getMyFoods called for seller:', req.user.id);
+    const foods = await foodModel.find({ seller: req.user.id }).sort({ createdAt: -1 });
+    console.log('Found foods for seller:', foods.length);
     res.json({ success: true, data: foods });
   } catch (error) {
     console.log(error);
